@@ -73,7 +73,7 @@ echantillon
 
 ### Frequence et fréquence cumulé
 
-- On appelle fréquence de la valeur $x_{i}$ ou de la classe ]$x_{i}$ , $x_{i+1}$] le nombre réel $f_{i}=\frac{n_{i}}{N}$
+- On appelle fréquence de la valeur $x_{i}$ ou de la classe ]$x_{i}$ , $x_{i+1}$] le nombre réel $$f_{i}=\frac{n_{i}}{N}$$
 - C’est la proportion de l’effectif d’une valeur de la variable par rapport à N la taille totale de la population ou de l’échantillon
 - On appelle fréquence cumulée de la valeur $x_{i}$ ou de la classe ]$x_{i}$ , $x_{i+1}$] la somme des fréquences de cette valeur ou classe et des fréquences des aleurs ou classes qui la précèdent $F_{i}=\sum_{k = 1}^{i} f_{i}$
 - C’est la proportion des unités statistiques de la population ou de l’échantillon qui possèdent une valeur inférieure ou égale à une valeur $x$ donnée d’une variable quantitative.
