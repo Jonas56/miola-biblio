@@ -48,7 +48,9 @@ On distingue deux types de routage:
 R1# show ip route
 ```
 
-![Routing table](https://www.researchgate.net/profile/Petac-Eugen-2/publication/287208615/figure/fig4/AS:307928004349955@1450427165297/Routing-table-of-R3.png)
+<p align="center">
+  <img src="https://www.researchgate.net/profile/Petac-Eugen-2/publication/287208615/figure/fig4/AS:307928004349955@1450427165297/Routing-table-of-R3.png" alt="Routing table" width=500>
+</p>
 
 ## Routage statique
 
@@ -64,8 +66,7 @@ Soit la topologie suivante:
 [comment]: <> (TODO: include an photo of a network)
 ![]()
 
-Lors du demarage le routeur possede dans sa table de routage que les réseaux directement connécter.
-Pour acheminer un paquet vers un réseaux distant il suffit d'ajouter une route statique vers ce réseaux.
+Lors du demarage le routeur X possede dans sa table de routage que les réseaux directement connéctées. Pour acheminer un paquet vers un réseaux distant il suffit d'ajouter une route statique vers ce réseaux.
 
 ### Configuration d’une route statique
 
@@ -99,10 +100,7 @@ le routage dynamique est une technique dans laquelle un routeur apprend aux info
 
 ### Protocole de routage dynamique
 
-Un protocole de routage est un ensemble de processus, d’algorithmes et de
-messages qui sont utilisés pour échanger des informations de routage et
-construire la table de routage en y indiquant les meilleurs chemins choisis
-par le protocole.
+Un protocole de routage est un ensemble de processus, d’algorithmes et de messages qui sont utilisés pour échanger des informations de routage et construire la table de routage en y indiquant les meilleurs chemins choisis par le protocole.
 
 Un protocole de routage permet d’effectuer les opérations suivantes :
 
@@ -119,21 +117,92 @@ Un protocole de routage permet d’effectuer les opérations suivantes :
 
 #### Metrique d'une route
 
-[comment]: <> (TODO: Definition d'une métrique et une photo)
+- Le protocole de routage prend la décision du choix du meilleur chemin lors de la transmission des paquets vers une destination
+- Une métrique est calculée par des algorithmes de routage lors de la détermination du chemin optimal pour l'envoi d'un paquet. Les métriques sont attribuées à chaque route différente disponible dans la table de routage et sont calculées à l'aide de nombreuses techniques et méthodes différentes basées sur les algorithmes de routage utilisés. Voici quelques paramètres utilisés pour calculer une métrique de routage:
+  - Nombre de sauts (hop count)
+  - Fiabilité du chemin
+  - Bande passante (Bandwidth)
+  - Charge (Load)
+  - Durée (Delay)
+  - Maximum transmission unit (MTU)
 
 #### Distance administrative
 
-[comment]: <> (TODO: Definition d'une distance administartive et une photo)
+La distance administrative (AD) est une valeur que les routeurs utilisent afin de sélectionner le meilleur chemin lorsqu'il existe au moins deux routes différentes vers la même destination à partir de deux protocoles de routage différents. La distance administrative compte la fiabilité d'un protocole de routage. La distance administrative (AD) est une valeur numérique qui peut aller de 0 à 255. Une distance administrative (AD) plus petite est plus fiable par un routeur, donc la meilleure distance administrative (AD) étant 0 et la pire, 255.
+
+<p align=center>
+
+|    Type de route     | Distance administrative |
+| :------------------: | :---------------------: |
+| Directement connecté |            0            |
+|    Route statique    |         0 ou 1          |
+|        EIGRP         |           90            |
+|         IGRP         |           100           |
+|         OSPF         |           110           |
+|        IS-IS         |           115           |
+|         RIP          |           120           |
+
+</p>
+
+<p align="center">
+  <img src="https://603168-1953132-raikfcquaxqncofqfm.stackpathdns.com/wp-content/images/show_ip_route_ad.jpg" alt="famille de protocole">
+</p>
 
 #### Classification des protocoles de routage
 
-![](https://www.ciscopress.com/content/images/chap3_9781587133237/elementLinks/03fig09.jpg)
+<p align="center">
+  <img src="https://www.ciscopress.com/content/images/chap3_9781587133237/elementLinks/03fig09.jpg" alt="famille de protocole">
+</p>
 
-[comment]: <> (TODO: A completer)
+[comment]: <> (TODO: A completer => https://www.ciscopress.com/articles/article.asp?p=2180210&seqNum=7)
 
 ## Routage dynamique à vecteur de distance
 
 ### Fonctionnement
+
+- Les routeurs qui utilisent le protocole à vecteur de distance déterminent la distance entre eux et une destination
+  - La **distance** est définie en termes de mesure, comme le nombre de sauts, et la **direction** est simplement le routeur de tronçon suivant ou l’interface de sortie
+  - Le chemin le plus optimal entre deux nœuds est celui avec une distance (nombre de sauts) minimale.
+- Pour établir le meilleur chemin, les routeurs échangent régulièrement des informations avec les routeurs voisins, plus précisement leur table de routage
+- Les routeurs qui implémentent le protocole à vecteur de distance s'appuient uniquement sur les informations qui leur sont fournies par les routeurs voisins et n'évaluent pas la topologie du réseau.
+- Le protocole de routage à vecteur de distance utilise le principe de base de [l'algorithme de Bellman-Ford](https://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm) pour identifier le chemin le plus court à travers le réseau.
+
+[comment]: <> (TODO: Example with image)
+
+### Etat de convergence
+
+- Quand les routeurs d’un réseau ont la même information, on dit que le réseau est dans un état de convergence
+
+- Le temps de convergence est le temps nécessaire pour que tous les routeurs du réseau développent et stockent dans leurs tables de routage la même image du réseau
+
+### Avantages
+
+- Le protocole de routage à vecteur de distance est facile à mettre en œuvre dans les petits réseaux.
+- Le débogage est très simple dans le protocole de routage à vecteur de distance.
+
+### Desavantages
+
+- Si un lien est tombé en panne entre les routeurs, il doit être immédiatement mis à jour vers tous les autres routeurs du réseau. Le routage du vecteur de distance prend un temps considérable pour la mise à jour. Ce problème est également connu sous le nom [count-to-infinity problem](https://www.interviewbit.com/blog/count-to-infinity-problem/).
+- Dans un réseau grand et complexe, le temps de convergence est excessif.
+- Consomation de la bande passante
+
+### Protocole de routage RIP
+
+RIP est un protocole de vecteur de distance standardisé, conçu pour être utilisé sur des réseaux petits. RIP a été l'un des premiers vrais protocoles de routage à vecteur de distance.
+
+Le protocole RIP présente les principales caractéristiques suivantes
+
+- La seule mesure qu’il utilise pour le choix du chemin d’accès est le nombre de sauts.
+- Les routes annoncées dont le nombre de sauts est supérieur à 15 sont inaccessibles.
+- Les messages sont diffusés toutes les 30 secondes.
+- La distance administrative de RIP est 120.
+- RIP utilise l'algorithme de vecteur de distance Bellman-Ford pour déterminer le meilleur « chemin » vers une destination particulière
+
+### Format des messages du protooles RIP
+
+<p align=center>
+  <img src="https://lh3.googleusercontent.com/proxy/Wxj4oy9-whSxGAwr5sLXqP9LNSnbOWBex5yTcowjfoNN3D8HjwN3fI7QmCvQw-vlNVERDAgQMXj4ZRZm-_ebg8oW4HgCZs8YeVVTu1ev-yLFL9E8O0Ap" width="auto">
+</p>
 
 ### RIPv1
 
