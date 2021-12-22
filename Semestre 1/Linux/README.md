@@ -213,3 +213,67 @@ Avec GID est l’identifiant du groupe
 - `groupdel` : permet de supprimer un groupe ne contenant pas de membres ( un groupe vide)
 
 ## Gestion des packages
+
+L'installation, la mis a jour, et la suppression de packages logiciels sur des machines Linux sont l'une des tâches courantes que chaque administrateur système doit effectuer.
+
+La gestion des packages est une méthode d'installation, de mise à jour, de suppression et de suivi des mises à jour logiciels à partir de référentiels spécifiques (dépôts) dans le système Linux. Les distributions Linux utilisent souvent différents outils de gestion de packages. Les distributions basées sur Red Hat utilisent RPM (RPM Package Manager) et YUM (Yellowdog Updater, Modified).
+
+### La gestion des paquetages par l'outil yum
+
+YUM est le principal outil de gestion des packages pour l'installation, la mise à jour, la suppression et la gestion des packages logiciels dans Red Hat Enterprise Linux. YUM effectue la résolution des dépendances lors de l'installation, de la mise à jour et de la suppression des packages logiciels. YUM peut gérer les packages à partir des référentiels installés dans le système ou à partir des packages .rpm. Le fichier de configuration principal pour YUM se trouve dans /etc/yum.conf, et tous les dépôts se trouvent dans /etc/yum.repos.d.
+
+Il est facile de gérer les packages sous Linux avec YUM. Sur la ligne de commande, entrez
+
+```s
+# yum -option commande
+```
+
+Il existe de nombreuses options et commandes disponibles à utiliser avec YUM.
+
+- Voici les commandes les plus utilisées:
+
+<p align=center>
+
+|   Comande   |                          Usage                           |
+| :---------: | :------------------------------------------------------: |
+| yum install |             Installe les packages spécifiés              |
+|   remove    |             Supprime les packages spécifiés              |
+|   search    |     Si on veut étendre la recherche à la description     |
+|    info     |   Pour avoir des informations détaillées sur un paquet   |
+|   update    |    Met à jour chaque package dans la dernière version    |
+|  repo list  |                  Lister tous les dépôts                  |
+|   history   | Affiche ce qui s'est passé dans les transactions passées |
+
+</p>
+
+- Les options suivantes sont couramment utilisées avec YUM:
+
+<p align=center>
+
+|    Comande    |                                      Usage                                      |
+| :-----------: | :-----------------------------------------------------------------------------: |
+|      -C       |                        Execute à partir du cache système                        |
+|  --security   | Comprend des packages qui fournissent un correctif pour un problème de sécurité |
+|      -y       |                        Répond oui à toutes les questions                        |
+| --skip-broken |                    Ignore les paquets causant des problèmes                     |
+|      -v       |                                     Verbose                                     |
+
+</p>
+
+YUM propose de nombreuses options pour la gestion des packages. Pour des informations détaillées sur les options, executer la commande `man yum` et `yum –help`. Voici également un lien vers [Yum cheat sheet](https://access.redhat.com/articles/yum-cheat-sheet).
+
+Yum facilite l'installation par :
+
+- La vérification de la validité de la signature des paquetages.
+- La résolution du problème de dépendance logiciels.
+- Permet la mise à jour de l'ensemble des paquetages logiciels installés.
+- La recherche de logiciel selon des critères
+- Les dépôts utilisés sont des serveurs web qui contiennent des logiciels
+
+### La gestion des paquetages par l'outil rpm
+
+[Suite](https://www.redhat.com/sysadmin/how-manage-packages)
+
+### Installation des logiciels depuis le code source
+
+### Installation des logiciels par scripts ou interfaces graphique
