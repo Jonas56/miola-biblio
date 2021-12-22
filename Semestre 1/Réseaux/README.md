@@ -201,12 +201,61 @@ Le protocole RIP présente les principales caractéristiques suivantes
 ### Format des messages du protooles RIP
 
 <p align=center>
-  <img src="https://lh3.googleusercontent.com/proxy/Wxj4oy9-whSxGAwr5sLXqP9LNSnbOWBex5yTcowjfoNN3D8HjwN3fI7QmCvQw-vlNVERDAgQMXj4ZRZm-_ebg8oW4HgCZs8YeVVTu1ev-yLFL9E8O0Ap" width="auto">
+  <img src="https://techhub.hpe.com/eginfolib/networking/docs/switches/5500hi/5998-5330_l3-ip-rtng_cg/content/images/image8.png" width="auto">
 </p>
 
 ### RIPv1
 
+#### Commandes pour configurer RIPv1
+
+```
+Router> enable
+Router# configure terminal
+Router(config)# router rip  #activer le protocole RIP
+Router(config-router)# network network_id #Annonce le réseau dans les majs de routage RIP
+```
+
+- Autres commandes
+
+```
+Router# show ip route
+Router# show ip protocols
+Router# debug ip rip #identifier les problèmes qui affectent les mises à jour RIP
+Router(config-router)# passive-interface interface-type interface-number
+Router(config-router)#default-information originate #Propagation de la route par défaut dans RIPv1
+```
+
+#### Resumé automatique des routes
+
+- RIP est un protocole de routage par classe qui résume automatiquement les réseaux aux frontières de classe des réseaux principaux
+
+#### Règles de traitement des mises à jour RIPv1
+
+1. si une mise à jour de routage et l’interface sur laquelle elle est reçue appartiennent au même réseau principal, le masque de sous-réseau de l’interface est appliqué au réseau dans la mise à jour de routage
+2. si une mise à jour de routage et l’interface sur laquelle elle est reçue appartiennent à deux réseaux principaux différents, le masque de sousréseau par classe est appliqué à ce réseau dans la mise à jour de routage
+
+#### Remarques
+
+- Les topologies discontinues ne convergent pas avec RIPv1
+- Les topologies en VLSM ne convergent pas avec RIPv1
+
 ### RIPv2
+
+- RIPv2 est un protocole de routage classless, ce qui nous permet également d’utiliser des sous-réseau. RIPv2 a la possibilité d’envoyer un masque de réseau dans la mise à jour pour permettre le routage classless
+- RIPv2 prend en charge VLSM (Masquage de sous-réseau de longueur variable).
+
+[comment]: <> "TODO: Suite RIPv2"
+
+#### Configuration
+
+```
+Router(conf)# router rip
+Router(conf)# version
+```
+
+### Application
+
+[Voir correction TP2](./TP/TP2)
 
 ## Routage dynamique à états de liens
 
