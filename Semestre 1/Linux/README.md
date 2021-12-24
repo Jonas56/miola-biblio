@@ -250,7 +250,7 @@ Il existe de nombreuses options et commandes disponibles à utiliser avec YUM.
 
 <p align=center>
 
-|    Comande    |                                      Usage                                      |
+|    Option     |                                   Description                                   |
 | :-----------: | :-----------------------------------------------------------------------------: |
 |      -C       |                        Execute à partir du cache système                        |
 |  --security   | Comprend des packages qui fournissent un correctif pour un problème de sécurité |
@@ -272,8 +272,55 @@ Yum facilite l'installation par :
 
 ### La gestion des paquetages par l'outil rpm
 
-[Suite](https://www.redhat.com/sysadmin/how-manage-packages)
+RPM est un outil de gestion de packages populaire dans les distributions basées sur Red Hat Enterprise Linux. À l'aide de RPM, vous pouvez installer, désinstaller et interroger des packages logiciels individuels. Pourtant, il ne peut pas gérer la résolution des dépendances comme YUM. RPM vous fournit une sortie utile, y compris une liste des packages requis. Un package RPM se compose d'une archive de fichiers et de métadonnées. Les métadonnées incluent des scripts d'assistance, des attributs de fichier et des informations sur les packages.
+
+RPM maintient une base de données des packages installés, ce qui permet des requêtes puissantes et rapides. La base de données RPM se trouve dans /var/lib et le fichier est nommé \_\_db\*.
+
+RPM a quelques modes de base: interroger, vérifier, installer, mettre à niveau, effacer, afficher les balises de requête, afficher la configuration. Au moins un de ces modes doit être sélectionné pour effectuer les tâches de gestion des packages. Chaque mode a son propre ensemble d'options. Par exemple, le mode d'installation i possède son propre ensemble d'options d'installation. Les options pour les modes se trouvent sur les pages de manuel RPM par la commande `man rpm`.
+
+Les modes courament utilisés:
+
+| Modes |          Description           |
+| :---: | :----------------------------: |
+|  -i   |       install un package       |
+|  -U   |     mis a jour un package      |
+|  -e   |       efface un package        |
+|  -V   |       Verifie un package       |
+|  -q   | Interroge (queries) un package |
+
+Voici quelques options générales couramment utilisées:
+
+|    Modes    |    Description     |
+| :---------: | :----------------: |
+| -? \| -help | il affiche le help |
+|  --version  | affiche la version |
+|     -v      |      verbose       |
+
+Pour installer ou mettre à jour un package .rpm à l'aide de RPM, exécutez cette commande:
+
+```shell
+[root@localhost ~]# rpm -i package-file
+[root@localhost ~]# rpm -U package-file
+[root@localhost ~]# rpm -ivh package-file
+## -i pour install && -v verbose && -U pour upgrade && h pour hash (cette option affiche le # comme barre de progré de l'opération)
+```
+
+Pour interroger un package .rpm executer cette commande:
+
+```shell
+[root@localhost ~]# rpm -qu mysql
+mysql-community-libs-5.5.50-2.el6.x86_64.rpm
+[root@localhost ~]#
+```
+
+Pour effacer un package, utiliser cette commande:
+
+```shell
+[root@localhost ~]# rpm -evh mysql
+```
 
 ### Installation des logiciels depuis le code source
 
 ### Installation des logiciels par scripts ou interfaces graphique
+
+## Demarage et niveaux de fonctionnement
