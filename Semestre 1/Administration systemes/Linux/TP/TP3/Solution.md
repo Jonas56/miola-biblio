@@ -187,3 +187,5 @@ _NomDuPaquetage-Version-NumBuild_ **.** _Architecture_ **.** rpm
 Cette commande effectue un nettoyage de tous les objets ainsi que les exécutables.
 
 ## Exercice 4: Autre type d’installation
+
+
