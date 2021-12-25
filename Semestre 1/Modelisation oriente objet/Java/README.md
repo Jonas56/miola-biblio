@@ -15,7 +15,7 @@
    4. [Polymorphisme]()
    5. [Packages]()
    6. [Classes abstraites et interfaces]()
-3. [Les exceptions et lambda expressions]()
+3. [Les Exceptions]()
 4. [Géniricité]()
 5. [Collections](#paragraph1)
 6. [Gestion des Flux]()
@@ -251,4 +251,168 @@ interface NomInterface {
 - Le principal avantage de l'utilisation d'une abstraction en programmation est qu'elle vous permet de regrouper plusieurs classes apparentées en tant que frères et sœurs.
 - L'abstraction dans la programmation orientée objet permet de réduire la complexité du processus de conception et de mise en œuvre des logiciels.
 
-### Les exceptions et lambda expressions
+## Les Exceptions
+
+**Définition** : Une exception est un événement qui se produit pendant l'exécution d'un programme et qui perturbe le déroulement normal des instructions, du coup le programme/l'application se termine de manière anormale, ce qui n'est pas recommandé, c'est pourquoi ces exceptions doivent être traitées.
+
+Une exception peut se produire pour de nombreuses raisons différentes. Voici quelques scénarios dans lesquels une exception se produit:
+
+- Un utilisateur a saisi une donnée invalide;
+- Un fichier qui doit être ouvert est introuvable;
+- Une connexion réseau a été perdue au milieu des communications ou la JVM a manqué de mémoire;
+- etc.
+
+Certaines de ces exceptions sont dues à une erreur de l'utilisateur, d'autres à une erreur du programmeur, et d'autres encore à des ressources physiques qui ont connu une défaillance d'une manière ou d'une autre.
+
+On distingue 3 types d' Exceptions:
+
+- **Checked exceptions**: c'est une exception qui est vérifiée (notifiée) par le compilateur au moment de la compilation, ces exceptions sont également appelées exceptions de compilation. Ces exceptions ne peuvent pas être simplement ignorées, le programmeur doit prendre en charge (gérer) ces exceptions.
+- **Runtime Exception**: c'est une exception qui se produit au moment de l'exécution. Il s'agit notamment de bogues de programmation, tels que des erreurs de logique ou une utilisation incorrecte d'une API. Les exceptions d'exécution sont ignorées au moment de la compilation.
+- **Error** : ces exceptions concernent des problèmes liés à l'environnement. Par exemple, si un débordement de pile (stack overflow) se produit, une Error se produira. Ils sont également ignorés au moment de la compilation.
+
+<p align=center>
+  <img src="https://5balloons.info/wp-content/uploads/2017/07/exceptions1.jpg" width="500" " alt="Exceptions" >
+  <br>
+  <b>Figure2.1</b>  Hierarchy des exceptions
+</p>
+
+Lors de la détection d'une erreur, un objet qui hérite de la classe Exception est créé (on dit qu'une exception est levée) et propagé à travers la pile d'exécution jusqu'à ce qu'il soit traité.
+
+Pour traiter ces exceptions on utilise le bloc `try/catch`:
+
+```java
+try{
+  // instructions susceptibles de produire des erreurs ou des exceptions
+} catch(NomExcepion e) {
+  // Traiter l'excetion
+}
+// Reste du code est executé
+```
+
+On peut également ajouter autant de block `catch` qu'on souhaite:
+
+```java
+try{
+  // instructions susceptibles de produire des erreurs ou des exceptions
+} catch(NomExcepion1 e1) {
+  // Traiter l'excetion
+} catch(NomExcepion2 e2) {
+  // Traiter l'excetion
+} catch(NomExcepion3 e3) {
+  // Traiter l'excetion
+}
+// Reste du code est executé
+```
+
+Extension:
+
+```java
+try{
+  // instructions susceptibles de produire des erreurs ou des exceptions
+} catch(NomExcepion e) {
+  // Traitement de l'excetion
+}finally{
+  // après que l'exception est intercépté dans le bloc catch le block finally est executé
+}
+// Reste du code est executé
+```
+
+[Allez plus loin](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
+
+## Généricité
+
+En Programmation Orientée Object (POO), la généricité est un concept permettant de définir des algorithmes (types de données et méthodes) identiques qui peuvent être utilisés sur de multiples types de données. Cela permet donc de réduire les quantités de codes à produire.
+
+Les méthodes génériques et les classes génériques en Java permettent aux programmeurs de spécifier, avec une seule déclaration de méthode, un ensemble de méthodes liés, ou avec une seule déclaration de classe, un ensemble de types liés, respectivement.
+
+La généricité permettra d'avoir un code plus fortement typé ce qui permet aux programmeurs de détecter les erruers (types invalides) au moment de la compilation.
+
+#### Exemples d'utilisation
+
+```java
+ArrayList<String> arrStr = new ArrayList<>(); // Créer un tableau de chaine de caractère
+```
+
+- On peut par exemple créer une classe permettant de stocker deux objets de même type.
+
+```java
+class PairValue<T> {
+
+  //Variable d'instance
+  private T valeur1, valeur2;
+
+  //Constructeur avec paramètre inconnu pour l'instant
+  public PairValue(T val1, T val2){
+    this.valeur1 = val1;
+    this.valeur2 = val2;
+  }
+  public void setValue1(T val){
+    this.valeur1 = val;
+  }
+  public void setValue2(T val){
+    this.valeur2 = val;
+  }
+  public T getValue1(){
+    return this.valeur1;
+  }
+  public T getValue2(){
+    return this.valeur2;
+  }
+
+}
+```
+
+- On peut également créer une classe permettant de stocker deux objets de types differents.
+
+```java
+class PairValue<T, S> {
+
+  //Variable d'instance
+  private T valeur1,
+  private S valeur2;
+
+  //Constructeur avec paramètre inconnu pour l'instant
+  public PairValue(T val1, S val2){
+    this.valeur1 = val1;
+    this.valeur2 = val2;
+  }
+  public void setValue1(T val){
+    this.valeur1 = val;
+  }
+  public void setValue2(S val){
+    this.valeur2 = val;
+  }
+  public T getValue1(){
+    return this.valeur1;
+  }
+  public S getValue2(){
+    return this.valeur2;
+  }
+
+}
+```
+
+- Héritage et généricité
+
+```java
+public static void main(String[] args) {
+    List<Voiture> listVoiture = new ArrayList<Voiture>();
+    List<VoitureSansPermis> listVoitureSP = new ArrayList<VoitureSansPermis>();
+
+    listVoiture = listVoitureSP;   //Interdit !
+}
+```
+
+- Utilisation du wildcard `?`
+
+```java
+ArrayList<?> list; // list qui accepte n'importe quel objet
+```
+
+- Version avancé du wildcard
+
+```java
+List<? extends Voiture> listVoitureX; // list qui accepte n'importe quelle classe qui hérite de la classe Voiture
+```
+
+[lire plus...](https://docs.oracle.com/javase/tutorial/java/generics/)
