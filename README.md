@@ -47,23 +47,23 @@
 
 ### Semestre 1
 
-- [M1.1 : Modélisation orienté objet](<Semestre 1/Modelisation oriente objet>)
+- [M1.1 : Modélisation orienté objet](S1/Modelisation-oriente-objet)
   - Patie 1: Analyse et conception orienté objet
   - Partie 2: Programmation Objet, aspects avancés
 - [M1.2: Outils Mathématiques](#)
   - Partie 1: Statistiques et Probabilités
   - Partie 2: Modélisation Mathematique
   - Partie 3: Analyse des données
-- [M1.3 : Infrastructure et communication](<Semestre 1/Infrastructure et communication>)
+- [M1.3 : Infrastructure et communication](S1/Infrastructure-et-communication)
   - Partie 1: Transmission numérique des données
   - Partie 2: Protocoles de communication IoT sans fil
-- [M1.4 : Internet et réseaux TCP/IP](<Semestre 1/TCP-IP>)
+- [M1.4 : Internet et réseaux TCP/IP](S1/TCP-IP)
   - Partie 1: Internet, protocoles et applications
   - Partie 2: Interconnexions des réseaux
-- [M1.5 : Administration des systèmes](<Semestre 1/Administration systemes>)
+- [M1.5 : Administration des systèmes](S1/Administration-systemes)
   - Partie 1: Administration des systèmes UNIX
   - Partie 2: Administration des systèmes WINDOWS
-- [M1.6 : Langues et communication](<./Semestre 1>)
+- [M1.6 : Langues et communication](#)
 
 ### Semestre 2
 
