@@ -1,4 +1,4 @@
-# JAVA - MIOLA
+# Java
 
 ## Ressources
 
@@ -33,15 +33,15 @@ Les trois parties les plus élémentaires de l'écosystème Java sont la machine
 
 - Chaque programme Java s'exécute sous le contrôle d'une JVM. Chaque fois que vous exécutez un programme Java, une instance de JVM est créée. Il assure la sécurité et l'isolement du programme Java en cours d'exécution. Il empêche l'exécution du code d'entrer en conflit avec d'autres programmes au sein du système. En termes plus simples, JVM agit comme un ordinateur à l'intérieur d'un ordinateur, spécialement conçu pour exécuter des programmes Java.
 
-[lire encore plus...](https://www.javatpoint.com/jvm-java-virtual-machine)
+[Lire encore plus](https://www.javatpoint.com/jvm-java-virtual-machine)
 
 - Le JRE est un ensemble de programmes qui contient la JVM ainsi que de nombreux fichiers bibliothèques/classes nécessaires à l'exécution de programmes sur la JVM. Il comprend toutes les classes Java de base (le runtime) ainsi que les bibliothèques d'interaction avec le système hôte (telles que la gestion des polices, la communication avec le système graphique, la possibilité de jouer des sons et des plugins pour l'exécution des applets Java dans le navigateur) et des utilitaires (tels que l'interpréteur JavaScript Nashorn et l'outil de manipulation cryptographique keytool).
 
-[lire encore plus...](https://www.ibm.com/cloud/learn/jre)
+[Lire encore plus](https://www.ibm.com/cloud/learn/jre)
 
 - Dans la couche supérieur on trouvele JDK. Le JDK contient tous les programmes nécessaires au développement de programmes Java, et sa partie la plus importante est le compilateur Java (javac). Le JDK comprend également de nombreux outils auxiliaires tels qu'un désassembleur Java (javap), un utilitaire pour créer des packages d'applications Java (jar), un système pour générer de la documentation à partir du code source (javadoc), parmi de nombreux autres utilitaires. Le JDK est un sur-ensemble du JRE, ce qui signifie que si vous avez le JDK, vous avez également le JRE (et la JVM).
 
-[lire encore plus...](https://www.geeksforgeeks.org/jdk-in-java/)
+[Lire encore plus](https://www.geeksforgeeks.org/jdk-in-java/)
 
 <p align="center">
   <img src="https://static.packt-cdn.com/products/9781789801736/graphics/C09581_01_02.jpg" alt="javaFlow"  width=400 />
@@ -317,7 +317,7 @@ try{
 // Reste du code est executé
 ```
 
-[Allez plus loin](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
+[Lire encore plus](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
 
 ## Généricité
 
@@ -415,4 +415,73 @@ ArrayList<?> list; // list qui accepte n'importe quel objet
 List<? extends Voiture> listVoitureX; // list qui accepte n'importe quelle classe qui hérite de la classe Voiture
 ```
 
-[lire plus...](https://docs.oracle.com/javase/tutorial/java/generics/)
+[Lire encore plus](https://docs.oracle.com/javase/tutorial/java/generics/)
+
+## Collections
+
+### Definition
+
+En Java une collection est simplement un objet qui regroupe plusieurs éléments en une seule unité. Les collections sont utilisées pour stocker, récupérer, manipuler et communiquer des données. En général, elles représentent des éléments de données qui forment un groupe homogène, comme une main de poker (une collection de cartes) ou un annuaire téléphonique (une correspondance entre des noms et des numéros de téléphone).
+
+### Un Framework de collections
+
+Une architecture unifiée pour représenter et manipuler des collections. Tous les frameworks de collections contiennent les éléments suivants :
+
+- **Interfaces**
+- **Implémentations** (classes)
+- **Algorithmes**
+
+### L'architecture du framework Collections de java
+
+<p align=center>
+  <img src="https://techvidvan.com/tutorials/wp-content/uploads/sites/2/2020/03/collection-framework-hierarchy-in-java.jpg" height=400> <br>
+  <b>Figure4.1</b>  Hierarchy du framework Collections
+</p>
+
+- **Interface Iterable**: est une représentation simple d'une série d'éléments sur lesquels il est possible d'effectuer une itération. Elle possède une seul méthode :
+
+```java
+Iterator iterator();
+```
+
+- **Iterator** : Interface qui permet de parcourir la collection, d’accéder à l’élément et supprimer les éléments de la collection. Les méthodes de cette interface sont les suivants:
+
+  - hasNext()
+  - next()
+  - remove()
+  - forEachRemaining()
+
+- **Interface Collection** : Cette interface étend l'interface itérable et est implémentée par toutes les classes du framework de collection. Cette interface contient toutes les méthodes de base que toute collection doit possèder, comme l'ajout de données dans la collection, la suppression de données, l'effacement de données, etc.
+  - [Les methodes de l'interface Collection](https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html)
+
+---
+
+- **List** :
+
+LinkedList
+
+ArrayList
+
+Stack
+
+---
+
+Queue
+
+ProrityQueue
+
+---
+
+Set
+
+HashSet
+
+TreeSet
+
+---
+
+Map
+
+TreeMap
+
+HashMap
