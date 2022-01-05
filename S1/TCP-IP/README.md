@@ -83,7 +83,7 @@ Router(config)# ip route network-address subnet-mask {ip-address | exit-interfac
 
 ### Application
 
-**[Voir solution TP1]()**
+- [TP1 Routage Statique](./TP/TP1)
 
 ### Avantages du routage statique
 
@@ -275,7 +275,7 @@ Router(config-router)# network network_id network_mask #Annonce le réseau dans 
 
 ### Application
 
-[Voir correction TP2](./TP/TP2)
+- [TP2 Routage RIP](./TP/TP2)
 
 ## Routage dynamique à états de liens
 
@@ -389,6 +389,10 @@ Les critères suivants sont appliqués :
 Router(config-router)# default-information originate
 ```
 
+#### Application
+
+- [TP3 Routage OSPF](./TP/TP3)
+
 ## Résumé
 
 De nombreux indicateurs en matière de structure et de performances sont utilisés pour étudier les réseaux : topologie, vitesse, coût, sécurité, disponibilité, évolutivité et fiabilité.
@@ -404,6 +408,8 @@ Les protocoles de routage dynamique s'adaptent automatiquement aux modifications
 Les routeurs prennent leur décision principale de transfert au niveau de la couche 3, c'est-à-dire la couche réseau. Toutefois, les interfaces du routeur participent aux couches 1, 2 et 3. Les paquets IP de couche 3 sont encapsulés dans une trame liaison de données de couche 2 et codés en bits au niveau de la couche 1. Les interfaces du routeur participent aux processus de couche 2 associés à leur encapsulation. Par exemple, l'interface Ethernet d'un routeur participe au processus ARP comme d'autres hôtes se trouvant sur ce réseau local.
 
 ## ICMP
+
+[ICMP petit résumer](https://study-ccna.com/icmp-internet-control-message-protocol/)
 
 ## TCP - UDP
 
