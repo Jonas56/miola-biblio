@@ -2,6 +2,7 @@
 
 ## Ressources
 
+- [Java SE documentation](https://docs.oracle.com/javase/8/docs/index.html)
 - [Head First Java](https://www.amazon.com/Head-First-Java-Kathy-Sierra/dp/0596009208)
 - [Cours Prof T.RACHAD]()
 
@@ -438,6 +439,8 @@ Une architecture unifiée pour représenter et manipuler des collections. Tous l
   <b>Figure4.1</b>  Hierarchy du framework Collections
 </p>
 
+---
+
 - **Interface Iterable**: est une représentation simple d'une série d'éléments sur lesquels il est possible d'effectuer une itération. Elle possède une seul méthode :
 
 ```java
@@ -451,37 +454,69 @@ Iterator iterator();
   - remove()
   - forEachRemaining()
 
+---
+
 - **Interface Collection** : Cette interface étend l'interface itérable et est implémentée par toutes les classes du framework de collection. Cette interface contient toutes les méthodes de base que toute collection doit possèder, comme l'ajout de données dans la collection, la suppression de données, l'effacement de données, etc.
-  - [Les methodes de l'interface Collection](https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html)
+
+- [Les methodes de l'interface Collection](https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html)
 
 ---
 
-- **List** :
+- **List Interface** : Une collection ordonnée (également appelée séquence). L'utilisateur de cette interface a un contrôle précis sur l'endroit où dans la liste chaque élément est inséré. L'utilisateur peut accéder aux éléments par leur indice entier (position dans la liste), et rechercher des éléments dans la liste.
 
-LinkedList
+- [Les méthodes de cette interface](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)
 
-ArrayList
+- Cette interface est implémenté par les classes [ArrayList](https://docs.oracle.com/javase/8/docs/api/java/util/ArrayList.html), [LinkedList](https://docs.oracle.com/javase/8/docs/api/java/util/LinkedList.html), [Vector](https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html), et [Stack](https://docs.oracle.com/javase/8/docs/api/java/util/Stack.html).
 
-Stack
+Exemple d'implementation :
 
----
-
-Queue
-
-ProrityQueue
+```java
+List<String> list = new ArrayList<>();
+```
 
 ---
 
-Set
+- **Queue Interface** : Une collection conçue pour retenir des éléments avant leur traitement. A part les opérations de collecte de base, Queues fournissent des opérations supplémentaires d'insertion, d'extraction et d'inspection.
 
-HashSet
+- [Les méthodes de cette interface](https://docs.oracle.com/javase/7/docs/api/java/util/Queue.html)
 
-TreeSet
+- Cette interface est implémenté par la classe [PriorityQueue](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html)
 
 ---
 
-Map
+- **Set Interface** : Une collection qui ne contient aucun élément en double. Plus formellement, les Sets ne contiennent aucune paire d'éléments e1 et e2 telle que e1.equals(e2), et au plus un élément null. Comme son nom l'indique, cette interface modélise l'abstraction mathématique des ensembles.
 
-TreeMap
+- [Les méthodes de cette interface](https://docs.oracle.com/javase/7/docs/api/java/util/Set.html)
 
-HashMap
+- Cette interface est implémenté par les classes [HashSet](https://docs.oracle.com/javase/7/docs/api/java/util/HashSet.html) et [TreeSet](https://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.html)
+
+Exemple d'implementation :
+
+```java
+Set<String> hash_Set = new HashSet<String>();
+```
+
+---
+
+- **Map** : Un objet qui mappe les clés aux valeurs. Une carte ne peut pas contenir de clés en double; chaque clé peut correspondre à au plus une valeur.
+
+- [Les méthodes de cette interface](https://docs.oracle.com/javase/7/docs/api/java/util/Set.html)
+
+- Cette interface est implémenté par les classes [TreeMap](https://docs.oracle.com/javase/7/docs/api/java/util/TreeMap.html) et [HashMap](https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html)
+
+## Gestion des Flux
+
+### Definition
+
+### Types de flux
+
+### InputStream
+
+#### Methods of InputStream
+
+- [Youtube Video](https://www.youtube.com/watch?v=Qn0ciOpuT4s&list=PLVlQHNRLflP_ccU_tekCCCy3aQMXB9q-c&index=1&ab_channel=NareshiTechnologies)
+- [Programiz tutorial](https://www.programiz.com/java-programming/inputstream)
+
+### OutputStream
+
+#### Methods of OutputStream
