@@ -2,17 +2,19 @@
 
 # Routage
 
-## Table of content
+### Table of content
 
 - [Introduction](#introduction)
-  - [Qu’est ce qu’un routeur?]()
-  - [Routage définition?]()
-  - [Table de routage]()
-- [Routage Statique]()
-- [Routage Dynamique]()
-- [ICMP]()
-- [TCP et UPD]()
-- [DNS]()
+- [Routage statique](#routage-statique)
+- [Routage dynamique](#routage-dynamique)
+  - [Routage dynamique à vecteur de distance](#routage-dynamique-à-vecteur-de-distance)
+    - [RIPv1](#ripv1)
+    - [RIPv2](#ripv2)
+  - [Routage dynamique à états de liens](#routage-dynamique-à-états-de-liens)
+  - [OSPF](#le-protocole-ospf)
+- [Résumé](#résumé)
+- [ICMP](#icmp)
+- [TCP - UDP](#tcp---udp)
 
 ## Prerequis
 
