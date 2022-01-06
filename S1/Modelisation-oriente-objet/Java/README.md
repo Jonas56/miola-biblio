@@ -506,17 +506,71 @@ Set<String> hash_Set = new HashSet<String>();
 
 ## Gestion des Flux
 
-### Definition
+Une entrée/sortie en Java consiste en un échange de données entre le programme et une autre source, par exemple la mémoire, un fichier, le programme lui-même... Pour réaliser cela, Java emploie ce qu'on appelle un _stream_ (qui signifie « flux»). Celui-ci joue le rôle de médiateur entre la source des données et sa destination. Java met à notre disposition toute une panoplie d'objets permettant de communiquer de la sorte. Toute opération sur les entrées/sorties doit suivre le schéma suivant : ouverture, lecture/ecriture, fermeture du flux
+
+Java a décomposé les objets traitant des flux en deux catégories :
+
+- les objets travaillant avec des fluxd'entrée (in), pour la lecture de flux;
+- les objets travaillant avec des fluxde sortie (out), pour l'écriture de flux;
+
+<p align=center>
+  <img src="https://www.logicbig.com/tutorials/core-java-tutorial/java-util-stream/images/java-streams.png" height=400> <br>
+  <b>Figure 5.1</b> Java Streams  
+</p>
 
 ### Types de flux
 
+Selon les données qu'un flux contient, il peut être classé en:
+
+- Flux d'octets : utilisé pour lire et écrire un seul octet (8 bits) de données.
+- Flux Textes : utilisé pour lire et écrire un seul caractère de données.
+- Flux tampons :
+
 ### InputStream
+
+Cette classe abstraite est la superclasse de toutes les classes représentant un flux d'octets d'entrée.
+
+Afin d'utiliser les fonctionnalités de InputStream, nous pouvons utiliser ses sous-classes. Certains d'entre eux sont:
+
+- [FileInputStream](https://docs.oracle.com/javase/7/docs/api/java/io/FileInputStream.html)
+- [ByteArrayInputStream](https://docs.oracle.com/javase/7/docs/api/java/io/ByteArrayInputStream.html)
+- [ObjectInputStream](https://docs.oracle.com/javase/7/docs/api/java/io/ObjectInputStream.html)
+
+<p align=center>
+  <img src="https://cdn.programiz.com/sites/tutorial2program/files/java%20inputstream-subclasses.png" height=auto width=600> <br>
+  <b>Figure 5.2</b> Sous-classes de InputStream
+</p>
 
 #### Methods of InputStream
 
-- [Youtube Video](https://www.youtube.com/watch?v=Qn0ciOpuT4s&list=PLVlQHNRLflP_ccU_tekCCCy3aQMXB9q-c&index=1&ab_channel=NareshiTechnologies)
-- [Programiz tutorial](https://www.programiz.com/java-programming/inputstream)
+La classe InputStream fournit différentes méthodes qui sont implémentées par ses sous-classes. Voici quelques-unes des méthodes couramment utilisées:
+
+- `read()` - lit un octet de données du flux d'entrée
+- `read(byte[] array)`
+- `available()` - renvoie le nombre d'octets disponibles dans le flux d'entrée
+- `mark()` - marque la position dans le flux d'entrée jusqu'à laquelle les données ont été lues
+- `close()` - Ferme le flux d'entré
 
 ### OutputStream
 
+La classe OutputStream du package java.io est une superclasse abstraite qui représente un flux de sortie d'octets.
+
+Afin d'utiliser les fonctionnalités de OutputStream, nous pouvons utiliser ses sous-classes. Certains d'entre eux sont:
+
+- [FileOutputStream](https://docs.oracle.com/javase/7/docs/api/java/io/FileOutputStream.html)
+- [ByteArrayOutputStream](https://docs.oracle.com/javase/7/docs/api/java/io/ByteArrayOutputStream.html)
+- [ObjectOutputStream](https://docs.oracle.com/javase/7/docs/api/java/io/ObjectOutputStream.html)
+
+<p align=center>
+  <img src="https://cdn.programiz.com/sites/tutorial2program/files/java%20outputstream-subclasses.png" height=auto width=600> <br>
+  <b>Figure 5.2</b> Sous-classes de OutputStream
+</p>
+
 #### Methods of OutputStream
+
+La classe InputStream fournit différentes méthodes qui sont implémentées par ses sous-classes. Voici quelques-unes des méthodes couramment utilisées:
+
+- `write()` - écrit l'octet spécifié dans le flux de sortie
+- `write(byte[] array)` - écrit les octets du tableau spécifié dans le flux de sortie
+- `flush()` - force à écrire toutes les données présentes dans le flux de sortie vers la destination
+- `close()` - Ferme le flux de sortie
