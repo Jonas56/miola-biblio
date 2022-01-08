@@ -218,7 +218,6 @@ L'abstraction est un concept de la programmation orientée objet qui ne **montre
 
 - Une méthode abstraite est une méthode qui ne contient que la définition de la méthode mais pas son implementation.
 - Une méthode sans corps est connue comme une méthode abstraite. Elle doit être déclarée dans une classe abstraite.
-- La méthode abstraite ne sera jamais finale car la classe abstraite doit implémenter toutes les méthodes abstraites.
 
 Un exemple d'une classe abstraite en JAVA:
 
