@@ -321,9 +321,50 @@ Pour effacer un package, utiliser cette commande:
 
 ### Installation des logiciels depuis le code source
 
-### Installation des logiciels par scripts ou interfaces graphique
+L’idée de l’installation consiste à :
+
+- Télécharger les fichiers code source du logiciel
+- Paramétrer l'installation selon le système
+- Compiler ces programmes pour avoir les binaires
+- Installer les binaires générés.
+
+L’installation depuis le code source est souvent plus compliquée qu’une installation depuis un binaire avec rpm ou yum
+
+Les codes sources sont disponibles sur le net sous format d’une archive compressée. Par
+exemple : NomLogiciel-ver.tar.gz
+
+- **Etapes d'installation**
+
+  - Télécharger le logiciel : c'est un fichier .tar.gz par exemple
+  - Décompresser et désarchiver : `gunzip NomLogiciel-ver.tar.gz` ou bien `tar xvf NomLogieciel.tar`
+  - Se déplacer dans le dossier créé par le désarchivage
+  - Paramétrer le logiciel selon le système par le script
+  - Compiler le logiciel en se basant sur le fichier « Makefile » généré par le script « configure »
+  - Installer les binaires par la commande : `make install`
+  - – Pour désinstaller : `make clean `
+
+- #### [Lien utile](https://www.digitalocean.com/community/tutorials/how-to-compile-and-install-packages-from-source-using-make-on-a-vps)
 
 ## Demarage et niveaux de fonctionnement
+
+### Séquence de démarrage du système
+
+Le démarrage d’un système Linux passe par les étapes suivantes :
+
+- La phase de test du matériel par le BIOS via le POST (Power On Self Test)
+- Lancement du chargeur du démarrage GRUB installé dans le MBR (Master Boot Record )
+- Chargement du kernel en mémoire RAM
+- Lancement du processus « init ».
+- Le processus « init » lance d’autres processus et exécute les scripts définis dans le fichier « /etc/inittab »
+- Le processus « init » lance le script « rc » en lui passant comme argument le niveau de démarrage
+- Le script « rc » exécute l’ensemble des scripts dans le répertoire « /etc/rc.d/rcX.d » avec X le niveau de démarrage.
+- Le processus « init » exécute à la fin le script « /etc/rc.local ».
+
+<p align=center>
+  <img src="https://4.bp.blogspot.com/-srC-qTNDJd0/WQUXd670NNI/AAAAAAAAJFM/j6jj3_F0X5gtKy71s1QZK1I50MTF6GHhwCLcB/s1600/linux-boot-process.png">
+</p>
+
+### Niveaux de fonctionnement (Run Levels)
 
 - [Cool link 1](https://www.geeksforgeeks.org/what-happens-when-we-turn-on-computer/)
 
