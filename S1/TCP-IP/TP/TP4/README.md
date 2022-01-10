@@ -1,4 +1,4 @@
-# Atelier N°3 : Technologie de routage : Synthèse
+# Atelier N°3 : Technologies de routage : Synthèse
 
 ## Objectifs : Configuration du routage dynamique RIP & OSPF.
 
