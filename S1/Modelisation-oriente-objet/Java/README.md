@@ -6,23 +6,24 @@
 - [Head First Java](https://www.amazon.com/Head-First-Java-Kathy-Sierra/dp/0596009208)
 - [Cours Prof T.RACHAD]()
 
-## Table of contents
+## Table des matières
 
-1. [Ecosystème Java]()
-2. [POO concept de base](#introduction)
-   1. [Classes et Objets]()
-   2. [Le principe d'encapsulation]()
-   3. [Héritage]()
-   4. [Polymorphisme]()
-   5. [Packages]()
-   6. [Classes abstraites et interfaces]()
-3. [Les Exceptions]()
-4. [Géniricité]()
-5. [Collections](#paragraph1)
-6. [Gestion des Flux]()
-7. [Accès aux Bases de Données](#paragraph2)
-8. [Les Threads]()
-9. [Les interfaces graphiques]()
+- [Ecosystème Java](#ecosysteme-java)
+- [POO concept de base](#introduction)
+  - [Classes et Objets](#classes-et-objets)
+  - [Le principe d'encapsulation](#le-principe-dencapsulation)
+  - [Héritage](#héritage)
+  - [Polymorphisme](#polymorphisme)
+  - [Packages](#package)
+  - [Classes abstraites et interfaces](#classe-abstraite-et-méthode-abstraite)
+- [Les Exceptions](#les-exceptions)
+- [Généricité](#généricité)
+- [Collections](#collections)
+- [Gestion des Flux](#gestion-des-flux)
+- [Les Threads](#les-threads)
+- [Accès aux Bases de Données]()
+- [Les interfaces graphiques]()
+
 
 ## Ecosysteme Java
 
@@ -507,15 +508,15 @@ Set<String> hash_Set = new HashSet<String>();
 
 Une entrée/sortie en Java consiste en un échange de données entre le programme et une autre source, par exemple la mémoire, un fichier, le programme lui-même... Pour réaliser cela, Java emploie ce qu'on appelle un _stream_ (qui signifie « flux»). Celui-ci joue le rôle de médiateur entre la source des données et sa destination. Java met à notre disposition toute une panoplie d'objets permettant de communiquer de la sorte. Toute opération sur les entrées/sorties doit suivre le schéma suivant : ouverture, lecture/ecriture, fermeture du flux
 
-Java a décomposé les objets traitant des flux en deux catégories :
-
-- les objets travaillant avec des fluxd'entrée (in), pour la lecture de flux;
-- les objets travaillant avec des fluxde sortie (out), pour l'écriture de flux;
-
 <p align=center>
   <img src="https://www.logicbig.com/tutorials/core-java-tutorial/java-util-stream/images/java-streams.png" height=400> <br>
   <b>Figure 5.1</b> Java Streams  
 </p>
+
+Java a décomposé les objets traitant des flux en deux catégories :
+
+- les objets travaillant avec des fluxd'entrée (in), pour la lecture de flux;
+- les objets travaillant avec des fluxde sortie (out), pour l'écriture de flux;
 
 ### Types de flux
 
@@ -573,3 +574,89 @@ La classe InputStream fournit différentes méthodes qui sont implémentées par
 - `write(byte[] array)` - écrit les octets du tableau spécifié dans le flux de sortie
 - `flush()` - force à écrire toutes les données présentes dans le flux de sortie vers la destination
 - `close()` - Ferme le flux de sortie
+
+### Sockets
+
+Une socket est un point d'extrémité d'une liaison de communication bidirectionnelle entre deux programmes exécutés sur le réseau. Le package java.net fournit deux classes - Socket et ServerSocket - qui implémentent respectivement le côté client de la connexion et le côté serveur de la connexion.
+
+<p align=center>
+  <img src="https://static.javatpoint.com/core/images/socket-programming.png" height=auto width=600> <br>
+  <b>Figure 5.3</b> Socket
+</p>
+
+- Côté serveur (server-side):
+
+La classe `ServerSocket` est utilisée côté serveur : elle attend simplement les appels du ou des clients. C'est un objet du type Socket qui prend en charge la transmission des données.
+
+Cette classe représente la partie serveur du socket. Un objet de cette classe est associé à un port sur lequel il va attendre les connexions d'un client. Généralement, à l'arrivée d'une demande de connexion, un thread est lancé pour assurer le dialogue avec le client sans bloquer les connexions des autres clients.
+
+Le mise en oeuvre de la classe ServerSocket suit toujours la même logique :
+
+- créer une instance de la classe ServerSocket en précisant le port en paramètre
+- définir une boucle sans fin contenant les actions ci-dessous
+- appelle de la méthode accept() qui renvoie une socket lors d'une nouvelle connexion
+- obtenir un flux en entrée et en sortie à partir de la socket
+- écrire les traitements à réaliser
+
+Exemple de `ServerSocket`
+
+```java
+import java.io.* ;
+import java.net.* ;
+public class Serveur {
+
+  public static void main (String args[]) throws IOException {
+
+    int port=1000;
+    ServerSocket sersoc = new ServerSocket (port) ;
+    System.out.println ("serveur active sur port " + port) ;
+    while (true){
+      Socket soc = sersoc.accept();
+      InputStream flux = soc.getInputStream ();
+      BufferedReader entree = new BufferedReader (new InputStreamReader (flux)) ;
+      String message = entree.readLine() ;
+      System.out.println("message reçu sur le serveur = " + message);
+
+    }
+  }
+}
+```
+
+- Côté client (client-side):
+
+Les sockets implémentent le protocole TCP (Transmission Control Protocol). La classe `Socket` contient les méthodes de création des flux d'entrée et de sortie correspondants. Les sockets constituent la base des communications par le réseau.
+
+Comme les flux Java sont transformés en format TCP/IP, il est possible de communiquer avec l'ensemble des ordinateurs qui utilisent ce même protocole. La seule condition importante au niveau du système d'exploitation est qu'il soit capable de gérer ce protocole.
+
+Cette classe encapsule la connexion à une machine distante par le réseau. Elle gère la connexion, l'envoi de données, la réception de données et la déconnexion.
+
+Le mise en oeuvre de la classe Socket suit toujours la même logique :
+
+- créer une instance de la classe Socket en précisant la machine et le port en paramètres
+- obtenir un flux en entrée et/ou en sortie
+- écrire les traitements à réaliser
+
+Exemple de `Socket`
+
+```java
+import java.net.* ;
+import java.io.* ;
+public class Client{
+
+  public static void main (String args[]) throws IOException{
+
+    String hote = "127.0.0.1" ;
+    int port = 1000 ;
+    Socket soc = new Socket (hote, port) ;
+    OutputStream flux = soc.getOutputStream() ;
+    OutputStreamWriter sortie = new OutputStreamWriter (flux) ;
+    sortie.write("message envoye au serveur\n") ;
+    sortie.flush(); // pour forcer l'envoi de la ligne
+
+  }
+}
+```
+
+- [Java Sockets Docs](https://docs.oracle.com/javase/tutorial/networking/sockets/index.html)
+
+## Les Threads
