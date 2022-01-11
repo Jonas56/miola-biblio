@@ -2,19 +2,26 @@
 
 ## Table of contents
 
-- [Introduction]()
-- [Gestion des utilisateurs]()
-- [Gestion des packages]()
-- [Demarage et niveau de fonctionnement]()
-- [Systeme de fichiers]()
-- [Gestion des quotas]()
-- [Sauvegarde et récupération]()
+- [Introduction](#introduction)
+- [Gestion des utilisateurs](#gestion-des-utilisateurs)
+- [Gestion des packages](#gestion-des-packages)
+- [Demarage et niveau de fonctionnement](#demarage-et-niveaux-de-fonctionnement)
+- [Système de fichiers](#système-de-fichiers)
+- [Gestion des quotas](#gestion-des-quotas)
+- [Sauvegarde et récupération](#sauvegarde-et-récupération)
 
 ## Resources
 
 - [Documentation](https://wiki.centos.org/Documentation)
+- [Learn Linux, 101 IBM](https://developer.ibm.com/tutorials/l-lpic1-map/)
 
 ## Introduction
+
+<p align=center>
+  <img src="https://www.pngkit.com/png/detail/201-2016309_gnulinux-logo-gnu-linux-logo-png.png" height=450>
+</p>
+
+<!-- Le système Unix a été créé par [AT&T](https://fr.wikipedia.org/wiki/American_Telephone_%26_Telegraph) au début des années 1970 et s'est notamment répandu dans le monde universitaire. Dès la fin de l'année 19772, des chercheurs de l'université de Californie apportèrent de nombreuses améliorations au système Unix et le distribuèrent sous le nom de Berkeley Software Distribution (BSD). Finalement, les distributions BSD furent purgées du code AT&T, et librement disponibles en 1991. La distribution de BSD a toutefois été l'objet d'une procédure judiciaire d'AT&T (en) au début des années 1990. -->
 
 <!-- TODO: Linux historique et definition-->
 
@@ -366,6 +373,296 @@ Le démarrage d’un système Linux passe par les étapes suivantes :
 
 ### Niveaux de fonctionnement (Run Levels)
 
-- [Cool link 1](https://www.geeksforgeeks.org/what-happens-when-we-turn-on-computer/)
+- Les scripts dans le répertoire « /etc/rc.d/rcX.d » (X=0,1,2...) ont des noms sous la forme suivante: **SnnNom** ou bien **KnnNom**
 
-- [Cool link 2](https://www.geeksforgeeks.org/run-levels-linux/)
+  - **S** Pour les noms des scripts qui lancent des services (Start)
+  - **K** Pour les noms des scripts qui arrêtent des services (Stop)
+  - **nn** Est un numéro entre 0 et 99, il indique l'ordre d'exécution des scripts. On commence par le numéro le plus petit jusqu'au plus grand.
+
+- Les niveaux de démarrage sous Linux sont:
+
+  - **0** Arrêt du système, aucun service n’est activé.
+  - **1** Niveau mono utilisateur.
+  - **2** Mode multi utilisateurs sans certains services réseau comme NFS.
+  - **3** Mode multi utilisateurs complet.
+  - **4** Réservé ( peut être définit par l’administrateur ).
+  - **5** Mode multi utilisateurs complet avec connexion en mode graphique.
+  - **6** Redémarrage du système. Tous les services seront arrêtés puis ils seront redémarrés
+  - **s** Niveau single (pour la maintenance ou récupération).
+
+- Les scripts de démarrage pour chaque niveau d'exécution seront différents et effectueront des tâches différentes. Ces scripts de démarrage correspondant à chaque niveau d'exécution peuvent être trouvés dans des fichiers spéciaux présents dans les sous-répertoires rc. Dans le répertoire `/etc/rc.d`, il y aura soit un ensemble de fichiers nommés rc.0, rc.1, rc.2, rc.3, rc.4, rc.5 et rc.6, soit un ensemble de répertoires nommés rc0.d, rc1.d, rc2.d, rc3.d, rc4.d, rc5.d et rc6.d.
+
+- Le niveau de fonctionnement par défaut d'un système est précisé dans le fichier `/etc/inittab` avec l'action `initdefault`. La ligne suivante du fichier `/etc/inittab` indique que le niveau de démarrage par défaut est 5: **id:5:initdefault:**
+
+- Afficher le niveau de fonctionnement d'un système on utilise la commande `who -r` ou bien `runlevel`
+
+  - La commande `runlevel` affiche deux valeurs: le niveau précédent suivie de niveau actuel. La valeur **N** indique un système éteint
+
+- Le processus `init`
+  - Il est lancé au démarrage du système.
+  - Il est responsable de faire passer le système à un niveau de fonctionnement donné
+  - Pour passer d'un niveau à un autre on peut lancer la commande `init` avec comme argument le niveau vers lequel on souhaite passer
+
+```console
+[root@localhost ~]# init 3
+```
+
+- Le script **/etc/rc.d/rc.sysinit**
+  - Ce script est lancé par `init` au démarrage
+  - Il permet l'initialisation des paramètres système (nom, mémoire, chargement des modules, montage des disques, application de la politique Selinux...)
+
+### Gestion et Paramétrage des niveaux de fonctionnement
+
+- Les niveaux de fonctionnement prédéfinis dans un système précisent quels sont les services qui doivent être lancé et ceux qui doivent être arrêtés quand `init` fait passer le système à ce niveau.
+- Il est possible de paramétrer ces niveaux et de préciser l'état de chaque service dans un niveau donné.
+- Plusieurs commandes sont disponibles selon les versions de Unix. Par exemple dans les systèmes qui hérite de **Redhat**:
+
+  - `chkconfig`
+  - `ntsysv`
+  - `system-config-services` ou bien `redhat-config-services`
+
+- La commande `chkconfig` :
+
+  - Permet de lister l'ensemble des services et leurs états dans chaque niveau de démarrage
+
+  ```console
+  [root@localhost ~]# chkconfig list
+  ```
+
+  - Permet de lister l'état d'un service donné
+
+  ```console
+  [root@localhost ~]# chkconfig list sendmail
+  ```
+
+  - Permet de changement de l'état d'un service dans un (ou plusieurs) niveau donné.
+
+  ```console
+  [root@localhost ~]# chkconfig level 3 sendmail on
+  [root@localhost ~]# chkconfig level 235 sendmail on
+  [root@localhost ~]# chkconfig level 3 sendmail off
+  ```
+
+- La commande `ntsysv`: Permet la gestion de l'état des services dans un niveau de démarrage
+
+  - Pour gérer les services dans le niveau de fonctionnement actuel on lance:
+
+  ```console
+  [root@localhost ~]# ntsysv
+  ```
+
+  - Pour gérer les services dans le niveau de fonctionnement donné on le précise comme argument : (par exemple pour le niveau 5)
+
+  ```console
+  [root@localhost ~]# ntsysv 5
+  ```
+
+- La commande `system-configservices`: permet la gestion des services en mode graphique.
+
+- Démarrage en mode single
+
+Le mode single est un niveau de démarrage utilisé pour la maintenance du système Il est accessible depuis le menu de **GRUB** au démarrage ou bien par la commande `init s `
+
+## Système de fichiers
+
+<!-- [useful link]: https://tldp.org/LDP/intro-linux/html/sect_03_01.html
+[useful link 2]: https://www.tutorialspoint.com/unix/unix-file-system.htm -->
+
+Un système de fichiers est une structure de donnees. La commande `mkfs`, qui crée un système de fichier, inscrit cette structure de données dans une partition
+Tous les systèmes de fichier comporte au moins trois tables systèmes:
+
+- **le super Block** qui contient les informations clé concernant le système de fichiers
+- **la table des inodes** c'est à dire la table déscripteur du fichier. Chaque fichier est indentifie d'une manière unique par le numéro d'inode qui le décrit.
+- **Répertoire** qui assurent les correspondances entre un nom fichier est un numéro inode
+
+### Structure d'un inode
+
+Le terme _INODE_ designe le descripteur d'un fichier. il contient les attributs des fichiers, (ceux afficher par la commande `ls -l`), et une table d'accés au blocs de données. Il existe une table d'inodes par disque. L'espace qu'elle occupe est reservée à la creation du système de fichiers sur ce disque. La taille de la table des inodes est donc un paramétre statique important d'un système de fichier, car elle fige la nomre de fichier que l'on peut au plus créer sur le disque.
+
+Pour un disque donné le numero d'inode est l'unique moyen d'indentifier un fichier sans ambiguite. La commande `ls -i` permet de connaitre le numéro d'ionde d'un fichier
+
+Le système de fichier de base c'est **ext2** qui dérive du système de fichier FFS (File Fast System | Créer par L'université de Berkeley)
+
+### Les differents types de système de fichier
+
+- **MINIX**; Le premier système de fichier utilise par Linux
+- **ext2**; Le système de fichier standard du système linux (La base)
+- **MsDOS**; le système de fichier de Windows
+- **VFAT**; pour Windows
+- **ext3**; le système de fichier avec journalisation, (**ext2** + La Journalisation)
+- **ext4**; le système de fichier actuel
+
+### Gestion de l'espace disque
+
+L'espace disque est un resource précieux, même si les capacités des disques ont considerablement evolués dans ces dernières années, l'administrateur doit en controler l'usage, `du` et `df` sont deux commades importantes (y en a plusieurs).
+
+- `df` : Indique l'espace libre d'un disque contenant un système de fichier monteé la taille de l'espace libre est indiqué et affiché en KO (Kilo Octects) -i (list inode information instead of block usage | --inodes) -k(like | --block-size=1K) et -T (print file system type | --print-type)
+- `du` : Affiche le nombre de blocs d'un Ko utilise par un disque, -s (display only a total for each argument | --summarize) -k (like | --block-size=1K)
+
+**REMARQUE**:
+Il y a d'autres commandes qui permet d'afficher l'espace libre/occupé d'un disque, parmis ces commandes il y a la commande `find`, elle permet de rechercher des fichiers selon différents critères dont celui de la taille surtout l'option `-size`
+
+Exemple:
+
+```console
+[root@localhost ~]# find /home -size +100k -atime +90 -print
+```
+
+Resultat
+
+```console
+ /home/saidi_anass/.local/share/Trash/files/Settings.ui
+```
+
+### Commades Generiques
+
+- `mkfs`: permet de créer un système de fichier
+- `mount`: Monte un système de fichier
+- `unmount`: demonte un système de fichier
+- `fsck`: Verifie un système de fichier
+- `df`: espace libre
+- `du`: espace occupe
+- `lsof`: identifie les processus
+
+### Commande propre a **ext2**
+
+- `mke2fs`: Crée un système de fichier **ext2**
+- `e2fsck`: Verifier un système de fichier **ext2**
+- `tune2fs`: Permet de paramétrer un système de fichier **ext2**
+- `debugfs`: Permet de debugger un système de fichier **ext2**
+
+### Type des fichier sous Linux
+
+Unix/Linux fait la difference comme tout les systèmes d'exploitation entre trois types de fichier:
+
+- Les ficheir normaux.
+- Les Repertoires/Dossier (Folder). (Un repertoire est un fichier, tout est considere comme fichier sous Linux)
+- Les fichier Speciaux.
+
+- **Les fichiers normaux** : Correspondant a des informations stockées sur un support magnétique (DVD, CD, Disque Dur, USB..), ces fichiers sont crées par des programmes utilisateur (compilateur du C ...) ou par des utilitaires système (un editeur de texte comme Vi, nano, Gedit, Vim, cat ou touch).
+
+Le système Unix ne s'interesse pas au contenue d'un fichier normal, par contre il gere de façon très éfficace les informations permettant de preciser:
+
+- Le proprietaire du fichier
+- Les droits d'accés à ce fichier
+- Le secteurs occupés sur le disque par ce fichier.
+
+**REMARQUE**:
+Le contenue d'un fichier normal relève des programmes qu'il a créer, bien souvent seul ce programme peut accéder au contenue de ce fichier, pour cela chaque logiciel peut utiliser sont propre format de stockage
+
+- **Les Repertoires/Dossiers** : sont des fichiers particuliers dont le contenue est peu important pour les utilisateurs, mais extremement important pour le système.
+  Cette categorie de fichiers se crée et se manipule par des primitives (Commandes internes au noyau | les principales sont, `mkdir` Crée un nouveau repertoire si possible, `cd` changer le repertoire actif si possible, `rmdir` supprimer un repertoire si possible)
+
+- **Fichiers speciaux** : sont en fait des périphérique d’entré/sortie (Ecran, clavier, ...)
+
+### Droits d'accés au système de fichiers
+
+Au niveau de chaque fichier l’ensemble des utilisateurs reconnus par le sys est devisé en 3 classes:
+
+- le propriétaire du fichier, noté **u**
+- le groupe des utilisateurs privilégiés, noté **g**
+- tout le reste, noté **o** (other)
+- tout le monde, noté **a** (all)
+
+Pour chacune de ces classes d'utilisateurs le système contrôle trois modes différents d'accés aux fichiers:
+
+- accés en lecture noter **r** (_read_ c'est le mode le plus important)
+- accés en ecriture noter **w**(_write_ c'est le deuxieme degre d'importance)
+- accés en execution note **x** (_execute_ c'est le troisieme degre d'importance)
+
+La commande chmod permet de manipuler les droits d'accés pour les fichiers elle fonctionne en deux modes :
+
+- chmod en mode symbolique :
+  - pour donner le droit w pour un fichier f1 pour l'utilisateur: `chmod u+w f1`
+- chmod en mode absolue :
+
+  - codage numerique du droit d'accés pour faciliter d'avantage la manipulation des droits d'accés aux fichiers, UNIX utilise un code pour representer chaque droit, chaque classe d'utilisation. Ces codes sont exprimes en octale (base 8)
+
+    |     | r   | w   | x   | total |
+    | --- | --- | --- | --- | ----- |
+    | u   | 400 | 200 | 100 | 700   |
+    | g   | 40  | 20  | 10  | 70    |
+    | o   | 4   | 2   | 1   | 7     |
+
+_Q1_ : est-ce possible de connaite les droits d'accés d'un fixhier avant sa creation?
+
+_R1_ : oui, a l'aide de lacommande umask
+
+_Q2_ : est-ce qu'on peut changer ces droits par defauts
+
+_R2_ : oui en utilisant umask..
+
+- **les droits par defaut pour un fichier est 670**
+- **les droits par defaut pour un dossier est 666**
+
+### Droits d'endossements
+
+#### Dilemme:
+
+On sait que les mots de passe des users sont stockés dans un fichier texte géneralement appelé **/etc/passwd**. Le propriétaire de ce fichier est l'admin qui est le seul en principe a puvoir y accéder en ecriture (droit **w**).
+On sait aussi que chaque user peut changer lui même son mot de passe grace a la commande `passwd` qui correspond à un fichier éxecutable nommé le plus souvent `/bin/passwd` et pour lequel tout le monde dispose des droits **x**.
+Comment peut on modifier grâce a un programme donné, les infos d'un fichier pour lequel on n'a pas le droit w
+
+#### Solution
+
+Grâce a un autre droit qui est le <u>dorit d'endossement</u> qui s'appele droit **uid**.
+Tout utilisateur qui a le droit d'éxecuter un fichier ayant le bit uid positionné (_uid=1_) est considéreé par le système <u>**pendant l'execution**</u> comme étant le propriétaire de l'éxecutable.
+En d'autres termes, l'utilisateur qui éxecute un fichier avec le bit **uid** positionné hérite provisoirement les droits du propriétaire de l'éxecution.
+Ce droit peut être positionné grâce a la commande `setuid`, de la même façon le bit **gid** peut être positionné grâce a la commande `setgid`.
+**gid** signifie que tout utilisateur qui a le droit d'éxecuter un fichier pour lequel ce bit est positionné hérite pendant l'execution les droits a louer au groupe de ce fichier.
+
+**Remarque** : un autre bit est utilisé comme droit d'accés est `stickybit`.
+Pour un fichier éxecutable ce bit signifie lorsqu'il est positionné que le programme doit rester en RAM après sa premier éxecution, on parle d'un programme résident. Ce bit est possitionné a l'aide d'un directive de compilation.
+
+#### Resumé
+
+Dans la fiche de renseignement de chaque fichier UNIX le champs d'information appelé droit d'accés (de type `int`) est structuré comme suit:
+
+| code stickybit | gid  | uid  | r   | w   | x   | r   | w   | x   | r   | w   | x   |
+| -------------- | ---- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1000           | 2000 | 4000 | 400 | 200 | 100 | 40  | 20  | 10  | 4   | 2   | 1   |
+
+### Montage et démontage du système de fichier
+
+Le montage d’un système de fichier consiste à attacher la racine de l’arbre du système de fichier à un répertoire d’un système de fichier déjà active.
+
+Cette opération qui s’appelle le montage est réalisée par la commande `mount`. La suppression des liens entre le répertoire de montage et le système de fichier est effectué par la commande `umount`.
+Les fichiers ne sont pas accessibles par les commandes usuelles (`cp`, `mv`, `cat`, ...) que s’ils sont montés. LINUX mémorise les paramètres de montage dans le fichier **/etc/mnttab**.
+
+- Automatiser le montage du system de fichier:
+
+  - pour automatiser le système de système de fichier, l'administrateur système doit modifier le contenu du fichier **/etc/fstab**
+  - 1er type: `mount` et `umount`
+  - 2eme type: `fstab` pour un montage au demarage
+  - 3eme type: Montage a la volée
+
+le démon `automount` réalise automatiquement le montage d'un système de fichier si un processus manipule des fichiers situés en dessous du répertoire de montage, il le demonte quand l'arborescence n'est plus utilisée. Pour le mettre en oeuvre il faut installer le paquetage `autofs`
+
+## Gestion des quotas
+
+La mise en oeuvre des quotas va permettre a l'administrateur de limiter le nombre de fichier ou le nombre de blocs d'un utilisateur ou d'un groupe sur un disque aussi limiter l'accés au resource partagées. Les quotas offrent un plus grand interet dans LINUX qui est souvent utilisé comme serveur de fichier (**Samba**) et comme serveur de messagerie (**Sendmail**, **Postfixe**, ...). Il existe deux type de limite pour les Quotas
+
+- **Limite Hard** (Limite infranchissable): un utilisateur ou un groupe qui atteint sa limite hard de fichier ne pourra pas en créer un de plus.
+
+- **Limite soft**: peut être franchis (en provoquant un _warning_) pendant un certain nombre de jour consecutif (par défaut 7 jours). Si au terme de ce lapse de temps, l'utilisateur n'est pas redecendut en dessous de sa limite soft le point devient a son tour infrachissable.
+
+### Les Principales Commandes
+
+- `edquota` : permet de fixer les quotas.
+- `quotaon` : activer la vérification du quota.
+- `quotaoff` : désactiver la vérification du quota.
+- `quota`, `repquota`: lister les quotas.
+
+Pour fixer les quotas pour un utilisateur sur un disque en utilise la commande `setquota`
+
+**Exemple**: Fixer les quotas pour Ali sur le disque **/dev/sdb2** avec les spéecifications suivantes:
+
+inode : (soft)100 - 110(hard)
+
+bloc : (soft)10000 - 20000 (hard)
+
+```console
+[root@localhost ~]# setquota Ali 10000 20000 100 110 /dev/sdb2
+```
+
+## Sauvegarde et récupération
