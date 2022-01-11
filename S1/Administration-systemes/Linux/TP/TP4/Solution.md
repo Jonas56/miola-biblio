@@ -74,7 +74,7 @@
 ```
 
 <p align=center>
-    <img src="./Screenshots/ntsysv.png" height=300>
+    <img src="./Screenshots/ntsysV.png" height=300>
 </p>
 
 10. Copie de inittab
