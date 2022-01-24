@@ -6,7 +6,7 @@
 - [Les supports de transmission](#les-supports-de-transmission)
 - [Techniques de transmission de données](#techniques-de-transmission-de-données)
 - [Techniques de multiplexage]()
-- [Codes pour Détection /Correction d'erreurs]()
+- [Codes pour Détection /Correction d'erreurs](#détection-correction-derreurs)
 
 ## Systèmes de transmission de données
 
@@ -255,3 +255,39 @@ C’est une numérisation d’un signal analogique qui consiste en trois étapes
 **Le Codage** - Chaque échantillon sera codé sur un ensemble de bits. Si 2m niveaux de quantification le codage de chaque échantillon se fait sur m bits
 
 [Lien utile](https://www.youtube.com/watch?v=YJmUkNTBa8s&ab_channel=FiberOpticsForSaleCo.)
+
+## Détection / Correction d’erreurs
+
+- Indépendamment des supports de communication et des techniques de transmission utilisés, des perturbations vont se produire entraînant des erreurs.
+- On adapte alors des strategies de protection contre les erreurs de transmission:
+  - Correction :
+    - Auto-correction (**FEC** : Forward Error Correction)
+    - Correction par retransmission (**ARQ** : Automatic Repeat Request)
+  - Détection
+
+<p align=center >
+    <img src="https://www.tutorialspoint.com/computer_logical_organization/images/error.jpg">
+</p>
+
+### Codes à base de parité
+
+- On ajoute à chaque caractère un bit de parité dit parité verticale ou VRC (Vertical Redundancy Check), calculé comme suit : pour chaque caractère, on fait la somme modulo 2 de ses bits. Si le nombre de bits 1 est pair, on ajoute 0 à la fin du caractère, et si le nombre de bits 1 est impair, on ajoute 1.
+
+- _Exemple_: pour le caractère M codé (ASCII) par 1001101, le bit de parité vaut 0.
+  - On transmet dans cet ordre **1011001**0 (les 7 bits de données puis le bit de parité).
+- Inconvénient général:
+  - on ne détecte pas les erreurs doubles !!!
+
+### CRC : Cyclic Redundancy Check
+
+- Dans le contrôle polynomial, on considère la trame à transmettre comme un groupe de bits auquel on fait correspondre un polynôme P(x), tel que le coefficient de degré i correspond à la valeur du ieme bit.
+- Les algorithmes de calcul se font modulo 2 sur les polynômes (Z/2Z)
+- On choisit un polynôme G(x) de degré r, appelé polynôme générateur, caractéristique du contrôle.
+- **À l’émission**, on multiplie P(x) par pow(x,r) et on divise le polynôme obtenu par G(x). Le reste noté R(x), obtenu par division euclidienne, est de degré strictement inférieur à r. Il est ajouté à la fin de la trame comme code de contrôle.
+- x^r \* P(x) = G(x) \* Q(x) + R(x).
+- On transmet le polynôme T(x), constitué à partir de P(x) et du reste R(x) et défini par:
+  T(x) = x^r \* P(x) + R(x)
+
+- ce polynôme vérifie T(x) = G(x)\*Q(x)
+- **A la réception**, si le reste de la division de T(x) pat G(x) est nul, l’informa7on reçue correspond à celle émise
+- Sinon, T(x) = G(x)\*Q1(x) + R1(x). une ou plusieurs erreurs ont été introduites et l’informa7on reçue doit être ignorée.
