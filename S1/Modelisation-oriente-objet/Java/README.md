@@ -3,6 +3,7 @@
 ## Ressources
 
 - [Java SE documentation](https://docs.oracle.com/javase/8/docs/index.html)
+- [Développons en Java](https://www.jmdoudoux.fr/java/dej/index.htm)
 - [Head First Java](https://www.amazon.com/Head-First-Java-Kathy-Sierra/dp/0596009208)
 - [Cours Prof T.RACHAD]()
 
@@ -21,9 +22,8 @@
 - [Collections](#collections)
 - [Gestion des Flux](#gestion-des-flux)
 - [Les Threads](#les-threads)
-- [Accès aux Bases de Données]()
+- [Accès aux Bases de Données](#accès-aux-bases-de-données)
 - [Les interfaces graphiques]()
-
 
 ## Ecosysteme Java
 
@@ -660,3 +660,421 @@ public class Client{
 - [Java Sockets Docs](https://docs.oracle.com/javase/tutorial/networking/sockets/index.html)
 
 ## Les Threads
+
+- Un thread est une unité d'exécution faisant partie d'un programme. Cette unité fonctionne de façon autonome et parallèlement à d'autres threads. Le principal avantage des threads est de pouvoir répartir différents traitements d'un même programme en plusieurs unités distinctes pour permettre leurs exécutions "simultanées".
+
+<p align=center style="background: white;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Multithreaded_process.svg/1200px-Multithreaded_process.svg.png" width=500>
+</p>
+
+- Sur une machine monoprocesseur, c'est le système d'exploitation qui alloue du temps d'utilisation du CPU pour accomplir les traitements de chaque threads, donnant ainsi l'impression que ces traitements sont réalisés en parallèle.
+
+- Sur une machine multiprocesseur, le système d'exploitation peut répartir l'exécution sur plusieurs coeurs, ce qui peut effectivement permettre de réaliser des traitements en parallèle.
+
+- Selon le système d'exploitation et l'implémentation de la JVM, les threads peuvent être gérés de deux manières :
+  - correspondre à un thread natif du système
+  - correspondre à un thread géré par la machine virtuelle
+
+Dans les deux cas, cela n'a pas d'impact sur le code qui reste le même.
+
+- La JVM crée elle-même pour ses propres besoins plusieurs threads : le thread d'exécution de l'application, un ou plusieurs threads pour le ramasse-miettes (Garbage collection), ...
+
+<p align=center>
+  <img src="https://www.baeldung.com/wp-content/uploads/2020/12/OS-Thread-and-Process.jpg" width=500>
+</p>
+
+- La classe `java.lang.Thread` et l'interface `java.lang.Runnable` sont les bases pour le développement des threads en java.
+
+- Le système d'exploitation va devoir répartir du temps de traitement pour chaque thread sur le ou les CPU de la machine. Plus il y a de threads, plus le système va devoir switcher. De plus, un thread requiert des ressources pour s'exécuter notamment un espace mémoire nommé pile. Il est donc nécessaire de contrôler le nombre de threads qui sont lancés dans une même JVM.
+
+### Interface Runnable
+
+- Cette interface doit être implémentée par toute classe qui contiendra des traitements à exécuter dans un thread.
+
+- Cette interface ne définit qu'une seule méthode : void run().
+
+- Dans les classes qui implémentent cette interface, la méthode run() doit être redéfinie pour contenir le code des traitements qui seront exécutés dans le thread.
+
+```java
+import java.io.*;
+import java.lang.*;
+
+public class MonTraitement implements Runnable {
+  public void run() {
+    int i = 0;
+    for (i = 0; i > 10; i++) {
+      System.out.println("" + i);
+    }
+  }
+}
+```
+
+### Classe Thread
+
+- La classe Thread est définie dans le package java.lang. Elle implémente l'interface Runnable.
+
+- Elle possède plusieurs constructeurs : un constructeur par défaut et plusieurs autres qui peuvent avoir un ou plusieurs des paramètres suivants :
+
+  - le nom du thread
+  - l'objet qui implémente l'interface Runnable l'objet contenant les traitements du thread
+  - le groupe auquel sera rattaché le thread
+
+- Un thread possède une priorité et un nom. Si aucun nom particulier n'est donné dans le constructeur du thread, un nom par défaut composé du préfixe "Thread-" suivi d'un numéro séquentiel incrémenté automatiquement lui est attribué.
+
+### Le cycle de vie d'un thread
+
+Un thread, encapsulé dans une instance de type classe Thread, suit un cycle de vie qui peut prendre différents états.
+
+Le statut du thread est encapsulé dans l'énumération `Thread.State`
+
+| Valeur        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NEW           | Le thread n'est pas encore démarré. Aucune ressource système ne lui est encore affectée. Seules les méthodes de changement de statut du thread `start()` et `stop()` peuvent être invoquées                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| RUNNABLE      | Le thread est en cours d'exécution : sa méthode `start()` a été invoquée                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| BLOCKED       | Le thread est en attente de l'obtention d'un moniteur qui est déjà détenu par un autre thread                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| WAITING       | Le thread est en attente d'une action d'un autre thread ou que la durée précisée en paramètre de la méthode `sleep()` soit atteinte.<br><br>Chaque situation d'attente ne possède qu'une seule condition pour retourner au statut Runnable :<br>- si la méthode `sleep()` a été invoquée alors le thread ne retournera à l'état Runnable que lorsque le délai précisé en paramètre de la méthode a été atteint<br>- si la méthode `suspend()` a été invoquée alors le thread ne retournera à l'état Runnable que lorsque la méthode resume sera invoquée<br>- si la méthode `wait()` d'un objet a été invoquée alors le thread ne retournera à l'état Runnable que lorsque la méthode `notify()` ou `notifyAll()` de l'objet sera invoquée<br>- si le thread est en attente à cause d'un accès I/O alors le thread ne retournera à l'état Runnable que lorsque cet accès sera terminé |
+| TIMED_WAITING | Le thread est en attente pendent un certain temps d'une action d'un autre thread. Le thread retournera à l'état Runnable lorsque cette action survient ou lorsque le délai d'attente est atteint                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| TERMINATED    | Le thread a terminé son exécution. La fin d'un thread peut survenir de deux manières :<br>- la fin des traitements est atteinte<br>- une exception est levée durant l'exécution de ses traitements                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+
+<p align=center>
+  <img src="https://media.geeksforgeeks.org/wp-content/uploads/threadLifeCycle.jpg" width=500>
+</p>
+
+- Le statut du thread correspond à celui géré par la JVM : il ne correspond pas au statut du thread sous-jacent dans le système d'exploitation.
+
+- Une fois lancé, plusieurs actions peuvent suspendre l'exécution d'un thread :
+
+  - invocation de la méthode` sleep()`, join() ou suspend()
+  - attente de la fin d'une opération de type I/O
+
+- L'invocation de certaines méthodes de la classe Thread peut lever une exception de type IllegalThreadStateException si cette invocation n'est pas permise à cause de l'état courant du thread.
+
+### La création d'un thread
+
+Il existe plusieurs façons de créer un thread :
+
+- créer une instance d'une classe anonyme de type Thread et implémenter sa méthode `run()`. Il suffit alors d'invoquer sa méthode `start()` pour démarrer le thread
+- Exemple :
+
+```java
+public class TestThread {
+
+  public static void main(String[] args) {
+    Thread t = new Thread() {
+      public void run() {
+        System.out.println("Mon traitement");
+      }
+    };
+    t.start();
+  }
+}
+```
+
+- créer une classe fille qui hérite de la classe Thread. Il suffit alors de créer une instance de la classe fille et d'invoquer sa méthode `start()` pour démarrer le thread
+- Exemple :
+
+```java
+public class MonThread extends Thread {
+
+  @Override
+  public void run() {
+    System.out.println("Mon traitement");
+  }
+}
+
+public class TestThread {
+
+  public static void main(String[] args) {
+    MonThread t = new MonThread();
+    t.start();
+ }
+}
+
+```
+
+- créer une classe qui implémente l'interface Runnable. Pour lancer l'exécution, il faut créer un nouveau Thread en lui passant en paramètre une instance de la classe et invoquer sa méthode `start()`
+- Exemple :
+
+```java
+public class MonTraitement implements Runnable {
+
+  @Override
+  public void run(){
+    System.out.println("Mon traitement");
+  }
+}
+
+public class TestThread {
+
+  public static void main(String[] args){
+    Thread thread = new Thread(new MonTraitement());
+    thread.start();
+  }
+}
+```
+
+- à partir de Java 8, il est possible d'utiliser une expression lambda pour définir l'implémentation de l'interface Runnable
+
+Il est préférable d'utiliser l'implémentation de Runnable car :
+
+- elle permet à la classe d'hériter au besoin d'une classe mère
+- elle permet une meilleure séparation des rôles
+- elle évite des erreurs car il suffit simplement d'implémenter la méthode `run()`
+
+Il ne faut surtout pas invoquer la méthode `run()` d'un thread. Dans ce cas, les traitements seront exécutés dans le thread courant mais ne seront pas exécutés dans un thread dédié.
+
+### L'arrêt d'un thread
+
+Par défaut, l'exécution d'un thread s'arrête pour deux raisons :
+
+- la fin des traitements de la méthode `run()` est atteinte
+- une exception est levée durant les traitements de la méthode `run()`
+
+Historiquement la classe Thread possède une méthode `stop()` qui est déclarée **deprecated** depuis Java 1.1 et est conservée pour des raisons de compatibilité mais elle ne doit pas être utilisée car son comportement peut être aléatoire et inattendu.
+
+La méthode `stop()` lève une exception de type ThreadDeath se qui interrompt brutalement les traitements du thread. C'est notamment le cas si un moniteur est posé : celui-ci sera libéré mais l'état des données pourrait être inconsistant.
+
+Pour permettre une interruption des traitements d'un thread, il faut écrire du code qui utilise une boucle tant qu'une condition est remplie : le plus simple est d'utiliser un booléen.
+
+Exemple :
+
+```java
+public class MonThread extends Thread {
+
+  private volatile boolean running = true;
+
+  public void arreter() {
+    this.running = false;
+  }
+
+  @Override
+  public void run() {
+    while (running) {
+      // traitement du thread
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException ex) {
+        ex.printStackTrace();
+      }
+    }
+  }
+}
+```
+
+Le Java Memory Model permet à un thread de conserver une copie local de ses champs : pour une exécution correcte, il faut utiliser le mot clé volatile sur le booléen pour garantir que l'accès à la valeur se fera de et vers la mémoire.
+
+Une fois un thread terminé, il passe à l'état terminated. Il ne peut plus être relancé sans lever une exception de type IllegalStateException. Pour le relancer, il faut créer une nouvelle instance.
+
+### Threads démons
+
+- Généralement, l'activité d'un objet actif se termine au bout d'un temps fini.
+- Ce type de thread s'appelle un thread utilisateur
+- Un programme Java ne peut se terminer que quand tous les threads utilisateurs sont eux- mêmes terminés.
+- Cependant pour certaines activités il peut être très difficile de trouver une condition d'arrêt.
+- Exemple : capteur déclenchant une alarme dès qu'un seuil de tolérance est dépassé : on ne veut pas qu'une activité aussi critique puisse se terminer prématurément par erreur!
+- Pour gérer ce genre d'activité, Java introduit la notion de threads **démons**.
+- Un thread démon est un thread qui propose un service général en tâche de fond aussi longtemps que le programme tourne, mais il n'est pas l'essence du programme.
+- Il ne sert qu’à lancer d’autres threads.
+- Un programme se termine lorsqu'il ne reste plus que des threads démons.
+- La méthode `main()` est un Thread utilisateur.
+- Par défaut, un thread est créé dans la catégorie du thread qui l’a créé.
+- Pour rendre un thread Démon, il faut utiliser la méthode `setDaemon(true)` avant d’appeler la méthode `start()`
+
+```java
+public class TestThreaddemon {
+
+  public static void main(String[] args) {
+    Thread daemonThread = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        try {
+          while (true) {
+            System.out.println("Execution demon");
+          }
+        } finally {
+          System.out.println("Fin demon");
+        }
+      }
+    }, "Demon");
+
+    daemonThread.setDaemon(true);
+    daemonThread.start();
+  }
+}
+```
+
+Le nombre de messages affichés varie de un à quelques uns avant l'arrêt de la JVM. Le message du bloc finally n'est jamais affiché.
+
+### Suspendre un Thread
+
+La méthode static `sleep()` de la classe Thread permet de mettre en sommeil le thread courant pour le délai en millisecondes dont la valeur est fournie en paramètre.
+
+Elle est bloquante, elle lève une exception de type `InterruptedException` au cours de son exécution si un autre thread demande l'interruption de l'exécution du thread.
+
+```java
+try {
+  Thread.sleep(5000);
+} catch (InterruptedException e) {
+  e.printStackTrace();
+}
+```
+
+La méthode ` sleep()` est static : elle ne s'applique que sur le thread courant et il n'est pas possible de désigner le thread concerné.
+
+Une surcharge de la méthode ` sleep()` attend en paramètre la durée en millisecondes et une durée supplémentaire en nanosecondes qui peut varier entre 0 et 999999. La précision de cette attente supplémentaire est dépendante de la machine et du système d'exploitation.
+
+Contrairement à la méthode `wait()` de la classe Object, la méthode `sleep()` ne libère pas les verrous qui sont posés par le thread.
+
+### L'attente de la fin de l'exécution d'un thread
+
+La méthode `join()` de la classe Thread permet d'attendre la fin de l'exécution du thread. Elle peut lever une exception de type `InterruptedException`.
+
+Une surcharge de la méthode `join()` attend en paramètre un entier long qui définit la valeur en millisecondes d'un délai d'attente maximum.
+
+### La modification de la priorité d'un thread
+
+Un thread possède une propriété qui précise sa priorité d'exécution. Pour déterminer ou modifier la priorité d'un thread, la classe `Thread` contient les méthodes suivantes:
+
+| Méthode                  | Description                                 |
+| ------------------------ | ------------------------------------------- |
+| `int getPriorty() `      | retourner la priorité d'exécution du thread |
+| `int setPriority(int i)` | modifier la priorité d'exécution du thread  |
+
+Généralement, la priorité varie de 1 à 10 mais cela dépend de l'implémentation de la JVM. Plusieurs constantes permettent de connaître les valeurs de la plage de priorités utilisables et la valeur de la priorité par défaut :
+
+- `Thread.MAX_PRIORITY` : la valeur de la priorité maximale
+- `Thread.MIN_PRIORITY` : la valeur de la priorité minimale
+- `Thread.NORM_PRIORITY` : la valeur de la priorité normale
+
+La valeur par défaut de la priorité lors de la création d'un nouveau thread est celle du thread courant.
+
+La méthode `setPriority()` lève une exception de type `IllegalStateException` si la valeur fournie en paramètre n'est pas incluse dans la plage `Thread.MIN_PRIORITY` et `Thread.MAX_PRIORITY`.
+
+```java
+Thread thread = new Thread();
+thread.setPriority(Thread.MAX_PRIORITY);
+```
+
+### Laisser aux autres threads plus de chance de s'exécuter
+
+La méthode static `yield()` de la classe Thread tente de mettre en pause le thread courant pour laisser une chance aux autres threads de s'exécuter.
+
+Attention : il n'y a aucune garantie sur le résultat de l'invocation de la méthode `yield()` car elle est dépendante de l'implémentation de la JVM.
+
+### Synchronisation
+
+- L’avantage des threads sur les processus est qu’ils appartiennent à un même programme
+
+- On peut donc être confronté à deux types de problèmes :
+
+  - Des fois, ils ont besoin d’accéder à un même objet.
+  - Des fois encore un thread doit attendre le résultat d’un autre thread qui n’as pas encore fini.
+
+- Pour régler le premier problème on utilise des méthodes synchronisées ou parfois juste des blocs synchronisés
+
+- Pour régler le deuxième problème, on utilise des mécanisme d’attente et de notification.
+
+- Soit deux threads répétant indéfiniment les actions suivantes:
+
+  - Incrémentation d’un nombre et calcul de son carré (premier thread)
+  - Affichage du nombre et de son carré (deuxième thread)
+
+- Si le premier thread est interrompu entre l’incrémentation et le calcul du carré, le second risque d’afficher le nouveau nombre et l’ancien carré.
+
+- Solution **java** : déclarer une méthode avec le mot clé synchronized.
+
+- A un instant donné, une seule méthode d’un objet donnée peut être appelée.
+
+```java
+class Nombres{
+
+  private int n=0, carre ;
+
+  /* les méthodes calcul et affiche sont mutuellement
+  exclusives */
+
+  public synchronized void calcul(){
+    n++ ;
+    carre = n*n ;
+  }
+  public synchronized void affiche (){
+    System.out.println (n + " a pour carre " + carre) ;
+  }
+}
+
+
+class ThrCalc extends Thread{
+  // Classe Thread calculé
+  private Nombres nomb ;
+  public ThrCalc (Nombres nomb) { this.nomb = nomb ;}
+
+  public void run () {
+    try{
+    while (!interrupted()) {
+      nomb.calcul () ;
+      sleep (50) ;
+    }
+    }
+    catch (InterruptedException e) {}
+  }
+}
+
+class ThrAff extends Thread {
+  // Classe Thread affiché
+
+  private Nombres nomb ;
+
+  public ThrAff (Nombres nomb){
+    this.nomb = nomb ;
+  }
+
+  public void run () {
+    try {
+    while (!interrupted()) { nomb.affiche() ; sleep (75) ; }
+    }
+    catch (InterruptedException e) {}
+  }
+}
+
+public class Synchro1{
+  public static void main (String args[])
+  {
+    Scanner s= new Scanner(System.in);
+    Nombres nomb = new Nombres() ;
+    Thread calc = new ThrCalc (nomb) ;
+    Thread aff = new ThrAff (nomb) ;
+    System.out.println ("Suite de carres - tapez retour pour
+    arreter") ;
+    calc.start() ; aff.start() ;
+    s.next() ;
+    calc.interrupt() ; aff.interrupt();
+  }
+}
+```
+
+- Lorsqu’une méthode synchronisée est appelée sur un objet, un verrou lui est attribué sur l’objet de telle façon qu’aucune autre méthode synchronisée ne peut être appelée.
+- L’objet est déverrouillé à la sortie de la méthode.
+- Si une méthode synchronisée appelle une autre méthode non synchronisée, l’objet se trouve déverrouillé pendant cet appel.
+
+### Interblocage
+
+- Il arrive que deux ou plusieurs threads s’interbloquent mutuellement.
+- Exemple de situation d’interblocage :
+  - Un thread T1 possède le verrou d’un objet O1 et attend le verrou d’un autre objet O2
+  - Un thread T2 possède le verrou d’un objet O2 et attend le verrou d’un autre objet O1
+- Cette situation s’appelle **étreinte mortelle**
+- Pour sortir d’une telle situation il faut coordonner l’exécution des threads.
+- En effet, une méthode synchronisée peut appeler la méthode `wait()` de l’objet dont elle possède le verrou permettant de :
+  - Rendre le verrou à l’environnement (qui peut l’attribuer à une autre méthode synchronisée)
+  - Mettre en attente le thread correspondant.
+
+### L’attente et la notification
+
+- Plusieurs threads peuvent être en attente sur le même objet.
+- Tant qu’un thread est en attente l’environnement ne lui donne pas la main.
+- La méthode `notifyAll()` prévient tous les threads en attente sur un objet et leur donne la possibilité de s’exécuter.
+- La méthode `notify()` prévient un seul thread.
+
+[Lien utile](https://www.youtube.com/playlist?list=PLL8woMHwr36EDxjUoCzboZjedsnhLP1j4)
+
+## Accès aux Bases de Données
