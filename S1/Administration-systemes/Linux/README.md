@@ -343,10 +343,10 @@ exemple : NomLogiciel-ver.tar.gz
 - **Etapes d'installation**
 
   - Télécharger le logiciel : c'est un fichier .tar.gz par exemple
-  - Décompresser et désarchiver : `gunzip NomLogiciel-ver.tar.gz` ou bien `tar xvf NomLogieciel.tar`
-  - Se déplacer dans le dossier créé par le désarchivage
+  - Décompresser et désarchiver : decompresser avec `gunzip NomLogiciel-ver.tar.gz` et desarchiver avec `tar xvf NomLogieciel.tar`
+  - Se déplacer dans le dossier créé par le désarchivage avec la commande cd 
   - Paramétrer le logiciel selon le système par le script
-  - Compiler le logiciel en se basant sur le fichier « Makefile » généré par le script « configure »
+  - Compiler le logiciel en se basant sur le fichier « Makefile » généré par le script « configure » avec `make`
   - Installer les binaires par la commande : `make install`
   - – Pour désinstaller : `make clean `
 
