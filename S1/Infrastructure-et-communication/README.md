@@ -252,7 +252,22 @@ C’est une numérisation d’un signal analogique qui consiste en trois étapes
 
 - **La Quantification** - Elle consiste à donner à chaque échantillon une valeur prise dans une échelle de valeurs. L'erreur effectuée dans l'approximation est appelée bruit de numérisation. nb de valeurs possible = nb de niveaux
 
-**Le Codage** - Chaque échantillon sera codé sur un ensemble de bits. Si 2m niveaux de quantification le codage de chaque échantillon se fait sur m bits
+- **Le Codage** - Chaque échantillon sera codé sur un ensemble de bits. Si 2m niveaux de quantification le codage de chaque échantillon se fait sur m bits
+
+Les principaux relations :
+
+- Pas d'echantillonage : p = (Vmax - Vmin) / 2^n
+  - (Vmax - Vmin) est la plage de mesure
+  - n est le nombre de bits
+- Periode d'echantillonnage : Te = 1/fe
+  - fe est la frequence d'echantillonage
+- fe >= fmax du signal
+- Debit binare : D = fe x n = n/Te
+- Nombre de niveaux N = 2^n
+
+<p align=center>
+    <img src="https://electronicscoach.com/wp-content/uploads/2018/10/Recontruction-of-analog-signal-at-PCM-receiver.jpg" width="400">
+</p>
 
 [Lien utile](https://www.youtube.com/watch?v=YJmUkNTBa8s&ab_channel=FiberOpticsForSaleCo.)
 
@@ -289,5 +304,5 @@ C’est une numérisation d’un signal analogique qui consiste en trois étapes
   T(x) = x^r \* P(x) + R(x)
 
 - ce polynôme vérifie T(x) = G(x)\*Q(x)
-- **A la réception**, si le reste de la division de T(x) pat G(x) est nul, l’informa7on reçue correspond à celle émise
-- Sinon, T(x) = G(x)\*Q1(x) + R1(x). une ou plusieurs erreurs ont été introduites et l’informa7on reçue doit être ignorée.
+- **A la réception**, si le reste de la division de T(x) pat G(x) est nul, l’informationon reçue correspond à celle émise
+- Sinon, T(x) = G(x)\*Q1(x) + R1(x). Une ou plusieurs erreurs ont été introduites et l’information reçue doit être ignorée.
