@@ -1078,3 +1078,140 @@ public class Synchro1{
 [Lien utile](https://www.youtube.com/playlist?list=PLL8woMHwr36EDxjUoCzboZjedsnhLP1j4)
 
 ## Accès aux Bases de Données
+
+### JDBC
+
+JDBC est une API qui permet à une application java d’accéder à n’importe quelle base de données relationnelle: Oracle, SQL Server, MySQL...
+
+L’API JDBC a été développée de manière à pouvoir se connecter à n’importe quelle base de données avec la même syntaxe. Cette API est dite indépendante du SGBD utilisé.
+
+Les classes JDBC font partie du package `java.sql` et `javax.sql`
+
+Il permet essentiellement de:
+
+- Assurer la connexion à une base de données relationnelle.
+
+- L'envoi de requêtes SQL au SGBD, à partir du programme java.
+
+- Le traitement, au niveau du programme, des données retournées par le SGBD.
+
+- Le traitement des erreurs retournées par le SGBD lors de l'exécution d'une instruction.
+
+Pilote de bases de données ou driver JDBC
+
+- Un pilote ou driver JDBC est un **logiciel** qui permet de convertir les requêtes JDBC en requêtes spécifiques auprès de la base de données.
+- Ce **logiciel** est en fait une implémentation de l'interface Driver, du package `java.sql`.
+
+### Architecture JDBC
+
+JDBC fonctionne selon les deux modèles suivants :
+
+- Modèle à deux couches (2-tier)
+
+<p align=center>
+  <img src="https://slideplayer.com/slide/12622948/76/images/5/Two-tier+Architecture+for+Data+Access.jpg" width=500>
+</p>
+
+Dans le modèle 2-tier, une application JAVA (ou une applet) dialogue avec le SGBD par l’intermédiaire du pilote JDBC. L’application JAVA et le pilote JDBC s’exécutent sur l’ordinateur client tandis que le SGBD est placé sur un serveur.
+
+- Modèles 3 couches (3-tier)
+
+<p align=center>
+  <img src="https://www.careerride.com/Images/JDBC-architecture.PNG" width=500>
+</p>
+
+Dans le modèle three-tier, l’applet (ou l’application JAVA) ne dialogue plus directement avec un SGBD : un middle-tier fait le lien entre ces deux composants
+
+Le SGBD exécute les requêtes SQL et envoie les résultats au middle tier. Ces résultats sont ensuite communiqués à l’applet sous forme d’appels http.
+
+### Classe de l’API JDBC
+
+Plusieurs classes et interfaces sont fournies par JDBC :
+
+- `DriverManager` : gère les pilotes JDBC
+- `Connection` : connexion à une base
+- `Statement` : instruction SQL
+- `PreparedStatement` : instruction SQL paramétrée
+- `CallableStatement` : procédure stockée dans la base
+- `ResultSet` : n-uplets récupérés par une instruction SQL
+- `ResultSetMetaData` : description des n-uplets récupérés
+- `DatabaseMetaData` : informations sur la base de données
+
+### Processus d’interrogation d’une BD
+
+Tout programme JDBC fonctionne selon les étapes suivantes:
+
+1. Importer les packages nécessaires
+2. Connexion à la base de données
+   - Chargement du pilote de la BDD
+   - Demande de connexion: s’identifiant auprès du SGBD et en précisant la base utilisée
+3. Traitement des commandes SQL
+4. Traitement des résultats (Objet ResultSet)
+5. Fermeture de la connexion.
+
+### Applications
+
+- Exemple basique (MYSQL)
+
+```java
+import java.sql.*;
+public class FirstExample {
+
+   static final String DB_URL = "jdbc:mysql://localhost/my_database";
+   static final String USER = "root";
+   static final String PASS = "";
+   static final String QUERY = "SELECT id, first, last, age FROM Employees";
+
+   public static void main(String[] args) {
+      // Open a connection
+      try{
+         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+         Statement stmt = conn.createStatement();
+         ResultSet rs = stmt.executeQuery(QUERY);
+         // Extract data from result set
+         while (rs.next()) {
+            // Retrieve by column name
+            System.out.print("ID: " + rs.getInt("id"));
+            System.out.print(", Age: " + rs.getInt("age"));
+            System.out.print(", First: " + rs.getString("first"));
+            System.out.println(", Last: " + rs.getString("last"));
+         }
+      }
+      } catch (SQLException e) {
+         e.printStackTrace();
+   }
+}
+```
+
+- Exemple avec requête préparé (MYSQL)
+<!--
+
+```java
+import java.sql.*;
+public class FirstExample {
+
+   static final String DB_URL = "jdbc:mysql://localhost/my_database";
+   static final String USER = "root";
+   static final String PASS = "";
+   static final String QUERY = "Insert into Emp values(?,?,?,?)";
+
+   public static void main(String[] args) {
+      // Open a connection
+      try {
+         Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+         PreparedStatement stmt= conn.prepareStatement(QUERY);
+         stmt.setInt(1,101);
+         stmt.setFloat(2,22.5);
+         stmt.setString(3,"Jonas");
+         stmt.setString(4,"Tesla");
+      } catch (SQLException e) {
+         e.printStackTrace();
+      }finally{
+        conn.close();
+      }
+
+   }
+}
+```
+
+-->
