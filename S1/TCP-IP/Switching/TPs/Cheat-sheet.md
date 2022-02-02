@@ -87,7 +87,61 @@ Router(config-subif)#ip address 192.168.5.1 255.255.255.0
 
 ### NAT & PAT
 
+- Static **NAT**
+
+```
+Router(config)#interface fastethernet 0/0
+Router(config-if)#ip nat outside
+
+Router(config)#interface F0/1
+Router(config-if)#ip nat inside source static host@ 200.200.200.2
+```
+
+- Dynamic **NAT**
+
+```
+Router(config)#access-list 1 permit 10.0.0.0 0.0.0.255
+Router(config)#ip nat pool NATPOOL 2.0.0.1 2.0.0.1 netmask 255.255.255.252
+Router(config)#ip nat inside source list 1 pool NATPOOL
+
+Router(config)#interface F0/1
+Router(config-if)#ip nat outside
+
+Router(config-if)#interface F0/0
+Router(config-if)#ip nat inside
+```
+
+- **NAT/PAT** | **NAT Overload**
+
+```
+Router(config)#access-list 1 permit 10.0.0.0 0.0.0.255
+Router(config)#ip nat inside source list 1 interface F0/0 overload
+
+Router(config)#interface F0/1
+Router(config-if)#ip nat outside
+
+Router(config-if)#interface F0/0
+Router(config-if)#ip nat inside
+```
+
+- Verifying
+
+```
+Router# show ip nat translations
+```
+
+[NAT/PAT](https://www.adldata.org/wp-content/uploads/2015/06/Cisco_NAT_Cheat_Sheet.pdf)
+
 ### DHCP
+
+```
+Router(config)#ip dhcp excluded-address 10.0.10.1 10.0.10.10
+Router(config)#ip dhcp pool POOL_NAME
+Router(dhcp-config)#network 10.0.10.0 255.255.255.0
+Router(dhcp-config)#default-router 10.0.10.1
+```
+
+[DHCP](https://ipwithease.com/wp-content/uploads/2020/05/DHCP-CHEATSHEET-pdf.pdf)
 
 ### PPP
 
