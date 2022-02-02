@@ -261,7 +261,7 @@ Les principaux relations :
   - n est le nombre de bits
 - Periode d'echantillonnage : Te = 1/fe
   - fe est la frequence d'echantillonage
-- fe >= fmax du signal
+- fe >= 2 \* fmax du signal
 - Debit binare : D = fe x n = n/Te
 - Nombre de niveaux N = 2^n
 
