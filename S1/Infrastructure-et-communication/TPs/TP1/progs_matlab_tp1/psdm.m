@@ -1,0 +1,65 @@
+function P=psdm(lcn,Rb)
+Tb = 1/Rb;
+f = 0:0.01:4*Rb;
+  if lcn==1%'unipolar_nrz';
+x =pi*Tb*f;
+temp1 = Sa(x);
+temp2 = delta(f);
+temp2 = temp2(:);
+P = Tb/2*(temp1.*temp1).*(1+temp2/Tb);
+col='r';
+end;
+if lcn==2%'___polar_nrz';
+x =pi*Tb*f;
+temp1 = Sa(x);
+P = Tb*(temp1.*temp1);
+col='b';
+end;
+if lcn==3%'unipolar__rz';
+x =pi*Tb*f/2;
+temp1 = Sa(x);
+for k=-10:10
+   dlt(k+11,:)=delta(f(:)-k/Tb);
+   end;
+   temp2 = sum(dlt,1);
+temp2 = temp2(:);
+P = Tb/4*(temp1.*temp1).*(1+temp2./Tb);
+col='g';
+end;
+if lcn==4%'_bipolar__rz';
+x =pi*Tb/2*f;
+temp1 = Sa(x);
+temp2 = sin(2*x);
+temp2 = temp2(:);
+
+P = Tb*(temp1.*temp1).*(temp2.*temp2);
+col='m';
+end;
+if lcn==5%'__manchester';
+x =pi*Tb/2*f;
+temp1 = Sa(x);
+temp2 = sin(x);
+temp2 = temp2(:);
+
+P = Tb*(temp1.*temp1).*(temp2.*temp2);
+col='k';
+end;
+plot(f,P,col);
+ylabel('Magnitude of P(f)');
+grid;
+if lcn==1%'unipolar_nrz';
+   title('Unipolar NRZ');
+end;
+if lcn==2%'___polar_nrz';
+   title('Polar NRZ');
+end;
+if lcn==3%'unipolar__rz';
+   title('Unipolar RZ');
+end;
+if lcn==4%'_bipolar__rz';
+   title('Bipolar RZ');
+end;
+if lcn==5%'__manchester';
+   title('Manchester NRS');
+end;
+

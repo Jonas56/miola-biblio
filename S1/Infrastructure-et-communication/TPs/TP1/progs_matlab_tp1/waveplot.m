@@ -1,0 +1,28 @@
+function wvp=waveplot(wy,b,lcn,Rb)
+w=real(wy);
+dt=0.05;
+n=length(b);
+T0=n/Rb;
+t = 0:dt:T0;
+plot(t,w(1:length(t)),'g');
+xlabel('t(msec)');
+ylabel('x(t)');
+if lcn==1 %'unipolar_nrz';
+   title('Unipolar NRZ');
+end;
+if lcn==2 %'___polar_nrz';
+   title('Polar NRZ');
+end;
+if lcn==3 %'unipolar__rz';
+   title('Unipolar RZ');
+end;
+if lcn==4 %'_bipolar__rz';
+   title('Bipolar RZ');
+end;
+if lcn==5 %'__manchester';
+   title('Manchester NRS');
+end;
+if lcn==6 %'____triangle';
+   title('Triangular');
+end;
+grid;

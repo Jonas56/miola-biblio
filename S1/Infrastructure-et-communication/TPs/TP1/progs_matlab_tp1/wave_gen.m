@@ -1,0 +1,107 @@
+function w1=wave_gen(b,lcn,Rb)
+dt=0.05;
+n=length(b);
+T0=n/Rb;
+Ts=1/Rb;
+tp=0:dt:Ts/2;
+ltp=length(tp);
+t = 0:dt:T0;
+k = 0:1:n-1;
+w = b';
+w1 = zeros(length(t),1);
+  	if lcn==1 %'unipolar_nrz';
+      % Generating w1(t), Rectangular pulse shape used.
+		for (i = 1:1:length(k))
+ 	 	temp = t - (k(i)*Ts + 0.5*Ts);
+		% Finding positions that correspond to -Ts/2 and Ts/2.
+ 	 	left = index(round(temp*1000000),round(-Ts/2*1000000));
+  		right = index(round(temp*1000000),round(Ts/2*1000000));
+  				for (j = left:1:right)
+    			w1(j) = w(i);
+  				end;
+		end;
+    end;
+	if lcn==2 %'___polar_nrz';
+		for (i = 1:1:length(k))
+  		temp = t - (k(i)*Ts + 0.5*Ts);
+		% Finding positions that correspond to -Ts/2 and Ts/2.
+  		left = index(round(temp*1000000),round(-Ts/2*1000000));
+  		right = index(round(temp*1000000),round(Ts/2*1000000));
+  			for (j = left:1:right)
+     			if w(i)==1
+        		w1(j) = w(i);
+     			else
+        		w1(j)=-1;
+     			end;
+  			end;
+		end;
+	end;
+if lcn==3 %'unipolar__rz';
+% Generating w1(t), Rectangular pulse shape used.
+	for (i = 1:1:length(k))
+  	temp = t - (k(i)*Ts + 0.5*Ts);
+	% Finding positions that correspond to -Ts/2 and Ts/2.
+  	left = index(round(temp*1000000),round(-Ts/2*1000000));
+  	right = index(round(temp*1000000),round(Ts/2*1000000));
+  	center=index(round(temp*1000000),0);
+  		for (j = left:1:center)
+    	w1(j) = w(i);
+ 		end;
+ 		for (j=center+1:1:right)
+   	 w1(j)=0;
+    	end;
+	end;
+end;
+if lcn==4 %'_bipolar__rz';
+ m0=-1;
+   for (i = 1:1:length(k))
+      if w(i)==1
+         m0=-1*m0;
+      end;
+  	temp = t - (k(i)*Ts + 0.5*Ts);
+	% Finding positions that correspond to -Ts/2 and Ts/2.
+  	left = index(round(temp*1000000),round(-Ts/2*1000000));
+  	right = index(round(temp*1000000),round(Ts/2*1000000));
+  	center=index(round(temp*1000000),0);
+    	for (j = left:1:center)
+       	if w(i)==1
+          w1(j) = w(i)*m0;
+     		else
+        	w1(j)==0;
+     	 	end;
+  		end;
+	end;
+end;
+if lcn==5 %'__manchester';
+	for (i = 1:1:length(k))
+  	temp = t - (k(i)*Ts + 0.5*Ts);
+	% Finding positions that correspond to -Ts/2 and Ts/2.
+  	left = index(round(temp*1000000),round(-Ts/2*1000000));
+  	right = index(round(temp*1000000),round(Ts/2*1000000));
+  	center=index(round(temp*1000000),0);
+    	for (j = left:1:center)
+     		if w(i)==1
+        	w1(j) = w(i);
+     		else
+        	w1(j)=-1;
+     		end;
+  		end;
+      for (j = center:1:right)
+     		if w(i)==1
+        	w1(j) = -w(i);
+     		else
+        	w1(j)=1;
+     		end;
+  		end;
+	end;
+end;
+if lcn==6 %'____triangle';
+ % Generating w1(t), Triangle pulse shape used.
+ for i=2*ltp:2*ltp+ltp-2
+    w1(i)=2*t(i)-2;
+ end;
+ for j=3*ltp-1:4*ltp-3
+    w1(j)=-2*t(j)+4;
+    end;
+ end;
+
