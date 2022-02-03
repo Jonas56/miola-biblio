@@ -344,7 +344,7 @@ exemple : NomLogiciel-ver.tar.gz
 
   - Télécharger le logiciel : c'est un fichier .tar.gz par exemple
   - Décompresser et désarchiver : decompresser avec `gunzip NomLogiciel-ver.tar.gz` et desarchiver avec `tar xvf NomLogieciel.tar`
-  - Se déplacer dans le dossier créé par le désarchivage avec la commande cd 
+  - Se déplacer dans le dossier créé par le désarchivage avec la commande cd
   - Paramétrer le logiciel selon le système par le script
   - Compiler le logiciel en se basant sur le fichier « Makefile » généré par le script « configure » avec `make`
   - Installer les binaires par la commande : `make install`
@@ -468,39 +468,39 @@ Le mode single est un niveau de démarrage utilisé pour la maintenance du syst�
 <!-- [useful link]: https://tldp.org/LDP/intro-linux/html/sect_03_01.html
 [useful link 2]: https://www.tutorialspoint.com/unix/unix-file-system.htm -->
 
-Un système de fichiers est une structure de donnees. La commande `mkfs`, qui crée un système de fichier, inscrit cette structure de données dans une partition
+Un système de fichiers est une structure de données. La commande `mkfs`, qui crée un système de fichier, inscrit cette structure de données dans une partition.
 Tous les systèmes de fichier comporte au moins trois tables systèmes:
 
 - **le super Block** qui contient les informations clé concernant le système de fichiers
-- **la table des inodes** c'est à dire la table déscripteur du fichier. Chaque fichier est indentifie d'une manière unique par le numéro d'inode qui le décrit.
-- **Répertoire** qui assurent les correspondances entre un nom fichier est un numéro inode
+- **la table des inodes** c'est à dire la table déscripteur du fichier. Chaque fichier est indentifié d'une manière unique par le numéro d'inode qui le décrit.
+- **Répertoire** qui assure les correspondances entre un nom fichier et un numéro inode
 
 ### Structure d'un inode
 
-Le terme _INODE_ designe le descripteur d'un fichier. il contient les attributs des fichiers, (ceux afficher par la commande `ls -l`), et une table d'accés au blocs de données. Il existe une table d'inodes par disque. L'espace qu'elle occupe est reservée à la creation du système de fichiers sur ce disque. La taille de la table des inodes est donc un paramétre statique important d'un système de fichier, car elle fige la nomre de fichier que l'on peut au plus créer sur le disque.
+Le terme _INODE_ designe le descripteur d'un fichier. Il contient les attributs des fichiers, (ceux afficher par la commande `ls -l`), et une table d'accés au blocs de données. Il existe une table d'inodes par disque. L'espace qu'elle occupe est reservée à la création du système de fichiers sur ce disque. La taille de la table des inodes est donc un paramétre statique important d'un système de fichier, car elle fige la norme de fichier que l'on peut au plus créer sur le disque.
 
-Pour un disque donné le numero d'inode est l'unique moyen d'indentifier un fichier sans ambiguite. La commande `ls -i` permet de connaitre le numéro d'ionde d'un fichier
+Pour un disque donné le numero d'inode est l'unique moyen d'indentifier un fichier sans ambiguïte. La commande `ls -i` permet de connaitre le numéro d'ionde d'un fichier
 
 Le système de fichier de base c'est **ext2** qui dérive du système de fichier FFS (File Fast System | Créer par L'université de Berkeley)
 
-### Les differents types de système de fichier
+### Les differents types de systèmes de fichiers
 
-- **MINIX**; Le premier système de fichier utilise par Linux
-- **ext2**; Le système de fichier standard du système linux (La base)
-- **MsDOS**; le système de fichier de Windows
-- **VFAT**; pour Windows
-- **ext3**; le système de fichier avec journalisation, (**ext2** + La Journalisation)
-- **ext4**; le système de fichier actuel
+- **MINIX** - Le premier système de fichier utiliser par Linux
+- **ext2** - Le système de fichier standard du système linux (La base)
+- **MsDOS** - le système de fichier de Windows
+- **VFAT** - pour Windows
+- **ext3**- le système de fichier avec journalisation, (**ext2** + La Journalisation)
+- **ext4** - le système de fichier actuel
 
 ### Gestion de l'espace disque
 
-L'espace disque est un resource précieux, même si les capacités des disques ont considerablement evolués dans ces dernières années, l'administrateur doit en controler l'usage, `du` et `df` sont deux commades importantes (y en a plusieurs).
+L'espace disque est un resource précieux, même si les capacités des disques ont considerablement evolués dans ces dernières années, l'administrateur doit en contrôler l'usage, `du` et `df` sont deux commades importantes (y en a plusieurs).
 
 - `df` : Indique l'espace libre d'un disque contenant un système de fichier monteé la taille de l'espace libre est indiqué et affiché en KO (Kilo Octects) -i (list inode information instead of block usage | --inodes) -k(like | --block-size=1K) et -T (print file system type | --print-type)
 - `du` : Affiche le nombre de blocs d'un Ko utilise par un disque, -s (display only a total for each argument | --summarize) -k (like | --block-size=1K)
 
 **REMARQUE**:
-Il y a d'autres commandes qui permet d'afficher l'espace libre/occupé d'un disque, parmis ces commandes il y a la commande `find`, elle permet de rechercher des fichiers selon différents critères dont celui de la taille surtout l'option `-size`
+Il y a d'autres commandes qui permet d'afficher l'espace libre/occupé d'un disque, parmis ces commandes il y a la commande `find`, elle permet de rechercher des fichiers selon différents critères dont celui de la taille avec l'option `-size`
 
 Exemple:
 
@@ -518,8 +518,8 @@ Resultat
 
 - `mkfs`: permet de créer un système de fichier
 - `mount`: Monte un système de fichier
-- `unmount`: demonte un système de fichier
-- `fsck`: Verifie un système de fichier
+- `unmount`: démonte un système de fichier
+- `fsck`: Vérifie un système de fichier
 - `df`: espace libre
 - `du`: espace occupe
 - `lsof`: identifie les processus
@@ -535,9 +535,11 @@ Resultat
 
 Unix/Linux fait la difference comme tout les systèmes d'exploitation entre trois types de fichier:
 
-- Les ficheir normaux.
-- Les Repertoires/Dossier (Folder). (Un repertoire est un fichier, tout est considere comme fichier sous Linux)
-- Les fichier Speciaux.
+- Les fichiers normaux
+
+- Les Repertoires/Dossier (Folder). (Un repertoire est un fichier, tout est considére comme fichier sous Linux)
+
+- Les fichiers Speciaux.
 
 - **Les fichiers normaux** : Correspondant a des informations stockées sur un support magnétique (DVD, CD, Disque Dur, USB..), ces fichiers sont crées par des programmes utilisateur (compilateur du C ...) ou par des utilitaires système (un editeur de texte comme Vi, nano, Gedit, Vim, cat ou touch).
 
@@ -557,7 +559,7 @@ Le contenue d'un fichier normal relève des programmes qu'il a créer, bien souv
 
 ### Droits d'accés au système de fichiers
 
-Au niveau de chaque fichier l’ensemble des utilisateurs reconnus par le sys est devisé en 3 classes:
+Au niveau de chaque fichier l’ensemble des utilisateurs reconnus par le système est devisé en 3 classes:
 
 - le propriétaire du fichier, noté **u**
 - le groupe des utilisateurs privilégiés, noté **g**
@@ -567,33 +569,35 @@ Au niveau de chaque fichier l’ensemble des utilisateurs reconnus par le sys es
 Pour chacune de ces classes d'utilisateurs le système contrôle trois modes différents d'accés aux fichiers:
 
 - accés en lecture noter **r** (_read_ c'est le mode le plus important)
-- accés en ecriture noter **w**(_write_ c'est le deuxieme degre d'importance)
-- accés en execution note **x** (_execute_ c'est le troisieme degre d'importance)
+- accés en ecriture noter **w**(_write_ c'est le deuxieme degré d'importance)
+- accés en execution note **x** (_execute_ c'est le troisieme degré d'importance)
 
-La commande chmod permet de manipuler les droits d'accés pour les fichiers elle fonctionne en deux modes :
+La commande chmod permet de manipuler les droits d'accés pour les fichiers, elle fonctionne en deux modes :
 
-- chmod en mode symbolique :
+- _chmod_ en mode symbolique :
+
   - pour donner le droit w pour un fichier f1 pour l'utilisateur: `chmod u+w f1`
-- chmod en mode absolue :
 
-  - codage numerique du droit d'accés pour faciliter d'avantage la manipulation des droits d'accés aux fichiers, UNIX utilise un code pour representer chaque droit, chaque classe d'utilisation. Ces codes sont exprimes en octale (base 8)
+- _chmod_ en mode absolue :
 
-    |     | r   | w   | x   | total |
-    | --- | --- | --- | --- | ----- |
-    | u   | 400 | 200 | 100 | 700   |
-    | g   | 40  | 20  | 10  | 70    |
-    | o   | 4   | 2   | 1   | 7     |
+  - codage numerique du droit d'accés pour faciliter d'avantage la manipulation des droits d'accés aux fichiers, UNIX utilise un code pour représenter chaque droit, chaque classe d'utilisation. Ces codes sont exprimés en octale (base 8)
 
-_Q1_ : est-ce possible de connaite les droits d'accés d'un fixhier avant sa creation?
+    |     |  r  |  w  |  x  | total |
+    | --- | :-: | :-: | :-: | :---: |
+    | u   | 400 | 200 | 100 |  700  |
+    | g   | 40  | 20  | 10  |  70   |
+    | o   |  4  |  2  |  1  |   7   |
 
-_R1_ : oui, a l'aide de lacommande umask
+_Q1_ : est-ce possible de connaitre les droits d'accés d'un fichier avant sa creation?
 
-_Q2_ : est-ce qu'on peut changer ces droits par defauts
+_R1_ : oui, a l'aide de la commande umask
+
+_Q2_ : est-ce qu'on peut changer ces droits par défauts
 
 _R2_ : oui en utilisant umask..
 
-- **les droits par defaut pour un fichier est 670**
-- **les droits par defaut pour un dossier est 666**
+- **les droits par défaut pour un fichier est 670**
+- **les droits par défaut pour un dossier est 666**
 
 ### Droits d'endossements
 
@@ -605,14 +609,10 @@ Comment peut on modifier grâce a un programme donné, les infos d'un fichier po
 
 #### Solution
 
-Grâce a un autre droit qui est le <u>dorit d'endossement</u> qui s'appele droit **uid**.
-Tout utilisateur qui a le droit d'éxecuter un fichier ayant le bit uid positionné (_uid=1_) est considéreé par le système <u>**pendant l'execution**</u> comme étant le propriétaire de l'éxecutable.
-En d'autres termes, l'utilisateur qui éxecute un fichier avec le bit **uid** positionné hérite provisoirement les droits du propriétaire de l'éxecution.
-Ce droit peut être positionné grâce a la commande `setuid`, de la même façon le bit **gid** peut être positionné grâce a la commande `setgid`.
-**gid** signifie que tout utilisateur qui a le droit d'éxecuter un fichier pour lequel ce bit est positionné hérite pendant l'execution les droits a louer au groupe de ce fichier.
+Grâce a un autre droit qui est le dorit d'endossement qui s'appele droit **uid**. Tout utilisateur qui a le droit d'éxecuter un fichier ayant le bit uid positionné (_uid=1_) est considéré par le système **pendant l'execution** comme étant le propriétaire de l'éxecutable. En d'autres termes, l'utilisateur qui éxecute un fichier avec le bit **uid** positionné hérite provisoirement les droits du propriétaire de l'éxecution. Ce droit peut être positionné grâce a la commande `setuid`, de la même façon le bit **gid** peut être positionné grâce a la commande `setgid`. **gid** signifie que tout utilisateur qui a le droit d'éxecuter un fichier pour lequel ce bit est positionné hérite pendant l'execution les droits a louer au groupe de ce fichier.
 
-**Remarque** : un autre bit est utilisé comme droit d'accés est `stickybit`.
-Pour un fichier éxecutable ce bit signifie lorsqu'il est positionné que le programme doit rester en RAM après sa premier éxecution, on parle d'un programme résident. Ce bit est possitionné a l'aide d'un directive de compilation.
+**Remarque** : un autre bit est utilisé comme droit d'accés est `stickybit`. <br>
+Pour un fichier éxecutable ce bit signifie lorsqu'il est positionné que le programme doit rester en RAM après sa premiere éxecution, on parle d'un programme résident. Ce bit est possitionné à l'aide d'un directive de compilation.
 
 #### Resumé
 
