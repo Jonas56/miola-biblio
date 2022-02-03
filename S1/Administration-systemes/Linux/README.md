@@ -596,8 +596,8 @@ _Q2_ : est-ce qu'on peut changer ces droits par défauts
 
 _R2_ : oui en utilisant umask..
 
-- **les droits par défaut pour un fichier est 670**
-- **les droits par défaut pour un dossier est 666**
+- **les droits par défaut pour un fichier est 666**
+- **les droits par défaut pour un dossier est 777**
 
 ### Droits d'endossements
 
