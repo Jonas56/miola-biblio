@@ -145,4 +145,59 @@ Router(dhcp-config)#default-router 10.0.10.1
 
 ### PPP
 
-### Access lists
+- PAP authentication
+
+```
+Router(config)# username "second router name" password "password"
+Router(config)# interface S0/0
+Router(config-if)# encapsulation ppp
+Router(config-if)# ppp authentication pap
+Router(config-if)# ppp pap sent-username "first router number" password "password"
+```
+
+- CHAP authentication
+
+```
+Router(config)# username "second router name" password "password"
+Router(config)# interface S0/0
+Router(config-if)# encapsulation ppp
+Router(config-if)# ppp authentication chap
+```
+
+### Access lists (ACL)
+
+- Generic ACL commands
+
+```
+Router# show access-lists  // Displays all access lists and their parameters configured on the router
+```
+
+- Standard Access List
+
+```
+Router(config)# access-list 1-99 {permit|deny} address source_mask // Create the access list
+Router(config)# interface S0/0
+Router(config-if)# ip access-group {ACL_number} {in/out} // Applies an IP access list to an interface
+```
+
+- Extended Access List Syntax
+
+```
+Router(config)# access-list 100-199 {permit|deny} {ip|tcp|udp|icmp} source source-mask [lt|gt|eq|neq] [source-port] destination dest-mask [lt|gt|eq|neq] [dest-port] [log]
+Router(config)# interface S0/0
+Router(config-if)# ip access-group {ACL_number} {in/out} // Applies an IP access list to an interface
+```
+
+| Variable             | Definition                                                                                                                                                              |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {100-199}            | Extended IP access lists are represented by a number ranging from 100-199                                                                                               |
+| {permit\|deny}       | Specify the nature of the access list either a permit or deny statement                                                                                                 |
+| {ip\|tcp\|udp\|icmp} | The IP protocol to be filtered can be IP (includes all protocols in the TCP/IP suite) TCP,UDP,ICMP,or others                                                            |
+| source               | The IP address of the source                                                                                                                                            |
+| source-mask          | A wildcard mask, or inverse mask, applied to determine which bits of source address are significant                                                                     |
+| [lt\|gt\|eq\|neq]    | Can contain lt (less than), gt (greater than), eq (equal to), or neq (not equal to). It is used if an extended list filters by a specific port number or range of ports |
+| [source-port]        | If necessary, the source port number of the protocol to be filtered                                                                                                     |
+| destination          | The IP address of the destination                                                                                                                                       |
+| dest-mask            | A wildcard mask, or inverse mask, applied to determine which bits of destination address are significant                                                                |
+| [dest-port]          | If necessary, the destination port number of the protocol to be filtered                                                                                                |
+| [log]                | Turns on logging of access list activity                                                                                                                                |
