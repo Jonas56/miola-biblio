@@ -94,14 +94,16 @@ Router(config)#interface fastethernet 0/0
 Router(config-if)#ip nat outside
 
 Router(config)#interface F0/1
-Router(config-if)#ip nat inside source static host@ 200.200.200.2
+Router(config-if)#ip nat outside
+
+Router(config)#ip nat inside source static host@ out@
 ```
 
 - Dynamic **NAT**
 
 ```
 Router(config)#access-list 1 permit 10.0.0.0 0.0.0.255
-Router(config)#ip nat pool NATPOOL 2.0.0.1 2.0.0.1 netmask 255.255.255.252
+Router(config)#ip nat pool NATPOOL 2.0.0.1 2.0.0.100 netmask 255.255.255.0
 Router(config)#ip nat inside source list 1 pool NATPOOL
 
 Router(config)#interface F0/1
@@ -118,10 +120,10 @@ Router(config)#access-list 1 permit 10.0.0.0 0.0.0.255
 Router(config)#ip nat inside source list 1 interface F0/0 overload
 
 Router(config)#interface F0/1
-Router(config-if)#ip nat outside
+Router(config-if)#ip nat inside
 
 Router(config-if)#interface F0/0
-Router(config-if)#ip nat inside
+Router(config-if)#ip nat outside
 ```
 
 - Verifying
