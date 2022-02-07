@@ -5,8 +5,11 @@
 ```
 Switch(config)# spanning-tree <VLANs> //Enable STP
 Switch(config)# spanning-tree priority <priority> //Set Bridge priority
+Switch(config)# spanning-tree vlan <vlan_id> root primary // Set to primary
+Switch(config)# spanning-tree vlan <vlan_id> root secondary // Set to secondary
 Switch(config-if)# spanning-tree cost <cost> //Set Port cost
 Switch(config-if)# spanning-tree port-priority <priority> //Port priority
+Switch(config-if)# spanning-tree guard root //Root Guard
 Switch(config-if)# spanning-tree guard root //Root Guard
 Switch# show spanning-tree [summary] //Verification
 ```
