@@ -93,13 +93,14 @@ Router(config-subif)#ip address 192.168.5.1 255.255.255.0
 - Static **NAT**
 
 ```
+Router(config)#ip nat inside source static host@ out@
+
 Router(config)#interface fastethernet 0/0
-Router(config-if)#ip nat outside
+Router(config-if)#ip nat inside
 
 Router(config)#interface F0/1
 Router(config-if)#ip nat outside
 
-Router(config)#ip nat inside source static host@ out@
 ```
 
 - Dynamic **NAT**
