@@ -324,6 +324,8 @@ Pour effacer un package, utiliser cette commande:
 
 ```consolehell
 [root@localhost ~]# rpm -evh mysql
+[root@localhost ~]# rpm -evh --nodeps mysql
+## pour forcer la suppression meme si ce package est deja utilise
 ```
 
 ### Installation des logiciels depuis le code source
@@ -498,6 +500,8 @@ L'espace disque est un resource précieux, même si les capacités des disques o
 
 - `df` : Indique l'espace libre d'un disque contenant un système de fichier monteé la taille de l'espace libre est indiqué et affiché en KO (Kilo Octects) -i (list inode information instead of block usage | --inodes) -k(like | --block-size=1K) et -T (print file system type | --print-type)
 - `du` : Affiche le nombre de blocs d'un Ko utilise par un disque, -s (display only a total for each argument | --summarize) -k (like | --block-size=1K)
+
+-- #### [Lien utile](https://www.redhat.com/sysadmin/du-vs-df#:~:text=df%20vs.,du&text=The%20(very%20complicated)%20answer%20can,a%20given%20directory%20or%20subdirectory.)
 
 **REMARQUE**:
 Il y a d'autres commandes qui permet d'afficher l'espace libre/occupé d'un disque, parmis ces commandes il y a la commande `find`, elle permet de rechercher des fichiers selon différents critères dont celui de la taille avec l'option `-size`
