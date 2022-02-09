@@ -617,34 +617,31 @@ Grâce a un autre droit qui est le dorit d'endossement qui s'appele droit **uid*
 
 #### UID:
 
-- **Pour un fichier exécutable .exe : si le bit UID est positionné (sa valeur = 1), il est représenté par s, numériquement égale à 4000. **
-- **Le bit UID : représente droit d’endossement de l’identité du propriétaire. **
+- **Pour un fichier exécutable .exe : si le bit UID est positionné (sa valeur = 1), il est représenté par s, numériquement égale à 4000.**
+- **Le bit UID : représente droit d’endossement de l’identité du propriétaire.**
 - **Pour un fichier exécutable .exe : si le bit UID est positionné pour un user donner.
 Ce dernier hérite pendant l’exécution les droits alloués au propriétaire de ce fichier.
-x devient s (rws) **
+x devient s (rws)**
 
 #### GID:
 
-- **GID : sa valeur égale à 2000, représenté par s **
-- **Le bit GID : représente droit d’endossement de l’identité du groupe. **
+- **GID : sa valeur égale à 2000, représenté par s**
+- **Le bit GID : représente droit d’endossement de l’identité du groupe.**
 - **Pour un fichier exécutable .exe : si le bit GID est positionné pour un user donner.
 Ce dernier hérite pendant l’exécution les droits alloués au groupe de ce fichier.
-A la place de x on met s (rws) **
+A la place de x on met s (rws)**
 - **Pour les répertoires : SGID = 2000 - les fichiers qui se trouvent dans le répertoire
-appartiennent au groupe du répertoire  **
+appartiennent au groupe du répertoire**
 
 #### Sticky Bit:
 
-- **STICKY BIT : sa valeur égale à 1000, représenté par t **
-- **Le programme restera en mémoire (ram) après sa première exécution **
-- **Le bit STICKY BIT : représente droit d’endossement de l’identité du groupe. **
-- **Pour un fichier exécutable .exe : si le bit STICKY BIT est positionné, Le programme restera en mémoire (RAM) après sa première exécution, et il restera en mémoire jusque ce qu’on atteint le pc. **
+- **STICKY BIT : sa valeur égale à 1000, représenté par t**
+- **Le programme restera en mémoire (ram) après sa première exécution**
+- **Le bit STICKY BIT : représente droit d’endossement de l’identité du groupe.**
+- **Pour un fichier exécutable .exe : si le bit STICKY BIT est positionné, Le programme restera en mémoire (RAM) après sa première exécution, et il restera en mémoire jusque ce qu’on atteint le pc.**
 - **Les répertoires - si le sticky bit est positionné sur un répertoire, seul le propriétaire
-pourra supprimer ses fichiers **
+pourra supprimer ses fichiers**
 
-
-**Remarque** : un autre bit est utilisé comme droit d'accés est `stickybit`. <br>
-Pour un fichier éxecutable ce bit signifie lorsqu'il est positionné que le programme doit rester en RAM après sa premiere éxecution, on parle d'un programme résident. Ce bit est possitionné à l'aide d'un directive de compilation.
 
 #### Resumé
 
