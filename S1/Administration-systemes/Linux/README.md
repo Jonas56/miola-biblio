@@ -483,6 +483,30 @@ Le terme _INODE_ designe le descripteur d'un fichier. Il contient les attributs 
 
 Pour un disque donné le numero d'inode est l'unique moyen d'indentifier un fichier sans ambiguïte. La commande `ls -i` permet de connaitre le numéro d'ionde d'un fichier
 
+Exemple:
+
+```console
+[root@localhost Desktop~]# ls -il
+```
+
+Resultat
+
+```console
+27103032 -rwxrwxrwx. 1 root root  31 Oct 10 16:06 README.md
+25166685 -rwxrwxrwx. 1 root root  25 Oct 10 16:04 main.sh
+27103031 -rwxrwxrwx. 1 root root  62 Oct 10 15:45 deuxfois.sh
+17706471 drwxr-xr-x. 2 root root  47 Nov  8 10:10 etc-backup
+```
+
+- **27103032** - numero d'INODE
+- **-rwxrwxrwx** - type de fichier et ses caractéristiques de protection
+- **1** - nombre de lien
+- **root** - le nom du propriétaire
+- **root** - le nom du groupe
+- **31** : la taille du fichier (en octets)
+- **Oct 10 16:06** - La date de la dernière modification
+- **README.md** - Le nom de fichier
+
 Le système de fichier de base c'est **ext2** qui dérive du système de fichier FFS (File Fast System | Créer par L'université de Berkeley)
 
 ### Les differents types de systèmes de fichiers
