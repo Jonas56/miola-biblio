@@ -47,7 +47,7 @@ Une transmission de données met en œuvre des calculateurs d’extrémité et d
 
 - Chaque caractère est codé avec un code de longueur n
 
-<p align=center style="background: white">
+<p align=center>
     <img src="https://web.maths.unsw.edu.au/~lafaye/CCM/transmission/images/parallele.gif">
     <img src="https://img-19.ccm2.net/-cBjiwojICYhzhmHJc6-H5UfTPE=/3a95d03f2fcc4633938ff9f2eebe18c8/ccm-encyclopedia/transmission-images-serie.gif">
 </p>
@@ -187,7 +187,7 @@ avec Φ(t) = Φ0 + a(t) et a(t) ∈ {Πk/n} pour n symboles ... ou a(t) ∈ [-Π
 
 ### Rapidité de modulation
 
-- R = nbre de signaux élémentaires/sec
+- R = **nbre de signaux élémentaires/sec** || **La valence** || **nombre d'états physique** || **nombre de symbole**
 
 - R = 1/Tm bauds (Tm: durée pendant laquelle le signal ne varie pas -> signal élémentaire)
 
@@ -208,7 +208,7 @@ Exemple : Modulation d’amplitude et de phase **APSK** (n=8)
 
 C'est la technique ou l'opération de grouper les informations de plusieurs sources afin de les transmettre sur le meme support physique sans qu'elles se mélangent mutuellement. À la réception, une opération inverse, un démultiplexage doit nous permettre de reproduire chacune des sources et de l'acheminer à sa destination.
 
-<p align=center style="background: white;">
+<p align=center>
     <img src="https://img-19.ccm2.net/Nt6IHFJJV1_3lZpszRHxPDUwC-k=/bbc4f32d76394e6c9fa962bbba9080f1/ccm-encyclopedia/transmission-images-mux.gif" width="400">
 </p>
 
@@ -264,6 +264,7 @@ Les principaux relations :
 - fe >= 2 \* fmax du signal
 - Debit binare : D = fe x n = n/Te
 - Nombre de niveaux N = 2^n
+- E(kTe) = xe(kTe) - xq(kTe) => Erreur de quantification = signal echantilloner - signal quantifier
 
 <p align=center>
     <img src="https://electronicscoach.com/wp-content/uploads/2018/10/Recontruction-of-analog-signal-at-PCM-receiver.jpg" width="400">
