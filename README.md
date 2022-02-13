@@ -110,9 +110,7 @@
   - Partie 1: Deep Learning
   - Partie 2: Big Data
 - [M3.5 : Projet fédérateur](#)
-
   - Objectif: Ce module, illustré sous forme de projet, vise à donner l'opportunité aux étudiants d'appliquer et de mettre en pratique les différents enseignements appris tout au long des trois semestres. Les étudiants vont travailler et s'organiser en groupe. On essaie à travers ce module de préparer les étudiants pour leur stage de fin d'études de telle sorte qu'ils soient en mesure d'intégrer n'importe quelle équipe de développement d'applications en général et d'applications loT en particulier. Ils doivent utiliser un maximum de technologies, d'outils et de bonnes pratiques afin de livrer des artefacts de qualité. Ce projet donnera lieu à une soutenance devant un jury.
-
 - [M3.6 : Initiation à la Recherche et Innovation](#)
   - Partie 1: Méthodologie de la recherche et outils
   - Partie 2: Séminaires et Innovation
