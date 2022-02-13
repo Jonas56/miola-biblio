@@ -6,10 +6,6 @@ Modéliser les phrases suivantes par un diagramme de classes, notamment détermi
 
 1. Un message électronique comporte un titre ainsi que l'adresse du destinataire. Il est constitué d'un entête et d'un corps du message. Il peut contenir éventuellement une ou plusieurs pièces jointes.
 
-<details><summary>Réponse</summary>
-</details>
-<br>
-
 2. Une maison est louée par 0 ou plusieurs locataires à des dates différentes.
 
 3. L'accès à certaines unités de valeurs (UV) est conditionné par des pré-requis. Les UV elles-mêmes pré-requises constituent un pré-requis pour la préparation d'une ou plusieurs autres UV
