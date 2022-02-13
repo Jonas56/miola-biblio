@@ -12,25 +12,13 @@ Modéliser les phrases suivantes par un diagramme de classes, notamment détermi
 
 2. Une maison est louée par 0 ou plusieurs locataires à des dates différentes.
 
-<details><summary>Réponse</summary>
-</details>
-<br>
-
 3. L'accès à certaines unités de valeurs (UV) est conditionné par des pré-requis. Les UV elles-mêmes pré-requises constituent un pré-requis pour la préparation d'une ou plusieurs autres UV
-
-<details><summary>Réponse</summary>
-</details>
-<br>
 
 ## Exercice 2
 
 Donner le diagramme de cas d'utilisation correspondant à la description suivante.
 
 Dans un établissement scolaire, on désire gérer la réservation des salles de cours ainsi que du matériel pédagogique (ordinateur portable ou/et Vidéo projecteur). Seuls les enseignants sont habilités à effectuer des réservations (sous réserve de disponibilité de la salle ou du matériel). Le planning des salles peut quant à lui être consulté par tout le monde (enseignants et étudiants). Par contre, le récapitulatif horaire par enseignant ne peut être consulté que par les enseignants. Enfin, il existe pour chaque formation un enseignant responsable qui seul peut éditer le récapitulatif horaire pour l'ensemble de la formation.
-
-<details><summary>Réponse</summary>
-</details>
-<br>
 
 ## Exercice 3
 
@@ -40,29 +28,13 @@ On s'interesse au traitement d'une commande. Le début c'est l'état en cours. U
 
 **Note importante** (A ne pas utiliser le diagramme composite, les points de jonction et points de choix)
 
-<details><summary>Réponse</summary>
-</details>
-<br>
-
 ## Exercice 4
 
 1. Citer trois points de differences entre l'agrégation et la composition
 
-<details><summary>Réponse</summary>
-</details>
-<br>
-
 2. Citer trois points de differences entre une action et une activité
 
-<details><summary>Réponse</summary>
-</details>
-<br>
-
 3. Quel est l'objectif du diagramme de séquence objet et à quelle phase de cycle de vie du logiciel il est utile.
-
-<details><summary>Réponse</summary>
-</details>
-<br>
 
 4. A quel type de diagramme appartient cette figure?
 
@@ -71,7 +43,3 @@ On s'interesse au traitement d'une commande. Le début c'est l'état en cours. U
 <p>
 
 5. Ces deux représentations sont-elles équivalentes? Si oui/non justifiez.
-
-<details><summary>Réponse</summary>
-</details>
-<br>
