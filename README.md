@@ -4,6 +4,14 @@
     <img src="https://incontrol.co.za/wp-content/uploads/2020/02/home-automation.jpg" alt="IoT" width="700" height=500>
 </p>
 
+## Table des matières
+
+- [Présentation](#présentation)
+- [Objectifs](#objectifs)
+- [Compétences visés](#compétences-visés)
+- [Débouchés de la formation](#débouchés-de-la-formation)
+- [Modules enseignés](#modules-enseignés)
+
 ## Présentation
 
 - La formation en master « Internet des Objets : Logiciel et Analytique » (MIOLA) offre l’opportunité aux apprenants de découvrir et de se perfectionner dans les technologies émergentes notamment : l’Internet des Objets, l’Ingénierie Web et Mobile, DevOps, UX Design, le Cloud et Virtualisation. A travers cette formation, les apprenants vont pouvoir se doter de connaissances à la fois théoriques et pratiques dans les domaines liés à l’Internet des Objets en particulier, par rapport aux deux aspects logiciel et matériel. Les diplômés de ce Master MIOLA, auront la possibilité d’intégrer le marché du travail ou de continuer leurs études doctorales.
@@ -67,7 +75,24 @@
 
 ### Semestre 2
 
-[comment]: TODO:
+- [M2.1 : Technologie XML et Base de Données Less Schema](#)
+  - Patie 1: Technologie XML
+  - Partie 2: Base de Données Less Schema
+- [M2.2: Knowledge Data Discovery](#)
+  - Partie 1: Intelligence Artificielle
+  - Partie 2: Data Mining
+- [M2.3 : Processus de Developpement](#)
+  - Partie 1: Méthodes Agiles
+  - Partie 2: UX Design
+- [M2.4 : Développement des Applications IoT](#)
+  - Partie 1: Développement des Applications IoT
+  - Partie 2: DevOps
+- [M2.5 : Internet des objets Mobiles](#)
+  - Partie 1: Technologies IoT et Services Mobiles
+  - Partie 2: Developpement Mobile
+- [M2.6 : Culture Entreprenariale](#)
+  - Partie 1: Culture Entreprenariale
+  - Partie 2: **Application** - Projet de creation d'entreprise
 
 ### Semestre 3
 
@@ -75,9 +100,9 @@
 
 ### Semestre 4
 
-- PFE
+Le dernier semestre est réservé à un stage en milieu professionnel de quatre mois au cours du 4ème semestre. Toutefois, les sujets du stage peuvent être attribués à partir du 3ème Semestre. Le stage peut se faire dans une entreprise privée, publique ou semi-publique ou dans une institution qui évolue dans le domaine de formation de la filière. Le stage est suivi par un responsable de stage dans la structure d'accueil et par un enseignant de l'ENSIAS. Il donne lieu à la rédaction d'un rapport et d'une soutenance devant un jury composé en plus des encadrants interne et ex-terne de professeurs de l'établissement.
 
-  ***
+---
 
 - **Master Spécialisé** : Internet of Things (IoT) : Software and Analytics
 - [Université Mohammed V - Rabat](http://www.um5.ac.ma/)
@@ -91,4 +116,4 @@
 - [Page web](https://about.me/knafil)
 - [Blog](http://knafil.blogspot.com/)
 
-Pour plus d'infos consulter le [site web](http://ensias.um5.ac.ma/) officiel
+Pour plus d'informations consulter le [site web](http://ensias.um5.ac.ma/) officiel
