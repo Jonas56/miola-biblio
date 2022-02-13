@@ -71,7 +71,7 @@
 - [M1.5 : Administration des systèmes](S1/Administration-systemes)
   - Partie 1: Administration des systèmes UNIX
   - Partie 2: Administration des systèmes WINDOWS
-- [M1.6 : Langues et communication](#)
+- [M1.6 : Langues et communication](S1/English)
 
 ### Semestre 2
 
@@ -92,15 +92,34 @@
   - Partie 2: Developpement Mobile
 - [M2.6 : Culture Entreprenariale](#)
   - Partie 1: Culture Entreprenariale
-  - Partie 2: **Application** - Projet de creation d'entreprise
+  - Partie 2: **Application** - Projet de création d'entreprise
 
 ### Semestre 3
 
-[comment]: TODO:
+- [M3.1 : Ingenierie Web](#)
+  - Patie 1: Les Web Services
+  - Partie 2: Web mining
+- [M3.2: Qualité des Applications IoT](#)
+  - Partie 1: Génie Logiciel Empirique
+  - Partie 2: Qualité Logiciel
+- [M3.3 : Virtualisation et Sécurité IoT ](#)
+  - Partie 1: Internet Nouvelles Générations
+  - Partie 2: Virtualisation et Services Cloud
+  - Partie 3: Sécurité des Systèmes et des Objets
+- [M3.4 : Deep Learning et Big Data](#)
+  - Partie 1: Deep Learning
+  - Partie 2: Big Data
+- [M3.5 : Projet fédérateur](#)
+
+  - Objectif: Ce module, illustré sous forme de projet, vise à donner l'opportunité aux étudiants d'appliquer et de mettre en pratique les différents enseignements appris tout au long des trois semestres. Les étudiants vont travailler et s'organiser en groupe. On essaie à travers ce module de préparer les étudiants pour leur stage de fin d'études de telle sorte qu'ils soient en mesure d'intégrer n'importe quelle équipe de développement d'applications en général et d'applications loT en particulier. Ils doivent utiliser un maximum de technologies, d'outils et de bonnes pratiques afin de livrer des artefacts de qualité. Ce projet donnera lieu à une soutenance devant un jury.
+
+- [M3.6 : Initiation à la Recherche et Innovation](#)
+  - Partie 1: Méthodologie de la recherche et outils
+  - Partie 2: Séminaires et Innovation
 
 ### Semestre 4
 
-Le dernier semestre est réservé à un stage en milieu professionnel de quatre mois au cours du 4ème semestre. Toutefois, les sujets du stage peuvent être attribués à partir du 3ème Semestre. Le stage peut se faire dans une entreprise privée, publique ou semi-publique ou dans une institution qui évolue dans le domaine de formation de la filière. Le stage est suivi par un responsable de stage dans la structure d'accueil et par un enseignant de l'ENSIAS. Il donne lieu à la rédaction d'un rapport et d'une soutenance devant un jury composé en plus des encadrants interne et ex-terne de professeurs de l'établissement.
+- Le dernier semestre est réservé à un stage en milieu professionnel de quatre mois au cours du 4ème semestre. Toutefois, les sujets du stage peuvent être attribués à partir du 3ème Semestre. Le stage peut se faire dans une entreprise privée, publique ou semi-publique ou dans une institution qui évolue dans le domaine de formation de la filière. Le stage est suivi par un responsable de stage dans la structure d'accueil et par un enseignant de l'ENSIAS. Il donne lieu à la rédaction d'un rapport et d'une soutenance devant un jury composé en plus des encadrants interne et ex-terne de professeurs de l'établissement.
 
 ---
 
