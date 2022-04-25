@@ -5,7 +5,7 @@
 - [Introduction](#introduction)
 - [Data Preprocessing](#data-preprocessing)
 - [Classification](#classification)
-- [Prédiction](#)
+- [Prédiction](#prédiction)
 - [Clustering](#)
 - [Association](#)
 
@@ -16,7 +16,7 @@
 ## Introduction
 
 <p align=center>
-    <img src"https://imageio.forbes.com/specials-images/dam/imageserve/1092999918/0x0.jpg" alt="image">
+  <img src="https://imageio.forbes.com/specials-images/dam/imageserve/1092999918/0x0.jpg" width=900>
 </p>
 
 Le terme KDD est l'abréviation de Knowledge Data Discovery. Il désigne la procédure générale de découverte de connaissances dans les données et met l'accent sur les applications de haut niveau de techniques spécifiques d'exploration de données. Il s'agit d'un domaine d'intérêt pour les chercheurs dans divers domaines, notamment l'intelligence artificielle, l'apprentissage automatique, la reconnaissance des formes, les bases de données, les statistiques, l'acquisition de connaissances pour les systèmes experts et la visualisation des données.
@@ -26,7 +26,7 @@ Le KDD est considéré comme une analyse et une modélisation programmées et ex
 ### Le process KDD
 
 <p align=center>
-    <img src"https://www.researchgate.net/profile/Ily-Ahmad-Sabri/publication/334784343/figure/fig1/AS:786618394886146@1564555848887/Knowledge-Discovery-Database-KDD-Process.png" alt="KDD">
+  <img src="https://www.researchgate.net/profile/Ily-Ahmad-Sabri/publication/334784343/figure/fig1/AS:786618394886146@1564555848887/Knowledge-Discovery-Database-KDD-Process.png" width=900>
 </p>
 
 Le processus KDD est itératif et interactif, et comprend neuf étapes. Le processus est itératif à chaque étape, ce qui implique qu'il peut être nécessaire de revenir sur les actions précédentes. Le processus comporte de nombreux aspects imaginatifs dans le sens où l'on ne peut pas présenter une formule ou faire une catégorisation scientifique complète pour les décisions correctes pour chaque étape et type d'application. Il est donc nécessaire de comprendre le processus et les différentes exigences et possibilités à chaque étape.
@@ -47,7 +47,7 @@ Le processus commence par la détermination des objectifs du KDD et se termine p
 ## Data Preprocessing
 
 <p align=center>
-    <img src"https://assets-global.website-files.com/5d7b77b063a9066d83e1209c/61f7bfab94334458028eec7d_data-preprocessing-cover.png" alt="data-preprocessing" >
+  <img src="https://assets-global.website-files.com/5d7b77b063a9066d83e1209c/6137488ee132f03deba81f9f_data-preprocessing.png" height=600>
 </p>
 
 Le prétraitement des données (Data Preprocessing) comprend les étapes que nous devons suivre pour transformer ou coder les données afin qu'elles puissent être facilement analysées par la machine.
@@ -108,8 +108,8 @@ Ce processus aide à réduire le volume des données, ce qui facilite l'analyse 
 
 ## Classification
 
-<p>
-  <img src"https://miro.medium.com/max/1400/1*PM4dqcAe6N7kWRpXKwgWag.png" alt="classification">
+<p align=center>
+  <img src="https://miro.medium.com/max/1400/1*PM4dqcAe6N7kWRpXKwgWag.png">
 </p>
 
 La classification est une forme d'analyse des données qui permet d'extraire des modèles décrivant des classes de données importantes. Ces modèles, appelés classificateurs, prédisent des étiquettes de classe catégoriques (discrètes, non ordonnées). Par exemple, nous pouvons construire un modèle de classification pour classer les demandes de crédit bancaire comme sûres ou risquées. Une telle analyse peut nous permettre de mieux comprendre les données dans leur ensemble. De nombreuses méthodes de classification ont été proposées par des chercheurs en machine learning, en pattern recognition et en statistiques. La plupart des algorithmes sont résidents en mémoire et supposent généralement une petite taille de données. La recherche récente en fouille de données s'est appuyée sur ces travaux pour développer des techniques de classification et de prédiction évolutives capables de traiter de grandes quantités de données résidant sur disque. La classification a de nombreuses applications, notamment la détection des fraudes, le marketing ciblé, la prédiction des performances, la fabrication et le diagnostic médical.
@@ -162,10 +162,110 @@ D'autres techniques pour accélérer le temps de classification comprennent l'ut
 
 L'induction d'arbres de décision est l'apprentissage d'arbres de décision à partir de tuples d'apprentissage étiquetés par classe. Un arbre de décision est une structure arborescente, dans laquelle chaque noeud interne (noeud non-feuille) représente un test sur un attribut, chaque branche représente un résultat du test, et chaque noeud feuille (ou noeud terminal) contient une étiquette de classe. Le noeud le plus haut dans un arbre est le noeud racine.
 
-<p>
+<p align=center>
   <img src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/08/what-is-a-decision-tree-5.png">
 </p>
 
 - _"Comment les arbres de décision sont-ils utilisés pour la classification?"_ Étant donné un tuple, **X**, pour lequel l'étiquette de classe associée est inconnue, les valeurs d'attribut du tuple sont testées par rapport à l'arbre de décision. Un chemin est tracé de la racine à un nœud feuille, qui contient la prédiction de classe pour ce tuple. Les arbres de décision peuvent facilement être convertis en règles de classification.
 
 - _"Pourquoi les classificateurs à arbre de décision sont-ils si populaires ?"_ La construction des classificateurs à arbre de décision ne nécessite aucune connaissance du domaine ni aucun paramétrage, et convient donc à la découverte exploratoire de connaissances. Les arbres de décision peuvent traiter des données multidimensionnelles. Leur représentation des connaissances acquises sous forme d'arbre est intuitive et généralement facile à assimiler par les humains. Les étapes d'apprentissage et de classification de l'induction par arbre de décision sont simples et rapides. En général, les classificateurs à base d'arbres de décision ont une bonne précision. Toutefois, la réussite de leur utilisation peut dépendre des données dont ils disposent. Les algorithmes d'induction d'arbres de décision ont été utilisés pour la classification dans de nombreux domaines d'application tels que la médecine, la fabrication et la production, l'analyse financière, l'astronomie et la biologie moléculaire. Les arbres de décision sont à la base de plusieurs systèmes commerciaux d'induction de règles.
+
+### Comment fonctionnent les arbres de décision ?
+
+La décision d'effectuer des divisions stratégiques affecte fortement la précision d'un arbre. Les critères de décision sont différents pour les arbres de classification et de régression.
+
+Les arbres de décision utilisent plusieurs algorithmes pour décider de diviser un nœud en deux ou plusieurs sous-nœuds. La création de sous-nœuds augmente l'homogénéité des sous-nœuds résultants. En d'autres termes, on peut dire que la pureté du nœud augmente par rapport à la variable cible. L'arbre de décision divise les nœuds sur toutes les variables disponibles et sélectionne ensuite la division qui donne lieu aux sous-nœuds les plus homogènes.
+
+Le choix de l'algorithme est également basé sur le type de variables cibles. Examinons quelques algorithmes utilisés dans les arbres de décision :
+
+- **ID3** (extension of D3)
+- **C4.5** (successor of ID3)
+- **CART** (Classification And Regression Tree)
+- **CHAID** (Chi-square automatic interaction detection Performs multi-level splits when computing classification trees)
+- **MARS** (multivariate adaptive regression splines)
+
+### L'algorithme ID3
+
+L'algorithme ID3 est développé par [Quinlan en 1986](https://link.springer.com/content/pdf/10.1007/BF00116251.pdf). Il construit des arbres de décision à l'aide d'une approche de [recherche gloutonne](https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/) descendante (top-down) dans l'espace des branches possibles, sans retour en arrière. Un [algorithme glouton](https://en.wikipedia.org/wiki/Greedy_algorithm), comme son nom l'indique, fait toujours le choix qui semble être le meilleur à ce moment précis.
+
+Etapes de l'algorithme
+
+- Il commence avec l'ensemble original S comme nœud racine.
+- À chaque itération de l'algorithme, il parcourt l'attribut très peu utilisé de l'ensemble S et calcule l'**entropie** (H) et le **gain d'information** (IG) de cet attribut.
+- Il sélectionne ensuite l'attribut qui a la plus petite entropie ou le plus grand gain d'information.
+- L'ensemble S est alors divisé par l'attribut sélectionné pour produire un sous-ensemble de données.
+- L'algorithme continue à se répéter sur chaque sous-ensemble, en ne considérant que les attributs qui n'ont jamais été sélectionnés auparavant.
+
+### Mesures de sélection des attributs
+
+Si l'ensemble de données est composé de _N_ attributs, décider quel attribut placer à la racine ou à différents niveaux de l'arbre comme nœuds internes est une étape compliquée. La sélection aléatoire de n'importe quel nœud pour être la racine ne peut pas résoudre le problème. Si nous suivons une approche aléatoire, cela peut nous donner de mauvais résultats avec une faible précision.
+
+Pour résoudre ce problème de sélection d'attributs, les chercheurs ont travaillé à élaboré des solutions. Ils ont suggéré d'utiliser certains critères comme:
+
+- [Entropy](#entropy)
+- [Information gain](#)
+- [Gini index](https://www.upgrad.com/blog/gini-index-for-decision-trees/#:~:text=The%20Gini%20Index%20or%20Gini,feature%20that%20was%20classified%20incorrectly.)
+- [Gain Ratio](https://en.wikipedia.org/wiki/Information_gain_ratio)
+- [Reduction in Variance](https://www.analyticsvidhya.com/blog/2020/06/4-ways-split-decision-tree/#:~:text=Reduction%20in%20Variance%20is%20a,the%20homogeneity%20of%20a%20node.)
+- [Chi-Square](https://www.analyticsvidhya.com/blog/2021/03/how-to-select-best-split-in-decision-trees-using-chi-square/)
+
+Ces critères permettent de calculer des valeurs pour chaque attribut. Les valeurs sont triées, et les attributs sont placés dans l'arbre en suivant l'ordre, c'est-à-dire que l'attribut ayant une valeur élevée (en cas de gain d'information) est placé à la racine.
+
+### Entropy
+
+L'entropie est une mesure du désordre de l'information traitée. Plus l'entropie est élevée, plus il est difficile de tirer des conclusions de ces informations.
+
+<p align=center>
+  <img src="https://miro.medium.com/max/565/1*M15RZMSk8nGEyOnD8haF-A.png">
+</p>
+D'après la figure ci-dessus, il est évident que l'entropie H(X) est nulle lorsque la probabilité est de 0 ou 1. L'entropie est maximale lorsque la probabilité est de 0,5 car elle projette un caractère parfaitement aléatoire dans les données et il n'y a aucune chance de déterminer parfaitement le résultat.
+
+> ID3 suit la règle suivante : une branche dont l'entropie est égale à zéro est un nœud feuille et une branche dont l'entropie est supérieure à zéro nécessite un fractionnement supplémentaire.
+
+[More...](https://towardsdatascience.com/entropy-how-decision-trees-make-decisions-2946b9c18c8)
+
+### Information Gain
+
+Le gain d'information ou IG est une propriété statistique qui mesure la façon dont un attribut donné sépare les exemples d'apprentissage en fonction de leur classification cible. La construction d'un arbre de décision consiste à trouver un attribut qui donne le gain d'information le plus élevé et l'entropie la plus faible.
+
+<p align=center>
+  <img src="https://miro.medium.com/max/954/0*EfweHd4gB5j6tbsS.png">
+</p>
+
+Le gain d'information est une diminution de l'entropie. Il calcule la différence entre l'entropie avant la division et l'entropie moyenne après la division de l'ensemble de données sur la base de valeurs d'attributs données. L'algorithme d'arbre de décision ID3 (Iterative Dichotomiser) utilise le gain d'information.
+
+[More...](https://towardsdatascience.com/entropy-and-information-gain-in-decision-trees-c7db67a3a293)
+
+### Comment éviter l'overfitting dans les arbres de décision ?
+
+<p align=center>
+  <img src="https://miro.medium.com/max/600/0*oLeswCbrUfNEUwAz.gif">
+</p>
+
+Le sur-apprentissage désigne la situation dans laquelle le modèle s'adapte complètement aux données d'apprentissage mais ne parvient pas à généraliser les données d'essai non vues. La condition de sur-apprentissage survient lorsque le modèle mémorise le bruit des données d'apprentissage et ne parvient pas à capturer les modèles importants. Un arbre de décision parfaitement ajusté donne de bons résultats pour les données d'apprentissage, mais des résultats médiocres pour les données de test non observées.
+
+Si l'on laisse l'arbre de décision s'entraîner au maximum de ses capacités, le modèle s'adaptera trop aux données d'entraînement. Il existe plusieurs techniques pour éviter que le modèle d'arbre de décision ne s'adapte trop.
+
+### Élagage (Pruning)
+
+<p align=center>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Before_after_pruning.png
+">
+</p>
+
+L'élagage consiste à couper les branches de l'arbre, c'est-à-dire à supprimer les nœuds de décision à partir du nœud feuille de manière à ne pas nuire à la précision globale. Pour ce faire, l'ensemble de données d'apprentissage est séparé en deux ensembles : l'ensemble de données d'apprentissage, D, et l'ensemble de données de validation, V. Préparez l'arbre de décision en utilisant l'ensemble de données d'apprentissage séparé, D. Puis continuez à tailler l'arbre en conséquence pour optimiser la précision de l'ensemble de données de validation, V.
+
+### Arbres de décision: Avantages
+
+- Compréhensible pour tout utilisateur (lisibilité du résultat –règles -arbre)
+- Justification de la classification d’une instance (racine ->feuille)
+- Tout type de données Attributs apparaissent dans l’ordre de pertinence ->tâche de pré-traitement (sélection d’attributs)
+- Classification rapide (parcours d’un chemin dans un arbre)
+- Outils disponibles dans la plupart des environnements de Data Mining
+
+### Arbres de décision: Inconvénients
+
+- Sensibles au nombre de classes: performances se dégradent
+- Evolutivité dans le temps: si les données évoluent dans le temps, il est nécessaire de relance la phase d’apprentissage
+
+## Prédiction
