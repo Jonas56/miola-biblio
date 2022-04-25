@@ -239,7 +239,7 @@ Le gain d'information est une diminution de l'entropie. Il calcule la différenc
 ### Comment éviter l'overfitting dans les arbres de décision ?
 
 <p align=center>
-  <img src="https://miro.medium.com/max/600/0*oLeswCbrUfNEUwAz.gif">
+  <img src="https://miro.medium.com/max/600/0*oLeswCbrUfNEUwAz.gif" width=900>
 </p>
 
 Le sur-apprentissage désigne la situation dans laquelle le modèle s'adapte complètement aux données d'apprentissage mais ne parvient pas à généraliser les données d'essai non vues. La condition de sur-apprentissage survient lorsque le modèle mémorise le bruit des données d'apprentissage et ne parvient pas à capturer les modèles importants. Un arbre de décision parfaitement ajusté donne de bons résultats pour les données d'apprentissage, mais des résultats médiocres pour les données de test non observées.
@@ -249,8 +249,7 @@ Si l'on laisse l'arbre de décision s'entraîner au maximum de ses capacités, l
 ### Élagage (Pruning)
 
 <p align=center>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Before_after_pruning.png
-">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Before_after_pruning.png">
 </p>
 
 L'élagage consiste à couper les branches de l'arbre, c'est-à-dire à supprimer les nœuds de décision à partir du nœud feuille de manière à ne pas nuire à la précision globale. Pour ce faire, l'ensemble de données d'apprentissage est séparé en deux ensembles : l'ensemble de données d'apprentissage, D, et l'ensemble de données de validation, V. Préparez l'arbre de décision en utilisant l'ensemble de données d'apprentissage séparé, D. Puis continuez à tailler l'arbre en conséquence pour optimiser la précision de l'ensemble de données de validation, V.
