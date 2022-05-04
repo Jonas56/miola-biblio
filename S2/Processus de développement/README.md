@@ -85,8 +85,40 @@ Si la méthode Scrum est structurée, elle n'est pas entièrement rigide. Son ex
 
 ### Scrum artifacts
 
-Les artéfacts sont quelque chose que nous fabriquons, comme un outil pour résoudre un problème. Dans Scrum, ces trois artefacts sont un backlog de produit, un backlog de sprint et un incrément avec votre définition de "fait". Ce sont les trois constantes d'une équipe Scrum que nous continuons à revisiter et à investir au fil du temps.
+<p align=center>
+    <img src="https://hubspot1.kissflow.com/hs-fs/hubfs/Scrum-Artifacts-Facts.jpg?width=800&name=Scrum-Artifacts-Facts.jpg">
+</p>
+
+Les artéfacts sont quelque chose que nous fabriquons, comme un outil pour résoudre un problème. Dans Scrum, ces trois artefacts sont le Product Backlog, le Sprint Backlog et l'incrément **avec votre définition de _"Done"_**. Ce sont les trois constantes d'une équipe Scrum que nous continuons à revisiter et à investir au fil du temps.
 
 - **Product Backlog** est la liste principale du travail qui doit être fait, maintenue par le propriétaire du produit ou le gestionnaire du produit. Il s'agit d'une liste dynamique de fonctionnalités, d'exigences, d'améliorations et de corrections qui sert de base au backlog du sprint. Il s'agit essentiellement de la liste des tâches à accomplir par l'équipe. Le product backlog est constamment revu, reclassé et mis à jour par le Product Owner car, à mesure que nous en apprenons davantage ou que le marché évolue, des éléments peuvent ne plus être pertinents ou des problèmes peuvent être résolus par d'autres moyens.
+- **Sprint Backlog** : est la liste des éléments, `user stories` ou corrections de bogues, sélectionnés par l'équipe de développement pour être mis en œuvre dans le cycle de sprint en cours. Avant chaque sprint, lors de la réunion du sprint planning, l'équipe choisit dans le Product Backlog les éléments sur lesquels elle va travailler durant le sprint. Un Sprint Backlog peut être flexible et peut évoluer au cours d'un sprint. Cependant, l'objectif fondamental du sprint - ce que l'équipe veut atteindre à partir du sprint en cours - ne peut pas être compromis.
+- **Incrément** (ou Sprint Goal) est le produit final utilisable d'un sprint. Cela dépend simplement de la façon dont votre équipe définit le terme "Done" et de la façon dont vous définissez vos objectifs de sprint. Par exemple, certaines équipes choisissent de publier quelque chose pour leurs clients à la fin de chaque sprint. Leur définition de "Done" serait donc "livré". Cependant, cela peut ne pas être réaliste pour d'autres types d'équipes. Supposons que vous travaillez sur un produit qui ne peut être livré à vos clients que tous les trimestres. Vous pouvez toujours choisir de travailler en sprints de deux semaines, mais votre définition de "Done" peut être de terminer une partie d'une version plus grande que vous prévoyez d'expédier ensemble. Mais bien sûr, plus le délai de sortie d'un logiciel est long, plus le risque est grand que le logiciel ne soit pas conforme.
 
-[More... ](https://www.atlassian.com/agile/scrum)
+### Scrum ceremonies ou activités
+
+<p align=center>
+    <img src="https://media1.thehungryjpeg.com/thumbs2/ori_3913307_ds4qiztcr0bdelrfq8k1lgvah025qzs6rgse2tbx_team-group-discuss-and-communicate-together-vector.jpg">
+</p>
+
+Certains des composants les plus connus du framework Scrum sont l'ensemble des événements séquentiels, des cérémonies ou des réunions que les équipes Scrum organisent régulièrement. C'est au niveau des cérémonies que l'on observe le plus de variations entre les équipes. Par exemple, certaines équipes trouvent que faire toutes ces cérémonies est encombrant et répétitif, tandis que d'autres les utilisent comme un contrôle nécessaire. Vous pourrez alors effectuer une rétroaction rapide et voir où vous devrez éventuellement faire des ajustements.
+
+Vous trouverez ci-dessous une liste de toutes les cérémonies clés auxquelles une équipe Scrum peut participer :
+
+- **Product backlog grooming** : cet événement est la responsabilité du Product Owner. Les principales tâches du Product Owner sont de conduire le produit vers sa vision et d'avoir un aperçu constant du marché et du client. Par conséquent, il/elle maintient cette liste en utilisant les commentaires des utilisateurs et de l'équipe de développement pour aider à établir des priorités et à garder la liste propre et prête à être travaillée à tout moment.
+- **Sprint planning** : Le travail à effectuer (scope) pendant le sprint en cours est planifié pendant cette réunion par l'ensemble de l'équipe de développement. Cette réunion est dirigée par le Scrum Master et c'est là que l'équipe décide de l'objectif du sprint. Des items spécifiques sont ensuite ajoutées au sprint à partir du product backlog. Ces items s'alignent toujours sur l'objectif et sont également approuvées par l'équipe de Scrum pour être réalisables pendant le sprint. À la fin de la réunion de planification, chaque membre de Scrum doit être clair sur ce qui peut être livré dans le sprint et comment l'incrément peut être livré.
+- **Sprint** : Un sprint est la période de temps pendant laquelle l'équipe Scrum travaille ensemble pour terminer un incrément. Deux semaines sont une durée assez typique pour un sprint, bien que certaines équipes trouvent qu'une semaine est plus facile à mettre en œuvre ou qu'un mois est plus facile pour livrer un incrément de valeur. [Dave West](https://www.scrum.org/team/dave-west), de [Scrum.org](https://www.scrum.org/), conseille que plus le travail est complexe et plus il y a d'inconnues, plus le sprint doit être court.
+- **Daily Scrum** ou **stand-up** : il s'agit d'une réunion quotidienne très courte qui se déroule à la même heure (généralement le matin) et au même endroit. De nombreuses équipes essaient de terminer la réunion en 15 minutes, mais ce n'est qu'une ligne directrice. Cette réunion est également appelée "daily stand-up", ce qui souligne qu'elle doit être rapide. L'objectif du daily scrum est de permettre à tous les membres de l'équipe d'être sur la même position, de s'aligner sur l'objectif du sprint et d'établir un plan pour les 24 heures qui suivent.  
+  **Le stand up est l'occasion de faire part de vos préoccupations quant à l'atteinte de l'objectif du sprint ou de tout blocage.**  
+  Une façon courante de mener un stand up est de demander à chaque membre de l'équipe de répondre à trois questions dans le contexte de la réalisation de l'objectif du sprint :
+
+  - Qu'est-ce que j'ai fait hier ?
+  - Qu'est-ce que j'ai décidé de faire aujourd'hui ?
+  - Y a-t-il des obstacles ?
+
+- **Sprint Review** : À la fin du sprint, l'équipe se réunit pour une session informelle afin de visionner une démo ou d'inspecter l'incrément. L'équipe de développement présente les éléments du backlog qui sont maintenant "terminés" aux parties prenantes et aux collaborateurs pour obtenir leurs feedback. Le Product Owner peut décider de publier ou non l'incrément, bien que dans la plupart des cas, l'incrément soit publié.
+- **Sprint retrospective** : La rétrospective est le stade où l'équipe se réunit pour documenter et discuter de ce qui a fonctionné et de ce qui n'a pas fonctionné dans un sprint, un projet, les personnes ou les relations, les outils, ou même pour certaines activités. L'idée est de créer un lieu où l'équipe peut se concentrer sur ce qui a bien fonctionné et ce qui doit être amélioré pour la prochaine fois, et moins sur ce qui a mal fonctionné.
+
+### Trois rôles essentiels pour le succès de Scrum
+
+Une équipe Scrum a besoin de trois rôles spécifiques : le Product Owner, le Scrum Master et l'équipe de développement. Et comme les équipes Scrum sont interfonctionnelles, l'équipe de développement comprend, en plus des développeurs, des testeurs, des concepteurs, des spécialistes UX et des opérateurs.
