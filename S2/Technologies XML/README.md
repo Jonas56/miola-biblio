@@ -86,9 +86,9 @@
 - DTD interne :
 
 ```xml
-	<!DOCTYPE parc-machine [
-	<!– declarations -- >
-	]>
+<!DOCTYPE parc-machine [
+<!– declarations -- >
+]>
 ```
 
 - DTD externe :
@@ -128,7 +128,7 @@
 - Elément optionnel (0, 1)
 
   ```xml
-  	<!ELEMENT villa (piscine?)>
+  <!ELEMENT villa (piscine?)>
   ```
 
 - Elément répétitif (0,N)
@@ -158,7 +158,7 @@
 - Permet de définir la liste d’attributs pour une balise
 
 ```xml
-	<!ATTLIST tag attribut type [#mode] [valeur]>
+<!ATTLIST tag attribut type [#mode] [valeur]>
 ```
 
 1. **CDATA** : Données textuelles
@@ -171,14 +171,14 @@
 8. **NOTATION (N1|N2|…)** : L’attribut peut prendre comme valeur le nom d’une notation.
 
 ```xml
-	<!NOTATION GIF SYSTEM "image/gif" >
-	<!ATTLIST CD IMAGE NOTATION GIF #REQUIRED>
+<!NOTATION GIF SYSTEM "image/gif" >
+<!ATTLIST CD IMAGE NOTATION GIF #REQUIRED>
 ```
 
 - Il est possible de donner une valeur par défaut à un attribut
 
 ```xml
-	<!ATTLIST edition type (papier|electronique) "papier" >
+<!ATTLIST edition type (papier|electronique) "papier" >
 ```
 
 1. **#REQUIRED** : l’attribut est toujours présent lorsque l’élément est utilisé (pas de valeur par défaut)
@@ -223,7 +223,7 @@
     - La référence se fait par le préfixe & et en rajoutant à la fin du nom un point-virgule : **&nom;**
 
   ```xml
-  	<!ENTITY email "NOM@mit.ac.ma" >
+  <!ENTITY email "NOM@mit.ac.ma" >
   ```
 
   - Externes: elles dépendent d’une source de données externe au d’un autre document dXML.
@@ -262,8 +262,8 @@
 - Pour relier entre 2 DTDs, la syntaxe est la suivante :
 
 ```xml
-	<!ENTITY % nom SYSTEM "URI" %nom;> <!-- DTD Privee-->
-	<!ENTITY % nom PUBLIC "URI" %nom;> <!-- DTD Publique -->
+<!ENTITY % nom SYSTEM "URI" %nom;> <!-- DTD Privee-->
+<!ENTITY % nom PUBLIC "URI" %nom;> <!-- DTD Publique -->
 ```
 
 ### Espaces de noms
@@ -375,7 +375,7 @@
 - La syntaxe pour définir un élément simple :
 
 ```xml
-	<xs:element name="xxx" type="yyy"/>
+<xs:element name="xxx" type="yyy"/>
 ```
 
 - XML Schema définit plusieurs types de données, les plus utilisés sont :
@@ -385,7 +385,7 @@
   - `xs:integer`
   - `xs:boolean`
   - `xs:date`
-  - `xs:time
+  - `xs:time`
 
 - **Exemple** :
 
@@ -400,12 +400,12 @@
   <xs:element name="TTVA" type="xs:decimal" default="0.2"/>
   ```
 
-````
 * Une valeur fixe peut aussi être attribuer à un élément et ne peut pas être modifier.
-	* Dans l'exemple suivant, le profil par défaut est "simple" :
-	``` xml
-	<xs:element name="profil" type="xs:string" fixed="simple"/>
-````
+* Dans l'exemple suivant, le profil par défaut est "simple" :
+
+```xml
+<xs:element name="profil" type="xs:string" fixed="simple"/>
+```
 
 ### Les attributs XSD
 
@@ -428,16 +428,17 @@
 
 1. L'exemple suivant définit un élément "age" avec restriction.
    - La valeur de l'age ne peut pas être inférieure à 0 ou supérieure à 120 :
-   ```xml
-   	<xs:element name="age">
-   		<xs:simpleType>
-   			<xs:restriction base="xs:integer">
-   				<xs:minInclusive value="0"/>
-   				<xs:macInclusive value="120"/>
-   			</xs:restriction>
-   		</xs:simpleType>
-   	</xs:element>
-   ```
+
+```xml
+<xs:element name="age">
+  <xs:simpleType>
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="0"/>
+      <xs:macInclusive value="120"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:element>
+```
 
 - Pour limiter le contenu d'un élément XML à un ensemble de valeurs, on utilise les énumérations.
 
@@ -712,14 +713,14 @@ _Chacun de ces éléments peut avoir des attributs._
 1. Methode :
 
 ```xml
-	<xs:element name="personne">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="nom" type="xs:string"/>
-				<xs:element name="prenom" type="xs:string"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+<xs:element name="personne">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="nom" type="xs:string"/>
+      <xs:element name="prenom" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
 ```
 
 - Avec cette méthode, seulement l'élément "personne" peut utiliser le type complexe spécifié.
@@ -729,14 +730,14 @@ _Chacun de ces éléments peut avoir des attributs._
 2. Methode :
 
 ```xml
-	<xs:complexType name="infoPersonne">
-		<xs:sequence>
-			<xs:element name="nom" type="xs:string"/>
-			<xs:element name="prenom" type="xs:string"/>
-		</xs:sequence>
-	</xs:complexType>
+<xs:complexType name="infoPersonne">
+  <xs:sequence>
+    <xs:element name="nom" type="xs:string"/>
+    <xs:element name="prenom" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
 
-	<xs:element name="personne" type="infoPersonne"/>
+<xs:element name="personne" type="infoPersonne"/>
 ```
 
 - Avec cette méthode, plusieurs éléments peuvent référencer le même type complexe.
@@ -767,12 +768,10 @@ _Chacun de ces éléments peut avoir des attributs._
 
 #### Élément avec attribut
 
----
-
 - **Exemple :**
 
 ```xml
-	<Montant devis="dhs">1700.70</Montant>
+<Montant devis="dhs">1700.70</Montant>
 ```
 
 1. Methode Declaration :
@@ -792,15 +791,15 @@ _Chacun de ces éléments peut avoir des attributs._
 2. Methode Declaration :
 
 ```xml
-	<xs:complexType name="MontantType">
-		<xs:simpleContent>
-			<xs:extension base="xs:decimal">
-				<xs:attribute name="devis" type="xs:string"/>
-			</xs:extension>
-		</xs:simpleContent>
-	</xs:complexType>
+<xs:complexType name="MontantType">
+  <xs:simpleContent>
+    <xs:extension base="xs:decimal">
+      <xs:attribute name="devis" type="xs:string"/>
+    </xs:extension>
+  </xs:simpleContent>
+</xs:complexType>
 
-	<xs:element name="Montant" type="MontantType"/>
+<xs:element name="Montant" type="MontantType"/>
 ```
 
 #### Élément mixte
@@ -809,39 +808,39 @@ _Chacun de ces éléments peut avoir des attributs._
 - Un élément XML "Livraison" qui contient à la fois du texte et d'autres éléments :
 
 ```xml
-	<Livraison>
-	A Mr.<nomClient>Ahmed ZELLOU</nomClient>.
-	Votre commande <BCnum>1032</BCnum>
-	sera livrée le <datelivraison>2015-07-13</datelivraison>.
-	</Livraison>
+<Livraison>
+A Mr.<nomClient>Ahmed ZELLOU</nomClient>.
+Votre commande <BCnum>1032</BCnum>
+sera livrée le <datelivraison>2015-07-13</datelivraison>.
+</Livraison>
 ```
 
 - La définition XSD :
 
 ```xml
-	<xs:element name="Livraison">
-		<xs:complexType mixed="true">
-			<xs:sequence>
-				<xs:element name="nomClient" type="xs:string"/>
-				<xs:element name="BCnum" type="xs:positiveInteger"/>
-				<xs:element name="datelivraison" type="xs:date"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+<xs:element name="Livraison">
+  <xs:complexType mixed="true">
+    <xs:sequence>
+      <xs:element name="nomClient" type="xs:string"/>
+      <xs:element name="BCnum" type="xs:positiveInteger"/>
+      <xs:element name="datelivraison" type="xs:date"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
 ```
 
 - Définition avec un type **typeLivraison** :
 
 ```xml
-	<xs:complexType name="typeLivraison" mixed="true">
-		<xs:sequence>
-			<xs:element nameClient="nom" type="xs:string"/>
-			<xs:element name="BCnum" type="xs:positiveInteger"/>
-			<xs:element name="datelivraison" type="xs:date"/>
-		</xs:sequence>
-	</xs:complexType>
+<xs:complexType name="typeLivraison" mixed="true">
+  <xs:sequence>
+    <xs:element nameClient="nom" type="xs:string"/>
+    <xs:element name="BCnum" type="xs:positiveInteger"/>
+    <xs:element name="datelivraison" type="xs:date"/>
+  </xs:sequence>
+</xs:complexType>
 
-	<xs:element name="Livraison" type="typeLivraison"/>
+<xs:element name="Livraison" type="typeLivraison"/>
 ```
 
 #### Élément Vide
@@ -852,26 +851,26 @@ _Chacun de ces éléments peut avoir des attributs._
 1. Methode :
 
 ```xml
-	<xs:element name="produit">
-		<xs:complexType>
-			<xs:attribute name="prodid" type="xs:positiveInteger"/>
-		</xs:complexType>
-	</xs:element>
+<xs:element name="produit">
+  <xs:complexType>
+    <xs:attribute name="prodid" type="xs:positiveInteger"/>
+  </xs:complexType>
+</xs:element>
 ```
 
 2. Methode :
 
 ```xml
-	<xs:complexType name="typeProd">
-		<xs:attribute name="prodid" type="xs:positiveInteger"/>
-	</xs:complexType>
+<xs:complexType name="typeProd">
+  <xs:attribute name="prodid" type="xs:positiveInteger"/>
+</xs:complexType>
 
-	<xs:element name="produit" type="typeProd"/>
+<xs:element name="produit" type="typeProd"/>
 ```
 
 - Permet de donner un nom à ce type et l'utiliser par la suite.
 
-## Les indicateurs
+### Les indicateurs
 
 - Permet de contrôler comment les éléments doivent être utilisés dans le document.
 - Il y en a sept indicateurs :
@@ -1067,9 +1066,9 @@ _Chacun de ces éléments peut avoir des attributs._
 - Syntaxe :
 
 ```xml
-	<xsl:if test="expression">
-		... résultat si le test est vrai ...
-	</xsl:if>
+<xsl:if test="expression">
+  ... résultat si le test est vrai ...
+</xsl:if>
 ```
 
 - L'ajouter à l'intérieur de l'élément **<xsl:for-each>** dans le fichier XSL
@@ -1081,14 +1080,14 @@ _Chacun de ces éléments peut avoir des attributs._
 - Syntaxe :
 
 ```xml
-	 <xsl:choose>
-		<xsl:when test="expression">
-			... Éléments de sortie ...
-		</xsl:when>
-		<xsl:otherwise>
-			... Éléments de sortie ....
-		</xsl:otherwise>
-	</xsl:choose>
+<xsl:choose>
+  <xsl:when test="expression">
+    ... Éléments de sortie ...
+  </xsl:when>
+  <xsl:otherwise>
+    ... Éléments de sortie ....
+  </xsl:otherwise>
+</xsl:choose>
 ```
 
 ### <xsl:apply-templates>
@@ -1175,10 +1174,10 @@ _Chacun de ces éléments peut avoir des attributs._
 - éviter de répéter la même expression.
 
 ```xquery
-	let $x := (1 to 5)
-	return <test>{$x}</test>
-	<!-- RESULT -->
-	<test>1 2 3 4 5</test>
+let $x := (1 to 5)
+return <test>{$x}</test>
+<!-- RESULT -->
+<test>1 2 3 4 5</test>
 ```
 
 #### La clause where
@@ -1187,9 +1186,9 @@ _Chacun de ces éléments peut avoir des attributs._
 - La sélection se fait par une expression logique de prédicats élémentaires.
 
 ```xquery
-	where $x/price>30 and $x/price<100
+where $x/price>30 and $x/price<100
 
-	where contains($x/title,"XML")
+where contains($x/title,"XML")
 ```
 
 #### La clause order by
@@ -1198,14 +1197,14 @@ _Chacun de ces éléments peut avoir des attributs._
 - Pour ordonner le résultat par category et title :
 
 ```xquery
-	for $x in doc("books.xml")/bookstore/book
-	order by $x/@category, $x/title
-	return $x/title
-	<!-- RESULT -->
-	<title lang="fr"> Concepts Client/Serveur </title>
-	<title lang="fr"> Services Web </title>
-	<title lang="en"> Relationnel DataBases </title>
-	<title lang="en"> Learning XML </title>
+for $x in doc("books.xml")/bookstore/book
+order by $x/@category, $x/title
+return $x/title
+<!-- RESULT -->
+<title lang="fr"> Concepts Client/Serveur </title>
+<title lang="fr"> Services Web </title>
+<title lang="en"> Relationnel DataBases </title>
+<title lang="en"> Learning XML </title>
 ```
 
 #### La clause return
@@ -1214,13 +1213,13 @@ _Chacun de ces éléments peut avoir des attributs._
 - Chaque itération doit retourner un seul fragment XML (pas une collection).
 
 ```xquery
-	for $x in doc("books.xml")/bookstore/book
-	return $x/title
-	<!-- RESULT-->
-	<title lang="fr"> Concepts Client/Serveur </title>
-	<title lang="fr"> Services Web </title>
-	<title lang="en"> Relationnel DataBases </title>
-	<title lang="en"> Learning XML </title>
+for $x in doc("books.xml")/bookstore/book
+return $x/title
+<!-- RESULT-->
+<title lang="fr"> Concepts Client/Serveur </title>
+<title lang="fr"> Services Web </title>
+<title lang="en"> Relationnel DataBases </title>
+<title lang="en"> Learning XML </title>
 ```
 
 #### Généralités
@@ -1249,15 +1248,15 @@ _Chacun de ces éléments peut avoir des attributs._
 - Exemple :
 
 ```Xquery
-	declare function local:minPrice($a as xs:decimal, $b as xs:decimal)
-	as xs:decimal
-	{
-		if($a > $b) let $res := $b
-			else let $res := $a
-		return ($res)
-	}
-	<!-- l'appel de la fonction-->
-	<minPrice>{local:minPrice($book/price, $book/discount)}</minPrice>
+declare function local:minPrice($a as xs:decimal, $b as xs:decimal)
+as xs:decimal
+{
+  if($a > $b) let $res := $b
+    else let $res := $a
+  return ($res)
+}
+<!-- l'appel de la fonction-->
+<minPrice>{local:minPrice($book/price, $book/discount)}</minPrice>
 ```
 
 ## XPath (XML Path Language)
@@ -1353,7 +1352,6 @@ _Chacun de ces éléments peut avoir des attributs._
 <p align=center>
 	<img src="https://i.postimg.cc/L5kRPs9s/Axes-XPath.png" alt="Axes_XPath.png">
 </p>
-
 
 #### Accès par Axe
 
