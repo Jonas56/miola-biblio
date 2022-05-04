@@ -109,7 +109,7 @@
 
   - Elément Simple
 
-  ```xml
+  ```dtd
   <!ELEMENT livre (titre, isbn)>
   ```
 
