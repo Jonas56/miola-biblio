@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT cv (info-perso, contact, Dip:diplome*, conpetence*, experience*, langue+)>
+<!ELEMENT info-perso (nom, prenom, sexe, date-naissance)>
+<!ELEMENT nom (#PCDATA) >
+<!ELEMENT prenom (#PCDATA) >
+<!ELEMENT sexe (#PCDATA) >
+<!ELEMENT date-naissance (jour, mois, annee)>
+<!ELEMENT jour (#PCDATA) >
+<!ELEMENT mois (#PCDATA) >
+<!ELEMENT annee (#PCDATA) >
+<!ELEMENT contact (adresse, phone, mail)  >
+<!ELEMENT adresse ANY >
+<!ELEMENT phone (#PCDATA) >
+<!ELEMENT mail (#PCDATA) >
+<!ELEMENT Dip:diplome (Dip:designation, Dip:date, Dip:affiliation, Dip:serie, Dip:mention)>
+<!ELEMENT Dip:designation (#PCDATA) >
+<!ELEMENT Dip:date (#PCDATA) >
+<!ELEMENT designation (#PCDATA) >
+<!ELEMENT affiliation (#PCDATA) >
+<!ELEMENT Dip:affiliation (#PCDATA) >
+<!ELEMENT Dip:serie (#PCDATA) >
+<!ELEMENT Dip:mention (#PCDATA) >
+<!ELEMENT  conpetence (intitule, niveau, description)>
+<!ELEMENT intitule (#PCDATA) >
+<!ELEMENT niveau (#PCDATA) >
+<!ELEMENT description (#PCDATA) >
+<!ELEMENT  experience (stage|travail)>
+<!ELEMENT  stage (designation, debut, fin, affiliation, mission)>
+<!ELEMENT debut (#PCDATA) >
+<!ELEMENT fin (#PCDATA) >
+<!ELEMENT mission (#PCDATA) >
+<!ELEMENT langue (niveau) >
+<!ELEMENT  travail (designation, debut, fin, affiliation, mission)>
+<!ATTLIST langue designation NMTOKEN #REQUIRED >
+<!ATTLIST cv xmlns CDATA #FIXED "http://www.cv.ma">
+<!ATTLIST cv xmlns:Dip CDATA #FIXED "http://www.ensias.ma">
+<!ATTLIST experience xmlns CDATA #FIXED "http://www.entreprise.ma">

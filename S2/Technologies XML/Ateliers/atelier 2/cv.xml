@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Document bien formé et valide  -->
+<!DOCTYPE cv SYSTEM "cv.dtd"> 
+<cv xmlns:Dip="http://www.ensias.ma" xmlns="http://www.cv.ma">
+    <info-perso>
+        <nom>Tesla</nom>
+        <prenom>Jonas</prenom>
+        <sexe>Masculin</sexe>
+        <date-naissance>
+            <jour>03</jour>
+            <mois>02</mois>
+            <annee>2001</annee>
+        </date-naissance>
+    </info-perso>
+    
+    <contact>
+        <adresse>123 AV. Test</adresse>
+        <phone>0606060606</phone>
+        <mail>example@mail.com</mail>
+    </contact>
+    <Dip:diplome>
+        <Dip:designation>BAC</Dip:designation>
+        <Dip:date>2018</Dip:date>
+        <Dip:affiliation>Lycee mohammed 6</Dip:affiliation>
+        <Dip:serie>SC. maths</Dip:serie>
+        <Dip:mention>Bien</Dip:mention>
+    </Dip:diplome>
+    <Dip:diplome>
+        <Dip:designation>Licence</Dip:designation>
+        <Dip:date>2021</Dip:date>
+        <Dip:affiliation>Faculté Mohammed 5 Rabat</Dip:affiliation>
+        <Dip:serie>Informatique</Dip:serie>
+        <Dip:mention>Bien</Dip:mention>
+    </Dip:diplome>
+    <conpetence>
+        <intitule>Dev. Web</intitule>
+        <niveau>Intermediare</niveau>
+        <description>Developpeur full-stack javascript</description>
+    </conpetence>
+    <conpetence>
+        <intitule>Administrateur système</intitule>
+        <niveau>Intermediaire</niveau>
+        <description>Linux, Windows</description>
+    </conpetence>
+    <conpetence>
+        <intitule>Project Management</intitule>
+        <niveau>Debutant</niveau>
+        <description>Agile, Scrum</description>
+    </conpetence>
+    <experience xmlns="http://www.entreprise.ma">
+        <travail>
+            <designation>Software engineer</designation>
+            <debut>2021</debut>
+            <fin>Ongoing</fin>
+            <affiliation>IBM</affiliation>
+            <mission>Build and maintain softwares</mission>
+        </travail>
+    </experience>
+    <experience xmlns="http://www.entreprise.ma">
+        <stage>
+            <designation>Stage d'observation en IoT</designation>
+            <debut>2018</debut>
+            <fin>2018</fin>
+            <affiliation>OCP Group</affiliation>
+            <mission>Decouvrir l'application de l'IoT dans le domaine de l'griculture</mission>
+        </stage>
+    </experience>
+    <langue designation="francais">
+        <niveau>courant</niveau>
+    </langue> 
+    <langue designation="anglais">
+        <niveau>courant</niveau>
+    </langue> 
+    <langue designation="arabe">
+        <niveau>native/bilingue</niveau>
+    </langue> 
+</cv>

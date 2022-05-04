@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="html-transform.xsl"?>
+<annuaire xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:noNamespaceSchemaLocation="annuaire.xsd">
+       
+    <personne matricule="AB123">
+        <nom>Alami</nom>
+        <prenom>Wafae</prenom>
+        <telephone>0661112233</telephone>
+        <email>alami@ensias.ma</email>
+        <sexe>F</sexe>
+        <DateNaissance>1980-10-10</DateNaissance>
+        <adresse>
+            <rue numero="12">Sebta </rue>
+            <ville>Rabat</ville>
+        </adresse>
+    </personne>
+    <personne matricule ="XZ123" nationalite="FRA">
+        <nom>Tesla</nom>
+        <prenom>Jonas</prenom>
+        <telephone>0661112233</telephone>
+        <email>jonas.tesla@ensias.ma</email>
+        <sexe>M</sexe>
+        <DateNaissance>1980-10-10</DateNaissance>
+        <adresse>
+            <rue>123 AV</rue>
+            <ville>California</ville>
+        </adresse>
+    </personne> 
+   
+</annuaire>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<catalogue>
+	<cd lang="fr">
+		<titre>Empire Burlesque</titre>
+		<artiste>Bob Dylan</artiste>
+		<pays>USA</pays>
+		<compagnie>Columbia</compagnie>
+		<prix>10.90</prix>
+		<annee>1985</annee>
+	</cd>
+	<cd lang="fr">
+		<titre>Hide your heart</titre>
+		<artiste>Bonnie Tyler</artiste>
+		<artiste>Taylor Jason</artiste>
+		<pays>UK</pays>
+		<compagnie>Poly Records</compagnie>
+		<prix>9.90</prix>
+		<annee>1988</annee>
+	</cd>
+	<cd lang="an">
+		<titre>Greatest Hits</titre>
+		<artiste>Dolly Parton</artiste>
+		<pays>USA</pays>
+		<compagnie>RCA</compagnie>
+		<prix>9.90</prix>
+		<annee>1982</annee>
+	</cd>
+	<cd lang="fr">
+		<titre>Still got the blues</titre>
+		<artiste>Gary Moore</artiste>
+		<pays>FRA</pays>
+		<compagnie>Virgin records</compagnie>
+		<prix>10.20</prix>
+		<annee>1990</annee>
+	</cd>
+	<cd lang="an">
+		<titre>Eros</titre>
+		<artiste>Eros Ramazzotti</artiste>
+		<pays>EU</pays>
+		<compagnie>BMG</compagnie>
+		<prix>9.90</prix>
+		<annee>1997</annee>
+	</cd>
+	<cd lang="fr">
+		<titre>One night only</titre>
+		<artiste>Bee Gees</artiste>
+		<pays>UK</pays>
+		<compagnie>Polydor</compagnie>
+		<prix>10.90</prix>
+		<annee>1998</annee>
+	</cd>
+	<cd lang="fr">
+		<titre>Sylvias Mother</titre>
+		<artiste>Dr.Hook</artiste>
+		<pays>UK</pays>
+		<compagnie>CBS</compagnie>
+		<prix>8.10</prix>
+		<annee>1973</annee>
+	</cd>
+	<cd lang="es">
+		<titre>Maggie May</titre>
+		<artiste>Rod Stewart</artiste>
+		<pays>UK</pays>
+		<compagnie>Pickwick</compagnie>
+		<prix>8.50</prix>
+		<annee>1990</annee>
+	</cd>
+	<cd lang="fr">
+		<titre>Romanza</titre>
+		<artiste>Andrea Bocelli</artiste>
+		<pays>EU</pays>
+		<compagnie>Polydor</compagnie>
+		<prix>10.80</prix>
+		<annee>1996</annee>
+	</cd>
+	<cd lang="es">
+		<titre>When a man loves a woman</titre>
+		<artiste>Percy Sledge</artiste>
+		<pays>USA</pays>
+		<compagnie>Atlantic</compagnie>
+		<prix>8.70</prix>
+		<annee>1987</annee>
+	</cd>
+	<cd lang="fr">
+		<titre>Black angel</titre>
+		<artiste>Savage Rose</artiste>
+		<pays>EU</pays>
+		<compagnie>Mega</compagnie>
+		<prix>10.90</prix>
+		<annee>1995</annee>
+	</cd>
+	<cd lang="fr">
+		<titre>1999 Grammy Nominees</titre>
+		<artiste>Many</artiste>
+		<artiste>Gean</artiste>
+		<pays>USA</pays>
+		<compagnie>Grammy</compagnie>
+		<prix>10.20</prix>
+		<annee>1999</annee>
+	</cd>
+	<cd lang="es">
+		<titre>For the good times</titre>
+		<artiste>Kenny Rogers</artiste>
+		<pays>FRA</pays>
+		<compagnie>Mucik Master</compagnie>
+		<prix>8.70</prix>
+		<annee>1995</annee>
+	</cd>
+	<cd lang="fr">
+		<titre>Big Willie style</titre>
+		<artiste>Will Smith</artiste>
+		<pays>USA</pays>
+		<compagnie>Columbia</compagnie>
+		<prix>9.90</prix>
+		<annee>1997</annee>
+	</cd>
+	<cd lang="es">
+		<titre>Tupelo Honey</titre>
+		<artiste>Van Morrison</artiste>
+		<pays>UK</pays>
+		<compagnie>Polydor</compagnie>
+		<prix>8.20</prix>
+		<annee>1971</annee>
+	</cd>
+</catalogue>
