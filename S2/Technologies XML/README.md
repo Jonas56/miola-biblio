@@ -6,6 +6,8 @@
 - [Document Type Definition (DTD)](#document-type-definition)
 - [XML Schema Definition (XSD)](#xml-schema-definition)
 - [XSLT (eXtensible Stylesheet Language Transformation)](#xslt-extensible-stylesheet-language-transformation)
+- [XPath (XML Path Language)](#xpath-xml-path-language)
+- [XUF (XQuery Update Facility)](#xuf-xquery-update-facility)
 
 ## Introduction XML
 
@@ -16,7 +18,7 @@
 - Naissance de XML (1997)
 - XML :
 
-  - XML est un méta-langage universel pour le Web
+  - XML est un méta-langage universel pour le WebXPath
   - Idéal pour l'échange de données documentées
   - XML ne décrit que du contenu pur, pour la présentation, il faux utiliser d’autres technologies comme XSL
 
@@ -1136,10 +1138,10 @@ sera livrée le <datelivraison>2015-07-13</datelivraison>.
   - `return expression`
 
 ```xquery
-	for $x in doc("books.xml")/bookstore/book
-	where $x/price>30
-	order by $x/title
-	return $x/title
+for $x in doc("books.xml")/bookstore/book
+where $x/price>30
+order by $x/title
+return $x/title
 ```
 
 - **for** - (facultatif) lie une variable à chaque élément retourné par l'expression
@@ -1389,3 +1391,113 @@ as xs:decimal
 - **Node-set** : `last(), position(), count( node-set ), id( string ), name(node-set), namespace-uri( node-set )`
 - **String** : `concat($s1,...,$sn), starts-with($a,$b), contains($a,$b), substring-before($a,$b), substring- after($a,$b), substring($a,$n,$l), string-length($a), normalize-space($a), translate($a,$b,$c)`
 - **Boolean et Number** : `not($b), sum($s), floor($n), ceiling($n), round($n)`
+
+## XUF (XQuery Update Facility)
+
+- XQuery Update est une extension de XQuery
+- Il permet de mettre à jour un fichier XML.
+- L’extensions XQuery Update : **insert**, **replace**, **value**, **delete** et **rename**
+- Une déclaration update peut se faire dans n'importe quelle partie d’une requête XQuery.
+- XQUF permet de :
+  - supprimer un ou plusieurs éléments
+  - insérer un ou plusieurs éléments, _avant/après/à l’intérieur_ d’un élément
+  - remplacer un élément (avec tout son sous-arbre) par une séquence d’éléments
+  - remplacer les fils d’un élément par une séquence d’éléments
+  - remplacer la valeur d’un élément par une valeur textuelle
+  - renommer un élément
+
+### Insert
+
+- Synatxe :
+  - `insert (node | nodes) items into expr`
+  - `insert (node | nodes) items as first into expr`
+  - `insert (node | nodes) items as last into expr`
+  - `insert (node | nodes) items before expr`
+  - `insert (node | nodes) items after expr`
+
+> **expr** doit désigner un élément cible.
+
+- Exemples :
+
+```xquery
+for $x in /biblio/livre
+where contains($x/titre,'XML')
+return insert node <resume>un doc XML</resum> into $x
+```
+
+```xquery
+for $x in //livre[DateEdition=1998]
+return insert node <reduction>10%</reduction> after $x
+```
+
+### Replace
+
+- Syntaxe : \* `replace node expr with items`
+  -> **expr** peut être un élément, un attribut ou du texte
+- Exemple :
+
+```Xquery
+for $x in //livre/resume
+return replace node $x with <resume>{data($x)}</resume>
+```
+
+- `return replace node $x`
+- Exemple :
+
+```xquery
+for $x in //livre/resume
+return replace node $x with <summary>XQUF</summary>
+```
+
+```xquery
+for $x in /biblio/livre[2]/prix
+return replace node $x with <prix>{data($x)*0.8}</prix>
+```
+
+### Replace Value
+
+- Syntaxe :
+  - `replace value of node expr with exprSingle`
+- Mette à jour le contenu de tous les nœuds **expr** avec les éléments de **exprSingle**
+
+```xquery
+for $x in /biblio/prix
+return replace value of node $x with 30
+```
+
+### Delete
+
+- Syntaxe :
+  - `delete (node | nodes) expr`
+- Supprime tous les nœuds dans **expr** du document
+- Exemples :
+
+```xquery
+for $x in /biblio/livre
+return delete node $x/prix
+```
+
+```xquery
+for $x in //livre[prix>30]
+return delete node $x
+```
+
+### Rename
+
+- Syntaxe
+  - `rename node expr as exprSingle`
+- Renomme les nœuds dans **expr** en utilisant la valeur de **exprSingle**
+- **expr** peut être un ensemble d'éléments ou d'attributs
+- Exemple :
+
+```xquery
+for $x in /biblio/livre/resume
+return rename node $x as "abstract"
+```
+
+- **Remarques** :
+  - Pour mettre à jour une base de données : `insert`, `delete`, `rename`, `replace`
+  - Sans effet sur la base, avec fabrication d’un arbre XML : _copy ... modify ... return_.
+
+> **BaseX** est un SGBD XML native  
+> **eXist** est un SGBD open source, Multi plates- formes avec usage format Desktop ou Web.
