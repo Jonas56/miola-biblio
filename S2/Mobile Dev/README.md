@@ -340,17 +340,17 @@ Comme vous pouvez le constater, la conception des applications mobiles contribue
 
 - Le code Java minimal d'une activite peut comme suit :
 
-```Java
-	import android.support.v7.app.AppCompatActivity;
-	import android.os.Bundle;
+```java
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
-	public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
-		protected void onCreate(Bundle savedInstanceState){
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.activity_main_layout);
-		}
-	}
+  protected void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main_layout);
+  }
+}
 ```
 
 - La methode `onCreate()` permet de realiser le chargement du layout de l'activite au moment de son execution.
@@ -540,12 +540,12 @@ Comme vous pouvez le constater, la conception des applications mobiles contribue
   - la configuration de l'application ...
 - Pour definir un menu option pour une activite il faut implementer la methode `onCreateOptionsMenu()`
 
-```Java
-	public boolean onCreateOptionsMenu(Menu menu){
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.MyOptionMenu, menu);
-		return true;
-	}
+```java
+public boolean onCreateOptionsMenu(Menu menu){
+  MenuInflater inflater = getMenuInflater();
+  inflater.inflate(R.menu.MyOptionMenu, menu);
+  return true;
+}
 ```
 
 - On peut utiliser l'objet menu pour ajouter, supprimer ou mettre a jour des items dans le menu (_Voir le chapitre Interaction avec GUI_)
@@ -558,13 +558,13 @@ Comme vous pouvez le constater, la conception des applications mobiles contribue
 - On peut offrir un menu contextuel pour n'importe quel objet de type **View**, mais, ils sont utilises souvent pour les items dans un **ListView** ou dans un **GridView**
 - Pour utiliser un menu contextuel, il faut implementer la methode `onCreateContextMenu()`
 
-```Java
-	public void onCreateContextMenu(ContextMenu menu, ContextMenuInfo menu
-    info){
-	    super.onCreateContextMenu(menu, v, menuInfo);
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.MyContextMenu, menu);
-    }
+```java
+public void onCreateContextMenu(ContextMenu menu, ContextMenuInfo menu
+  info){
+    super.onCreateContextMenu(menu, v, menuInfo);
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.MyContextMenu, menu);
+  }
 ```
 
 - On peut utiliser l'objet menu pour ajouter, supprimer ou mettre a jour des items dans le menu (_Voir le chapitre Interaction avec GUI_)
@@ -597,39 +597,39 @@ Comme vous pouvez le constater, la conception des applications mobiles contribue
 </p>
 
 ```java
-	public classe MainActivity extends Activity{
-		@Override
-		public void onCreate(Bundle savedInstanceState){
-			super.onCreate(savedInstanceState);
-			setContentView(R.layout.activity_main);
-			// The activity is being created
-		}
-		@Override
-		protected void onStart(){
-			super.onStart();
-			// The activity is about to become visible
-		}
-		@Override
-		protected void onResume(){
-			super.onResume();
-			// The activity has become visible
-		}
-		@Override
-		protected void onPause(){
-			super.onPause();
-			// Another activity is taking focus
-		}
-		@Override
-		protected void onStop(){
-			super.onStop();
-			// The activity is no longer visible
-		}
-		@Override
-		protected void onDestroy(){
-			super.onDestroy();
-			// the activity is about to be destroyed
-		}
-	}
+public classe MainActivity extends Activity{
+  @Override
+  public void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    // The activity is being created
+  }
+  @Override
+  protected void onStart(){
+    super.onStart();
+    // The activity is about to become visible
+  }
+  @Override
+  protected void onResume(){
+    super.onResume();
+    // The activity has become visible
+  }
+  @Override
+  protected void onPause(){
+    super.onPause();
+    // Another activity is taking focus
+  }
+  @Override
+  protected void onStop(){
+    super.onStop();
+    // The activity is no longer visible
+  }
+  @Override
+  protected void onDestroy(){
+    super.onDestroy();
+    // the activity is about to be destroyed
+  }
+}
 ```
 
 - Il n'est pas obligatoire de manipuler toutes les methodes permettant de gerer de transition entre le etats d'une activite. Leur implementation depend de la complexite de l'application
@@ -647,11 +647,11 @@ Comme vous pouvez le constater, la conception des applications mobiles contribue
 - On peut egalement initialiser les composantes essentielles de l'activite
 
 ```java
-	public void onCreate(Bundle savedInstanceState){
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		// The activity is being created
-	}
+public void onCreate(Bundle savedInstanceState){
+  super.onCreate(savedInstanceState);
+  setContentView(R.layout.activity_main);
+  // The activity is being created
+}
 ```
 
 #### onStart()
